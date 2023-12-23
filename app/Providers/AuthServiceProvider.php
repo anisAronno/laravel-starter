@@ -24,25 +24,12 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('isSuperAdmin', function ($user) {
-            return $user->role == UserRole::SUPERADMIN->value;
-        });
+        $roles = UserRole::values();
 
-        Gate::define('isAdmin', function ($user) {
-            return $user->role == UserRole::ADMIN->value;
-        });
-
-        Gate::define('isEditor', function ($user) {
-            return $user->role == UserRole::EDITOR->value;
-        });
-
-        Gate::define('isUser', function ($user) {
-            return $user->role == UserRole::USER->value;
-        });
-
-        Gate::define('isSubscriber', function ($user) {
-            return $user->role == UserRole::SUBSCRIBER->value;
-        });
-
+        foreach ($roles as $role) {
+            Gate::define(ucfirst($role), function ($user) use ($role) {
+                return $user->role->value == $role;
+            });
+        }
     }
 }
