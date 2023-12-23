@@ -12,5 +12,6 @@ enum UserRole: string
     case ADMIN = 'Admin';
     case EDITOR = 'Editor';
     case USER = 'User';
+    case CUSTOMER = 'Customer';
     case SUBSCRIBER = 'Subscriber';
 }

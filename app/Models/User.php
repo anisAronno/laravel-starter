@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
 use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use App\Helpers\UniqueSlug;
