@@ -2,6 +2,8 @@
 
 namespace App\Observers;
 
+use App\Enums\UserRole;
+use App\Models\Role;
 use App\Models\User;
 use App\Notifications\NewUserNotification;
 use Illuminate\Support\Facades\Notification;
@@ -14,6 +16,13 @@ class UserObserver
     public function created(User $user): void
     {
         Notification::send($user, new NewUserNotification($user));
+
+        if (!$user->roles()->exists()) {
+            $defaultRole = Role::where('name', UserRole::CUSTOMER->value)->first();
+            if ($defaultRole) {
+                $user->roles()->attach($defaultRole);
+            }
+        }
     }
 
     /**

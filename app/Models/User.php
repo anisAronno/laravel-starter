@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
 use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use App\Helpers\UniqueSlug;
@@ -11,6 +9,7 @@ use App\Notifications\ResetPasswordNotification;
 use App\Notifications\VerifyEmailQueued;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -101,4 +100,44 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $this->notify(new ResetPasswordNotification($token));
     }
+
+    /**
+     * The roles that belong to the user.
+     */
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class, 'role_user')->withTimestamps();
+    }
+
+    public function assignRoles(array $roleIds): void
+    {
+        $this->roles()->sync($roleIds);
+    }
+
+    public function detachRoles(array $roleIds): void
+    {
+        $this->roles()->detach($roleIds);
+    }
+
+    /**
+    * Retrieve roles for the user.
+    *
+    * @return \Illuminate\Database\Eloquent\Collection
+    */
+    public function getUserRoles()
+    {
+        return $this->roles()->get();
+    }
+
+    /**
+     * Check if the user has a specific role.
+     *
+     * @param string $roleName
+     * @return bool
+     */
+    public function hasRole(string $roleName)
+    {
+        return $this->roles()->where('name', $roleName)->exists();
+    }
+
 }

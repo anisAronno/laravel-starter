@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
-
-use App\Enums\UserRole;
+use App\Models\Role;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -24,11 +22,19 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $roles = UserRole::values();
+        $this->defineRoleGates();
+    }
+
+    /**
+    * Define gates based on roles from the Role model.
+    */
+    private function defineRoleGates(): void
+    {
+        $roles = Role::pluck('name')->toArray();
 
         foreach ($roles as $role) {
             Gate::define(ucfirst($role), function ($user) use ($role) {
-                return $user->role->value == $role;
+                return $user->roles->contains('name', $role);
             });
         }
     }

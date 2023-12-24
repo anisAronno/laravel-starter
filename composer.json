@@ -13,6 +13,7 @@
         "laravel/horizon": "^5.21",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "predis/predis": "^2.2",
         "spatie/laravel-activitylog": "^4.7"
     },
     "require-dev": {

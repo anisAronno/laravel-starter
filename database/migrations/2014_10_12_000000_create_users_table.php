@@ -22,7 +22,6 @@ return new class () extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('api_token', 100)->unique();
             $table->string('password');
-            $table->string('role', 50)->default(UserRole::CUSTOMER->value);
             $table->string('gender', 50)->nullable();
             $table->string('status', 50)->default(UserStatus::ACTIVE->value);
             $table->string('ip', 50)->nullable();
