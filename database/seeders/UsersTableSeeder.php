@@ -56,7 +56,7 @@ class UsersTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ];
-        }    
+        }
 
         Role::query()->insert($rolesData);
     }
@@ -65,7 +65,7 @@ class UsersTableSeeder extends Seeder
     {
         $superAdminRole = Role::where('name', UserRole::SUPERADMIN->value)->first();
         if ($superAdminRole) {
-            $user->roles()->attach($superAdminRole->id);
+            $user->assignRoles($superAdminRole->id);
         }
     }
 
@@ -75,8 +75,8 @@ class UsersTableSeeder extends Seeder
             ->count(10)
             ->create()
             ->each(function ($user) {
-                $randomRoles = Role::inRandomOrder()->limit(rand(1, 3))->get();
-                $user->roles()->attach($randomRoles);
+                $randomRoles = Role::inRandomOrder()->limit(rand(1, 3))->pluck('id')->toArray();
+                $user->assignRoles($randomRoles);
             });
     }
 }

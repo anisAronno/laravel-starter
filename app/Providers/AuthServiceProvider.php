@@ -22,12 +22,14 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->defineRoleGates();
+        if (!$this->app->runningInConsole() && Role::count() > 0) {
+            $this->defineRoleGates();
+        }
     }
 
     /**
-    * Define gates based on roles from the Role model.
-    */
+     * Define gates based on roles from the Role model.
+     */
     private function defineRoleGates(): void
     {
         $roles = Role::pluck('name')->toArray();
