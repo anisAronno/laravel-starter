@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use App\Helpers\UniqueSlug;
 use App\Notifications\ResetPasswordNotification;
@@ -12,10 +11,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 use Ramsey\Uuid\Uuid;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -24,7 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use SoftDeletes;
     use LogsActivity;
-
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -38,14 +39,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'phone',
         'image',
         'api_token',
-        'role',
         'status',
-        'gender',
-        'ip',
-        'latitude',
-        'longitude',
+        'gender', 
         'time_zone',
         'language',
+        'isDeletable'
     ];
 
     /**
@@ -66,7 +64,6 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        'role' => UserRole::class,
         'status' => UserStatus::class,
     ];
 
@@ -75,7 +72,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->logOnly(['name', 'email', 'password', 'image', 'status', 'role', 'api_token'])
+        ->logOnly(['name', 'email', 'password', 'image', 'status',  'api_token'])
         ->logOnlyDirty()
         ->dontSubmitEmptyLogs();
     }
@@ -98,5 +95,35 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+    public static function getpermissionGroups()
+    {
+        $permission_groups = DB::table('permissions')
+            ->select('group_name as name')
+            ->groupBy('group_name')
+            ->get();
+        return $permission_groups;
+    }
+
+    public static function getpermissionsByGroupName($group_name)
+    {
+        $permissions = DB::table('permissions')
+            ->select('name', 'id')
+            ->where('group_name', $group_name)
+            ->get();
+        return $permissions;
+    }
+
+    public static function roleHasPermissions($role, $permissions)
+    {
+        $hasPermission = true;
+        foreach ($permissions as $permission) {
+            if (!$role->hasPermissionTo($permission->name)) {
+                $hasPermission = false;
+                return $hasPermission;
+            }
+        }
+        return $hasPermission;
     }
 }

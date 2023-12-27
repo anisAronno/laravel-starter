@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Horizon\Horizon;
@@ -30,9 +29,7 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
     protected function gate(): void
     {
         Gate::define('viewHorizon', function (User $user) {
-            return in_array($user->role, [
-                UserRole::SUPERADMIN->value, UserRole::ADMIN->value,
-            ]);
+            return $user->hasRole(['superadmin', 'admin']);
         });
 
     }
