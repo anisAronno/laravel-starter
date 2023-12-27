@@ -1,7 +1,6 @@
-import './bootstrap';
-import 'flowbite';
-
 import Alpine from 'alpinejs';
+import 'flowbite';
+import './bootstrap';
 
 window.Alpine = Alpine;
 

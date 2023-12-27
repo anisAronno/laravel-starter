@@ -12,6 +12,7 @@
 -   Laravel Log Viewer
 -   Laravel Roll and Permission
 -   Flowbite
+-   Laravel Sweet Alert
 
 ## Another Uses
 

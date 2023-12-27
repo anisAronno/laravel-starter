@@ -9,9 +9,6 @@ use App\Http\Resources\RoleResource;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -72,7 +69,9 @@ class RolesController extends Controller
             $role->syncPermissions($permissions);
         }
 
-        return redirect()->route('admin.roles.index')->with('success', 'Role has been created successfully.');
+        toast()->success('Best wishes', 'Role has been created successfully.');
+
+        return redirect()->route('admin.roles.index');
     }
 
     /**
@@ -118,6 +117,11 @@ class RolesController extends Controller
      */
     public function update(RoleUpdateRequest $request, Role $role)
     {
+        if($role->id == 1) {
+            toast()->warning('Unauthorize', 'Role is not editable.');
+            return back();
+        }
+
         $permissions = $request->input('permissions');
 
         if (!empty($permissions)) {
@@ -126,7 +130,9 @@ class RolesController extends Controller
             $role->syncPermissions($permissions);
         }
 
-        return redirect()->route('admin.roles.index')->with('success', 'Role has been updated successfully.');
+        toast()->success('Best wishes', 'Role has been updated successfully.');
+
+        return redirect()->route('admin.roles.index');
     }
 
     /**
@@ -137,16 +143,16 @@ class RolesController extends Controller
      */
     public function destroy(Role $role)
     {
-        if(in_array($role->id, [1,2])){
-            session()->flash('message', 'Role is not deletable.');
+        if(in_array($role->id, [1,2])) {
+            toast()->warning('Unauthorize', 'Role is not deletable.');
             return back();
         }
-        
+
         if($role->delete()) {
-            session()->flash('message', 'Role has been deleted successfully.');
+            toast()->success('Best wishes', 'Role has been deleted successfully.');
             return back();
         } else {
-            session()->flash('message', 'Deleted Failed.');
+            toast()->error('Unauthorize', 'Delete Failed.');
             return back();
         }
     }

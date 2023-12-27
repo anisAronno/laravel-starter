@@ -27,7 +27,6 @@ class RolePermissionSeeder extends Seeder
         $this->assignPermissionsToRoles();
 
         $this->assignRolesToSuperAdmin();
-
     }
 
     private function truncateTables()
@@ -156,13 +155,13 @@ class RolePermissionSeeder extends Seeder
             ],
 
             [
-                'group_name' => 'options',
+                'group_name' => 'settings',
                 'permissions' => [
-                    'options.create',
-                    'options.view',
-                    'options.edit',
-                    'options.delete',
-                    'options.status',
+                    'settings.create',
+                    'settings.view',
+                    'settings.edit',
+                    'settings.delete',
+                    'settings.status',
                 ],
             ],
             [
@@ -293,11 +292,11 @@ class RolePermissionSeeder extends Seeder
                 'contact.delete',
                 'contact.status',
 
-                'options.create',
-                'options.view',
-                'options.edit',
-                'options.delete',
-                'options.status',
+                'settings.create',
+                'settings.view',
+                'settings.edit',
+                'settings.delete',
+                'settings.status',
 
 
                 'pages.create',
@@ -376,11 +375,11 @@ class RolePermissionSeeder extends Seeder
                 'slider.delete',
                 'slider.status',
 
-                'options.create',
-                'options.view',
-                'options.edit',
-                'options.delete',
-                'options.status',
+                'settings.create',
+                'settings.view',
+                'settings.edit',
+                'settings.delete',
+                'settings.status',
 
                 'pages.create',
                 'pages.view',
@@ -459,10 +458,10 @@ class RolePermissionSeeder extends Seeder
                 'slider.delete',
                 'slider.status',
 
-                'options.create',
-                'options.view',
-                'options.edit',
-                'options.status',
+                'settings.create',
+                'settings.view',
+                'settings.edit',
+                'settings.status',
 
                 'pages.create',
                 'pages.view',

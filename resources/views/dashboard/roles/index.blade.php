@@ -97,7 +97,6 @@
                                         </ul>
                                         @can('role.delete')
                                             @if (! in_array($role->id, [1,2]))
-                                                
                                                 <div class="py-1">
                                                     <a href="#" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this role?')) { document.getElementById('delete-role-{{$role->id}}').submit(); }" class="flex items-center py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                                                         <x-icons.trash/>

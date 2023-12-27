@@ -16,13 +16,17 @@
 
     </head>
     <body class="font-sans antialiased bg-gray-50 dark:bg-gray-900">
+        
+        @include('sweetalert::alert')
+
         <div class="antialiased ">
             <x-admin-header/>        
             <x-sidebar/>
-        
+         
             <main class="p-4 md:ml-64 min-h-screen pt-20 ">
                 {{ $slot }}
             </main>
           </div>
+          
     </body>
 </html>

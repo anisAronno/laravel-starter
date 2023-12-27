@@ -40,7 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'image',
         'api_token',
         'status',
-        'gender', 
+        'gender',
         'time_zone',
         'language',
         'isDeletable'
@@ -54,6 +54,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password',
         'remember_token',
+        'api_token'
     ];
 
     /**
