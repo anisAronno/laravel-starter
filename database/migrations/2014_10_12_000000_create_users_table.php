@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -22,14 +21,11 @@ return new class () extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('api_token', 100)->unique();
             $table->string('password');
-            $table->string('role', 50)->default(UserRole::CUSTOMER->value);
             $table->string('gender', 50)->nullable();
-            $table->string('status', 50)->default(UserStatus::ACTIVE->value);
-            $table->string('ip', 50)->nullable();
-            $table->string('latitude', 255)->nullable();
-            $table->string('longitude', 255)->nullable();
+            $table->string('status', 50)->default(UserStatus::ACTIVE->value); 
             $table->string('time_zone', 50)->default('Asia/Dhaka');
             $table->string('language', 50)->default('en');
+            $table->tinyInteger('isDeletable')->default(1);
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
