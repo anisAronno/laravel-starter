@@ -209,16 +209,18 @@
                       </svg>
                     </button>
                     <ul id="dropdown-authentication" class="{{request()->routeIs('admin.roles.index')? '':'hidden'}} py-2 space-y-2">
-                      <li>
-                        <a
-                          href="{{route('admin.roles.index')}}"
-                          class="flex items-center p-2 pl-11 w-full text-base font-medium 
-                          rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700
-                          {{request()->routeIs('admin.roles.index') ? 'text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-800' : 'text-gray-900  dark:text-white '}} active "
-                          >{{__('Role')}}</a
-                        >
+                        @can('role.view')
+                            <li>
+                                <a
+                                href="{{route('admin.roles.index')}}"
+                                class="flex items-center p-2 pl-11 w-full text-base font-medium 
+                                rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700
+                                {{request()->routeIs('admin.roles.index') ? 'text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-800' : 'text-gray-900  dark:text-white '}} active "
+                                >{{__('Role')}}</a
+                                >
 
-                      </li>
+                            </li>
+                        @endcan
                       <li>
                         <a
                           href="#"

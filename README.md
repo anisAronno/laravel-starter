@@ -11,6 +11,7 @@
 -   Laravel Activity Log
 -   Laravel Log Viewer
 -   Laravel Roll and Permission
+-   Flowbite
 
 ## Another Uses
 

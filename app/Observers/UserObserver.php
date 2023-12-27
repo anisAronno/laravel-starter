@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Models\User;
 use App\Notifications\NewUserNotification;
 use Illuminate\Support\Facades\Notification;
+use Spatie\Permission\Models\Role;
 
 class UserObserver
 {
@@ -14,6 +15,12 @@ class UserObserver
     public function created(User $user): void
     {
         Notification::send($user, new NewUserNotification($user));
+
+        $userRole = Role::query()->where("name", "user");
+
+        if($userRole->exists()) {
+            $user->assignRole($userRole->first());
+        }
     }
 
     /**
