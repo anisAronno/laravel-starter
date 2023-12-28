@@ -18,13 +18,13 @@ class AddressResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            "title"=> $this->title,
-            "address"=> $this->address,
-            "city"=> $this->city,
-            "state"=> $this->state,
-            "district"=> $this->district,
-            "zip_code"=> $this->zip_code,
-            "country"=> $this->country,
+            'title' => $this->title,
+            'address' => $this->address,
+            'city' => $this->city,
+            'state' => $this->state,
+            'district' => $this->district,
+            'zip_code' => $this->zip_code,
+            'country' => $this->country,
             'created_at' => Carbon::parse($this->created_at)->diffForHumans(),
         ];
     }

@@ -22,10 +22,10 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
+    use HasRoles;
+    use LogsActivity;
     use Notifiable;
     use SoftDeletes;
-    use LogsActivity;
-    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -43,7 +43,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'gender',
         'time_zone',
         'language',
-        'isDeletable'
+        'isDeletable',
     ];
 
     /**
@@ -54,7 +54,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password',
         'remember_token',
-        'api_token'
+        'api_token',
     ];
 
     /**
@@ -73,9 +73,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->logOnly(['name', 'email', 'password', 'image', 'status',  'api_token'])
-        ->logOnlyDirty()
-        ->dontSubmitEmptyLogs();
+            ->logOnly(['name', 'email', 'password', 'image', 'status',  'api_token'])
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs();
     }
 
     protected static function boot()
@@ -90,7 +90,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function sendEmailVerificationNotification()
     {
-        $this->notify(new VerifyEmailQueued());
+        $this->notify(new VerifyEmailQueued);
     }
 
     public function sendPasswordResetNotification($token)
@@ -104,6 +104,7 @@ class User extends Authenticatable implements MustVerifyEmail
             ->select('group_name as name')
             ->groupBy('group_name')
             ->get();
+
         return $permission_groups;
     }
 
@@ -113,6 +114,7 @@ class User extends Authenticatable implements MustVerifyEmail
             ->select('name', 'id')
             ->where('group_name', $group_name)
             ->get();
+
         return $permissions;
     }
 
@@ -120,11 +122,13 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $hasPermission = true;
         foreach ($permissions as $permission) {
-            if (!$role->hasPermissionTo($permission->name)) {
+            if (! $role->hasPermissionTo($permission->name)) {
                 $hasPermission = false;
+
                 return $hasPermission;
             }
         }
+
         return $hasPermission;
     }
 }

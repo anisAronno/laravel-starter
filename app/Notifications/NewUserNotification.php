@@ -4,8 +4,6 @@ namespace App\Notifications;
 
 use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 class NewUserNotification extends Notification
@@ -17,7 +15,6 @@ class NewUserNotification extends Notification
      *
      * @return void
      */
-
     public function __construct(private User $user)
     {
     }

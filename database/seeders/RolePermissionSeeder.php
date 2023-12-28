@@ -52,7 +52,7 @@ class RolePermissionSeeder extends Seeder
             'image' => Media::getDefaultAvatar(),
             'gender' => UserGender::MALE,
             'remember_token' => Str::random(10),
-            'isDeletable' => 0
+            'isDeletable' => 0,
         ]);
     }
 
@@ -297,7 +297,6 @@ class RolePermissionSeeder extends Seeder
                 'settings.edit',
                 'settings.delete',
                 'settings.status',
-
 
                 'pages.create',
                 'pages.view',

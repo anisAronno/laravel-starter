@@ -5,7 +5,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class () extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -22,7 +23,7 @@ return new class () extends Migration {
             $table->string('api_token', 100)->unique();
             $table->string('password');
             $table->string('gender', 50)->nullable();
-            $table->string('status', 50)->default(UserStatus::ACTIVE->value); 
+            $table->string('status', 50)->default(UserStatus::ACTIVE->value);
             $table->string('time_zone', 50)->default('Asia/Dhaka');
             $table->string('language', 50)->default('en');
             $table->tinyInteger('isDeletable')->default(1);

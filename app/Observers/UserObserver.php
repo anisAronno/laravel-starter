@@ -16,9 +16,9 @@ class UserObserver
     {
         Notification::send($user, new NewUserNotification($user));
 
-        $userRole = Role::query()->where("name", "user");
+        $userRole = Role::query()->where('name', 'user');
 
-        if($userRole->exists()) {
+        if ($userRole->exists()) {
             $user->assignRole($userRole->first());
         }
     }

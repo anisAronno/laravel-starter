@@ -1,9 +1,22 @@
 {
-    "name": "laravel/laravel",
+    "name": "anisaronno/laravel-starter",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "version": "0.0.1",
+    "description": "A perfect laravel starter project for any kind of project.",
+    "keywords": [
+        "laravel",
+        "framework",
+        "admin-panel",
+        "dashboard",
+        "tailwind"
+    ],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Anichur Rahaman",
+            "email": "contact@anichur.com"
+        }
+    ],
     "require": {
         "php": "^8.1",
         "anisaronno/laravel-media-helper": "^0.1.1",
@@ -23,7 +36,7 @@
         "barryvdh/laravel-debugbar": "^3.9",
         "fakerphp/faker": "^1.9.1",
         "laravel/breeze": "^1.27",
-        "laravel/pint": "^1.0",
+        "laravel/pint": "^1.13",
         "laravel/sail": "^1.18",
         "laravel/telescope": "^4.17",
         "mockery/mockery": "^1.4.4",
@@ -56,6 +69,9 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "pint": [
+            "./vendor/bin/pint"
         ]
     },
     "extra": {

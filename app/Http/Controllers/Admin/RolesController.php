@@ -9,8 +9,8 @@ use App\Http\Resources\RoleResource;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RolesController extends Controller
 {
@@ -32,8 +32,8 @@ class RolesController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = Role::with('permissions')->orderBy('id', 'desc')->when(!empty($request->search), function ($query) use ($request) {
-            return $query->where('name', 'LIKE', '%' . $request->search . '%');
+        $roles = Role::with('permissions')->orderBy('id', 'desc')->when(! empty($request->search), function ($query) use ($request) {
+            return $query->where('name', 'LIKE', '%'.$request->search.'%');
         })->paginate(5)->withQueryString();
 
         return view('dashboard.roles.index', [
@@ -65,7 +65,7 @@ class RolesController extends Controller
         $role = Role::create(['name' => $request->name]);
         $permissions = $request->input('permissions');
 
-        if (!empty($permissions)) {
+        if (! empty($permissions)) {
             $role->syncPermissions($permissions);
         }
 
@@ -94,6 +94,7 @@ class RolesController extends Controller
 
         return view('dashboard.roles.view', ['role' => $resultAsObject]);
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -117,14 +118,15 @@ class RolesController extends Controller
      */
     public function update(RoleUpdateRequest $request, Role $role)
     {
-        if($role->id == 1) {
+        if ($role->id == 1) {
             toast()->warning('Unauthorize', 'Role is not editable.');
+
             return back();
         }
 
         $permissions = $request->input('permissions');
 
-        if (!empty($permissions)) {
+        if (! empty($permissions)) {
             $role->name = $request->name;
             $role->save();
             $role->syncPermissions($permissions);
@@ -143,16 +145,19 @@ class RolesController extends Controller
      */
     public function destroy(Role $role)
     {
-        if(in_array($role->id, [1,2])) {
+        if (in_array($role->id, [1, 2])) {
             toast()->warning('Unauthorize', 'Role is not deletable.');
+
             return back();
         }
 
-        if($role->delete()) {
+        if ($role->delete()) {
             toast()->success('Best wishes', 'Role has been deleted successfully.');
+
             return back();
         } else {
             toast()->error('Unauthorize', 'Delete Failed.');
+
             return back();
         }
     }
@@ -161,7 +166,6 @@ class RolesController extends Controller
      * Transform permission
      *
      * @param [type] $permissions
-     * @return array
      */
     private function transformPermissions(Collection $permissions): array
     {
@@ -171,7 +175,7 @@ class RolesController extends Controller
             $groupName = $permission->group_name;
             $permissionName = $permission->name;
 
-            if (!isset($transformedData[$groupName])) {
+            if (! isset($transformedData[$groupName])) {
                 $transformedData[$groupName] = [
                     'group_name' => $groupName,
                     'havingPermissions' => [],
@@ -185,5 +189,4 @@ class RolesController extends Controller
 
         return $transformedData;
     }
-
 }

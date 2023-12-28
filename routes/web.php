@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
-
 
 Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

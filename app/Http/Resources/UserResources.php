@@ -29,7 +29,7 @@ class UserResources extends JsonResource
             'time_zone' => $this->time_zone,
             'language' => $this->language,
             'status' => $this->status,
-            'is_premium' => $this->is_premium ==1 ? 'premium' : 'free',
+            'is_premium' => $this->is_premium == 1 ? 'premium' : 'free',
             'is_deletable' => $this->is_deletable,
             'is_editable' => $this->is_editable,
             'unreadNotifications' => $this->whenLoaded('unreadNotifications'),

@@ -17,18 +17,14 @@ class AuthController extends Controller
 {
     /**
      * User login process
-     *
-     * @param LoginRequest $request
-     * @return JsonResponse
      */
-
     public function login(LoginRequest $request): JsonResponse
     {
         $request->ensureIsNotRateLimited();
 
         $credentials = $request->only('email', 'password');
 
-        if (!auth()->attempt($credentials)) {
+        if (! auth()->attempt($credentials)) {
             RateLimiter::hit($request->throttleKey());
 
             throw ValidationException::withMessages([
@@ -41,7 +37,7 @@ class AuthController extends Controller
         /** @var User $authenticatedUser */
         $authenticatedUser = auth()->user();
 
-        if (!$authenticatedUser->hasVerifiedEmail()) {
+        if (! $authenticatedUser->hasVerifiedEmail()) {
             $verificationUrl = URL::temporarySignedRoute(
                 'verification.notice',
                 now()->addMinutes(60),
@@ -50,7 +46,7 @@ class AuthController extends Controller
 
             return response()->json([
                 'success' => false,
-                'message' => 'Email Not Verified! Please click the link to verify your email: ' . $verificationUrl
+                'message' => 'Email Not Verified! Please click the link to verify your email: '.$verificationUrl,
             ]);
         }
 
@@ -58,16 +54,12 @@ class AuthController extends Controller
             'success' => true,
             'message' => 'Logged in successfully',
             'user' => $authenticatedUser,
-            'token' => $authenticatedUser->createToken('token', ['expires_at' => now()->addDay()])->plainTextToken
+            'token' => $authenticatedUser->createToken('token', ['expires_at' => now()->addDay()])->plainTextToken,
         ]);
     }
 
-
     /**
      * Handle an incoming registration request.
-     *
-     * @param RegistrationRequest $request
-     * @return JsonResponse
      */
     public function register(RegistrationRequest $request): JsonResponse
     {
@@ -77,9 +69,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-
         if ($user) {
-
             event(new Registered($user));
 
             return response()->json([
@@ -93,12 +83,10 @@ class AuthController extends Controller
 
     /**
      * User logout process
-     *
-     * @return JsonResponse
      */
     public function logout(): JsonResponse
     {
-        if(request()->user()->tokens()->delete()) {
+        if (request()->user()->tokens()->delete()) {
             return response()->json(['success' => true, 'message' => 'Logout successful']);
         }
 
@@ -107,16 +95,14 @@ class AuthController extends Controller
 
     /**
      * User Profile Fetch
-     *
-     * @return JsonResponse
      */
     public function profile(): JsonResponse
     {
-        if(request()->user()) {
+        if (request()->user()) {
             return response()->json([
                 'success' => true,
                 'message' => 'User retrieve successful',
-                'user' => auth()->user()
+                'user' => auth()->user(),
             ]);
         }
 
