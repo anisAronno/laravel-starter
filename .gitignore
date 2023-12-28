@@ -1,8 +1,8 @@
 /.phpunit.cache
 /node_modules
-/public/build
 /public/hot
 /public/storage
+/storage/clockwork
 /storage/*.key
 /vendor
 .env

@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         Paginator::defaultView('pagination::tailwind');
 
         LogViewer::auth(function ($request) {
-            return $request->user()->hasRole(['superadmin', 'admin']);
+            return $request->user()->hasAdministrativeRole();
         });
     }
 }

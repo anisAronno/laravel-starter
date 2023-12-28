@@ -1,0 +1,65 @@
+name: 🚀 Deploy Laravel Starter by FTP
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master' 
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+
+      - name: Install Composer dependencies for production
+        run: composer install --prefer-dist --no-suggest --no-progress
+
+      - name: Copy .env.example to .env
+        run: |
+          cp .env.example .env
+          sed -i 's/DB_DATABASE=.*/DB_DATABASE=${{ secrets.DB_DATABASE }}/' .env
+          sed -i 's/DB_USERNAME=.*/DB_USERNAME=${{ secrets.DB_USERNAME }}/' .env
+          sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=${{ secrets.DB_PASSWORD }}/' .env
+          echo "APP_ENV=production" >> .env
+          echo "APP_DEBUG=false" >> .env
+          echo "TELESCOPE_ENABLED=false" >> .env
+
+      - name: Generate application key
+        run: php artisan key:generate
+
+      - name: Storage Link
+        run: php artisan storage:link
+
+      - name: Clear Cache
+        run: php artisan optimize:clear
+
+      - name: Install NPM packages
+        run: npm install
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Remove /public/build from gitignore
+        run: sed -i '/\/public\/build/d' .gitignore
+
+      - name: 📂 Sync files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.3
+        with:
+          server: ${{ secrets.SERVER }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          protocol: ftps
+          port: 21
+          exclude: |
+            */.git
+            */.git/*
+            */node_modules/*
+            */vendor/*
+            */tests/*
