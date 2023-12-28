@@ -12,29 +12,33 @@ Welcome to the Laravel Starter Project! This repository provides a kickstart set
     -   [Getting Started](#getting-started)
         -   [Installation](#installation)
         -   [Starting with Docker](#starting-with-docker)
+    -   [Deploy via FTP with CI/CD](#deploy-via-ftp-with-cicd)
+        -   [GitFlow for Merge Requests](#gitflow-for-merge-requests)
+        -   [FTP Deployment Process](#ftp-deployment-process)
     -   [Contribution Guide](#contribution-guide)
     -   [License](#license)
 
 ## Uses Packages
 
 -   Laravel [Breeze](https://laravel.com/docs/10.x/starter-kits#laravel-breeze) (authentication and application starter kits)
--   Laravel [Telescope](https://laravel.com/docs/10.x/telescope#introduction) (Request Monitoring)
--   Laravel [Horizon](https://laravel.com/docs/10.x/horizon#introduction) (Job And Queue manage)
+-   [Spatie](https://github.com/spatie/laravel-permission) Roll and Permission
+-   Laravel [Pulse](https://laravel.com/docs/10.x/pulse) (Application's performance Monitoring)
+-   Laravel [Telescope](https://laravel.com/docs/10.x/telescope) (Request Monitoring)
+-   Laravel [Horizon](https://laravel.com/docs/10.x/horizon) (Job And Queue manage)
 -   Laravel [Debugbar](https://github.com/barryvdh/laravel-debugbar) (Monitoring every request)
 -   Laravel [Settings](https://github.com/anisAronno/laravel-settings) (Personal Package for application settings)
 -   Laravel [Media Uploader](https://github.com/anisAronno/Laravel-Media-Helper) (Personal Package for file management)
 -   Laravel [Activity Log](https://github.com/spatie/laravel-activitylog) (Track User Activity)
 -   Beautiful [Log Viewer](https://github.com/opcodesio/log-viewer) for local and production
--   [Spatie](https://github.com/spatie/laravel-permission) Roll and Permission
 -   [Flowbite](https://flowbite.com/) For Tailwind Component
 -   Laravel [Sweet Alert](https://github.com/realrashid/sweet-alert)
--   Laravel [Pint](https://laravel.com/docs/10.x/pint#introduction) For code style fixing
+-   Laravel [Pint](https://laravel.com/docs/10.x/pint) For code style fixing
 
 ## Other Uses
 
 -   Laravel [Database Notification](https://laravel.com/docs/10.x/notifications#database-notifications)
--   Api authentication setup with [default token](https://laravel.com/docs/5.8/api-authentication#introduction)
--   Api authentication setup with [Sanctum](https://laravel.com/docs/10.x/sanctum#introduction)
+-   Api authentication setup with [default token](https://laravel.com/docs/5.8/api-authentication)
+-   Api authentication setup with [Sanctum](https://laravel.com/docs/10.x/sanctum)
 
 ## Features
 
@@ -144,6 +148,30 @@ docker-compose up -d
 ```
 
 5. Access your Laravel application at http://localhost:8000 or the specified port as per your configurations.
+
+## Deploy via FTP with CI/CD
+
+This project utilizes Continuous Integration/Continuous Deployment (CI/CD) for automated deployment via FTP, following GitFlow principles for merge requests.
+
+#### GitFlow for Merge Requests
+
+Follow GitFlow principles to manage merge requests:
+
+-   **Feature Branches**: Develop new features in separate branches.
+-   **Pull Requests**: Submit pull requests to merge features into the `develop` branch.
+-   **Merge to Master**: Merge from `develop` to `master` for production-ready code.
+
+#### FTP Deployment Process
+
+To deploy your project:
+
+1. Configure necessary environment variables in GitHub Settings:
+
+    - **SERVER**: Your FTP server address.
+    - **USERNAME**: Your FTP username.
+    - **PASSWORD**: Your FTP password.
+
+2. Upon merging into the `master` branch, GitHub Actions automates deployment to your specified FTP server.
 
 ## Contribution Guide
 

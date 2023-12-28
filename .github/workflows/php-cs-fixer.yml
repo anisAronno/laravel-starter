@@ -1,0 +1,58 @@
+name: Inspections
+
+on:
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  runPHPCSInspection:
+    name: Run PHP CS fixer on changes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+          tools: cs2pr, composer:v2, phpcs, php-cs-fixer:3
+
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+      - name: Create Database
+        run: touch database/database.sqlite
+
+      - name: Get composer cache directory
+        id: composercache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composercache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-suggest --no-progress
+
+      - name: Detect changes
+        id: changes
+        run: |
+          URL="https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files"
+          FILES=$(curl --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' -s -X GET -G $URL | jq -r '.[] | .filename' | xargs)
+          echo "::set-output name=files::$FILES"
+
+      - name: Fix violations
+        run: php-cs-fixer fix ${{ steps.changes.outputs.files }} --config=.php-cs-fixer.dist.php
+
+      - name: Commit changes
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add -A
+          git commit -m "Fix PHP CS Fixer violations"
+          git push origin ${{ github.event.pull_request.head.ref }}
