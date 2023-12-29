@@ -1,14 +1,15 @@
 name: 🚀 Deploy Laravel Starter by FTP
 on:
-  push:
+  pull_request:
     branches:
       - master
+    types: [closed]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master' 
-    
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master'
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
