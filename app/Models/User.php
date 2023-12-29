@@ -82,7 +82,8 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         parent::boot();
 
-        static::creating(function ($model) {
+        static::creating(function ($model)
+        {
             $model->api_token = Uuid::uuid4()->toString();
             $model->username  = UniqueSlug::generate($model, 'username', $model->name);
         });
