@@ -4,63 +4,19 @@ on:
   pull_request:
     branches:
       - "*"
-
 jobs:
-  runPHPCSInspection:
-    name: Run PHP CS fixer on changes
-    runs-on: ubuntu-latest
-    env:
-      DB_CONNECTION: sqlite
-      DB_DATABASE: database/database.sqlite
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: "8.2"
-          coverage: none
-          tools: cs2pr, composer:v2, phpcs, php-cs-fixer:3
-
-      - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-
-      - name: Create Database
-        run: touch database/database.sqlite
-
-      - name: Cache Composer dependencies
-        id: composercache
-        run: composer config cache-files-dir
-
-      - name: Install dependencies
-        run: composer install
-
-      - name: Set up Git credentials
-        run: |
-          echo "machine github.com" >> ~/.netrc
-          echo "login github-actions[bot]" >> ~/.netrc
-          echo "password ${{ secrets.AUTH_ACCESS_TOKEN }}" >> ~/.netrc
-          git config --global credential.helper 'store --file ~/.netrc'
-
-      - name: Detect changes
-        id: changes
-        run: |
-          URL="https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files"
-          FILES=$(curl -s -X GET -G -n $URL | jq -r '.[] | .filename' | xargs)
-          echo "::set-output name=files::$FILES"
-
-      - name: Fix violations
-        run: php-cs-fixer fix ${{ steps.changes.outputs.files }} --config=.php-cs-fixer.dist.php
-
-      - name: Commit changes
-        run: |
-          git config user.name "weBot"
-          git config user.email "webot-actions@github.com"
-          git config --global credential.helper store
-          git add .
-          git commit -m "Apply php-cs-fixer changes"
-          git push origin ${{ github.event.pull_request.head.ref }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.AUTH_ACCESS_TOKEN }}
+    php-cs-fixer:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+              with:
+                  ref: ${{ github.head_ref }}
+            - name: Run PHP CS Fixer
+              uses: docker://oskarstark/php-cs-fixer-ga
+              with:
+                  args: --config=.php-cs-fixer.dist.php --allow-risky=yes
+            - name: Commit changes
+              uses: stefanzweifel/git-auto-commit-action@v4
+              with:
+                  commit_message: Fix styling
