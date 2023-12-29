@@ -64,8 +64,8 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-        'status' => UserStatus::class,
+        'password'          => 'hashed',
+        'status'            => UserStatus::class,
     ];
 
     protected static $recordEvents = ['deleted', 'created', 'updated'];
@@ -84,7 +84,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
         static::creating(function ($model) {
             $model->api_token = Uuid::uuid4()->toString();
-            $model->username = UniqueSlug::generate($model, 'username', $model->name);
+            $model->username  = UniqueSlug::generate($model, 'username', $model->name);
         });
     }
 
@@ -121,6 +121,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public static function roleHasPermissions($role, $permissions)
     {
         $hasPermission = true;
+
         foreach ($permissions as $permission) {
             if (! $role->hasPermissionTo($permission->name)) {
                 $hasPermission = false;

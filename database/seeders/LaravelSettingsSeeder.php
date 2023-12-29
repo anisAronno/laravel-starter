@@ -38,7 +38,7 @@ class LaravelSettingsSeeder extends Seeder
         setSettings('pagination_limit', 10);
         setSettings('user_default_status', 'Active');
         setSettings('map', 'Dhaka');
-        setSettings('copyright', "©All right reserved");
+        setSettings('copyright', '©All right reserved');
         setSettings('facebook_url', 'https://facebook.com');
         setSettings('instagram_url', 'https://instagram.com');
         setSettings('twitter_url', 'https://twitter.com');

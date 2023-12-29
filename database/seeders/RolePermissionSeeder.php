@@ -43,16 +43,16 @@ class RolePermissionSeeder extends Seeder
     private function createSuperAdminUser()
     {
         User::create([
-            'name' => 'Anichur Rahaman',
-            'email' => 'admin@gmail.com',
-            'phone' => '+8801816366535',
-            'password' => bcrypt('password'),
-            'status' => UserStatus::ACTIVE,
+            'name'              => 'Anichur Rahaman',
+            'email'             => 'admin@gmail.com',
+            'phone'             => '+8801816366535',
+            'password'          => bcrypt('password'),
+            'status'            => UserStatus::ACTIVE,
             'email_verified_at' => Date::now(),
-            'image' => Media::getDefaultAvatar(),
-            'gender' => UserGender::MALE,
-            'remember_token' => Str::random(10),
-            'isDeletable' => 0,
+            'image'             => Media::getDefaultAvatar(),
+            'gender'            => UserGender::MALE,
+            'remember_token'    => Str::random(10),
+            'isDeletable'       => 0,
         ]);
     }
 
@@ -60,13 +60,13 @@ class RolePermissionSeeder extends Seeder
     {
         $permissions = [
             [
-                'group_name' => 'dashboard',
+                'group_name'  => 'dashboard',
                 'permissions' => [
                     'dashboard.view',
                 ],
             ],
             [
-                'group_name' => 'blog',
+                'group_name'  => 'blog',
                 'permissions' => [
                     'blog.create',
                     'blog.view',
@@ -76,7 +76,7 @@ class RolePermissionSeeder extends Seeder
                 ],
             ],
             [
-                'group_name' => 'user',
+                'group_name'  => 'user',
                 'permissions' => [
 
                     'user.create',
@@ -87,7 +87,7 @@ class RolePermissionSeeder extends Seeder
                 ],
             ],
             [
-                'group_name' => 'role',
+                'group_name'  => 'role',
                 'permissions' => [
                     'role.create',
                     'role.view',
@@ -98,7 +98,7 @@ class RolePermissionSeeder extends Seeder
             ],
 
             [
-                'group_name' => 'category',
+                'group_name'  => 'category',
                 'permissions' => [
 
                     'category.create',
@@ -110,7 +110,7 @@ class RolePermissionSeeder extends Seeder
             ],
 
             [
-                'group_name' => 'tag',
+                'group_name'  => 'tag',
                 'permissions' => [
 
                     'tag.create',
@@ -122,7 +122,7 @@ class RolePermissionSeeder extends Seeder
             ],
 
             [
-                'group_name' => 'about',
+                'group_name'  => 'about',
                 'permissions' => [
 
                     'about.create',
@@ -133,7 +133,7 @@ class RolePermissionSeeder extends Seeder
                 ],
             ],
             [
-                'group_name' => 'contact',
+                'group_name'  => 'contact',
                 'permissions' => [
 
                     'contact.create',
@@ -144,7 +144,7 @@ class RolePermissionSeeder extends Seeder
                 ],
             ],
             [
-                'group_name' => 'slider',
+                'group_name'  => 'slider',
                 'permissions' => [
                     'slider.create',
                     'slider.view',
@@ -155,7 +155,7 @@ class RolePermissionSeeder extends Seeder
             ],
 
             [
-                'group_name' => 'settings',
+                'group_name'  => 'settings',
                 'permissions' => [
                     'settings.create',
                     'settings.view',
@@ -165,7 +165,7 @@ class RolePermissionSeeder extends Seeder
                 ],
             ],
             [
-                'group_name' => 'pages',
+                'group_name'  => 'pages',
                 'permissions' => [
 
                     'pages.create',
@@ -177,7 +177,7 @@ class RolePermissionSeeder extends Seeder
             ],
 
             [
-                'group_name' => 'social',
+                'group_name'  => 'social',
                 'permissions' => [
 
                     'social.create',
@@ -189,7 +189,7 @@ class RolePermissionSeeder extends Seeder
             ],
 
             [
-                'group_name' => 'notification',
+                'group_name'  => 'notification',
                 'permissions' => [
                     'notification.create',
                     'notification.view',
@@ -200,7 +200,7 @@ class RolePermissionSeeder extends Seeder
             ],
 
             [
-                'group_name' => 'product',
+                'group_name'  => 'product',
                 'permissions' => [
                     'product.create',
                     'product.view',
@@ -211,7 +211,7 @@ class RolePermissionSeeder extends Seeder
             ],
 
             [
-                'group_name' => 'order',
+                'group_name'  => 'order',
                 'permissions' => [
                     'order.create',
                     'order.view',
@@ -222,7 +222,7 @@ class RolePermissionSeeder extends Seeder
             ],
 
             [
-                'group_name' => 'coupon',
+                'group_name'  => 'coupon',
                 'permissions' => [
                     'coupon.create',
                     'coupon.view',
@@ -234,7 +234,7 @@ class RolePermissionSeeder extends Seeder
         ];
 
         foreach ($permissions as $group) {
-            $groupName = $group['group_name'];
+            $groupName        = $group['group_name'];
             $groupPermissions = $group['permissions'];
 
             foreach ($groupPermissions as $permissionName) {
@@ -530,6 +530,7 @@ class RolePermissionSeeder extends Seeder
     private function assignRolesToSuperAdmin()
     {
         $superAdmin = User::where('email', 'admin@gmail.com')->first();
+
         if ($superAdmin) {
             $roles = ['superadmin', 'admin', 'editor', 'user', 'author'];
             $superAdmin->syncRoles($roles);

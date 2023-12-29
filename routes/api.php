@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('v1')->group(function () {
-
     // Guest Route
     Route::middleware('guest')->group(function () {
         Route::post('login', [AuthController::class, 'login']);

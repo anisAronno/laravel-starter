@@ -48,7 +48,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        $all_permissions = Permission::all();
+        $all_permissions   = Permission::all();
         $permission_groups = User::getpermissionGroups();
 
         return view('dashboard.roles.create', compact('all_permissions', 'permission_groups'));
@@ -57,12 +57,12 @@ class RolesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(RoleStoreRequest $request)
     {
-        $role = Role::create(['name' => $request->name]);
+        $role        = Role::create(['name' => $request->name]);
         $permissions = $request->input('permissions');
 
         if (! empty($permissions)) {
@@ -86,8 +86,8 @@ class RolesController extends Controller
         $transformedPermissions = $this->transformPermissions($role->permissions);
 
         $result = [
-            'id' => $role->id,
-            'name' => $role->name,
+            'id'          => $role->id,
+            'name'        => $role->name,
             'permissions' => $transformedPermissions,
         ];
         $resultAsObject = json_decode(json_encode($result));
@@ -103,7 +103,7 @@ class RolesController extends Controller
      */
     public function edit(Role $role)
     {
-        $all_permissions = Permission::all();
+        $all_permissions   = Permission::all();
         $permission_groups = User::getpermissionGroups();
 
         return view('dashboard.roles.edit', compact('role', 'all_permissions', 'permission_groups'));
@@ -112,7 +112,7 @@ class RolesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -163,7 +163,7 @@ class RolesController extends Controller
     }
 
     /**
-     * Transform permission
+     * Transform permission.
      *
      * @param [type] $permissions
      */
@@ -172,12 +172,12 @@ class RolesController extends Controller
         $transformedData = [];
 
         foreach ($permissions as $permission) {
-            $groupName = $permission->group_name;
+            $groupName      = $permission->group_name;
             $permissionName = $permission->name;
 
             if (! isset($transformedData[$groupName])) {
                 $transformedData[$groupName] = [
-                    'group_name' => $groupName,
+                    'group_name'        => $groupName,
                     'havingPermissions' => [],
                 ];
             }

@@ -3,12 +3,12 @@
 namespace App\Helpers;
 
 /**
- * Class of CacheKey
+ * Class of CacheKey.
  */
 class CacheKey
 {
     /**
-     * Summary of getRoleCacheKey
+     * Summary of getRoleCacheKey.
      */
     public static function getRoleCacheKey(): string
     {
@@ -16,7 +16,7 @@ class CacheKey
     }
 
     /**
-     * Summary of getUserCacheKey
+     * Summary of getUserCacheKey.
      */
     public static function getUserCacheKey(): string
     {
@@ -24,7 +24,7 @@ class CacheKey
     }
 
     /**
-     * Summary of getOptionsCacheKey
+     * Summary of getOptionsCacheKey.
      */
     public static function getOptionsCacheKey(): string
     {
@@ -32,7 +32,7 @@ class CacheKey
     }
 
     /**
-     * Summary of getProductCacheKey
+     * Summary of getProductCacheKey.
      */
     public static function getProductCacheKey(): string
     {
@@ -40,7 +40,7 @@ class CacheKey
     }
 
     /**
-     * Summary of getFeaturedProductCacheKey
+     * Summary of getFeaturedProductCacheKey.
      */
     public static function getFeaturedProductCacheKey(): string
     {
@@ -48,7 +48,7 @@ class CacheKey
     }
 
     /**
-     * Summary of getCategoryCacheKey
+     * Summary of getCategoryCacheKey.
      */
     public static function getCategoryCacheKey(): string
     {
@@ -56,7 +56,7 @@ class CacheKey
     }
 
     /**
-     * Summary of getFeaturedCategoryCacheKey
+     * Summary of getFeaturedCategoryCacheKey.
      */
     public static function getFeaturedCategoryCacheKey(): string
     {
@@ -64,7 +64,7 @@ class CacheKey
     }
 
     /**
-     * Summary of getContactCacheKey
+     * Summary of getContactCacheKey.
      */
     public static function getContactCacheKey(): string
     {

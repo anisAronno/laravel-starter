@@ -16,7 +16,7 @@ use Illuminate\Validation\ValidationException;
 class AuthController extends Controller
 {
     /**
-     * User login process
+     * User login process.
      */
     public function login(LoginRequest $request): JsonResponse
     {
@@ -53,8 +53,8 @@ class AuthController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Logged in successfully',
-            'user' => $authenticatedUser,
-            'token' => $authenticatedUser->createToken('token', ['expires_at' => now()->addDay()])->plainTextToken,
+            'user'    => $authenticatedUser,
+            'token'   => $authenticatedUser->createToken('token', ['expires_at' => now()->addDay()])->plainTextToken,
         ]);
     }
 
@@ -64,8 +64,8 @@ class AuthController extends Controller
     public function register(RegistrationRequest $request): JsonResponse
     {
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
+            'name'     => $request->name,
+            'email'    => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
@@ -82,7 +82,7 @@ class AuthController extends Controller
     }
 
     /**
-     * User logout process
+     * User logout process.
      */
     public function logout(): JsonResponse
     {
@@ -94,7 +94,7 @@ class AuthController extends Controller
     }
 
     /**
-     * User Profile Fetch
+     * User Profile Fetch.
      */
     public function profile(): JsonResponse
     {
@@ -102,7 +102,7 @@ class AuthController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'User retrieve successful',
-                'user' => auth()->user(),
+                'user'    => auth()->user(),
             ]);
         }
 

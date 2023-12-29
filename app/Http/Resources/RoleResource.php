@@ -16,12 +16,12 @@ class RoleResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'permissions' => PermissionResource::collection($this->whenLoaded('permissions')),
-            'is_editable' => $this->name == 'superadmin' ? false : true,
+            'id'           => $this->id,
+            'name'         => $this->name,
+            'permissions'  => PermissionResource::collection($this->whenLoaded('permissions')),
+            'is_editable'  => $this->name == 'superadmin' ? false : true,
             'is_deletable' => $this->name == 'superadmin' ? false : true,
-            'created_at' => Carbon::parse($this->created_at)->diffForHumans(),
+            'created_at'   => Carbon::parse($this->created_at)->diffForHumans(),
         ];
     }
 }

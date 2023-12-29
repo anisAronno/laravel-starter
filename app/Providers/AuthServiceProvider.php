@@ -25,6 +25,5 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('viewPulse', function (User $user) {
             return $user->hasAdministrativeRole();
         });
-
     }
 }
