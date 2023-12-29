@@ -14,17 +14,12 @@ jobs:
         with:
             ref: ${{ github.head_ref }}
             fetch-depth: 0  # Ensures all branches are fetched
+            token: ${{ secrets.AUTH_ACCESS_TOKEN }}
 
       - name: Set up Git Identity
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Set up Git Authorization
-        env:
-          ACCESS_TOKEN: ${{ secrets.AUTH_ACCESS_TOKEN }}
-        run: |
-          git config --global http.extraheader "AUTHORIZATION: bearer ${ACCESS_TOKEN}"
 
       - name: Run PHP CS Fixer
         uses: docker://oskarstark/php-cs-fixer-ga
