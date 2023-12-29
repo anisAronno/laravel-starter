@@ -15,9 +15,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     </head>
-    <body class="font-sans antialiased bg-gray-50 dark:bg-gray-900" 
-        x-data="{ isDarkMode: localStorage.getItem('color-theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches }" x-init="initTheme()"
-    >
+    <body class="font-sans antialiased bg-gray-50 dark:bg-gray-900">
         
         @include('sweetalert::alert')
 
@@ -29,27 +27,6 @@
                 {{ $slot }}
             </main>
           </div>
-
-          <script>
-            function setTheme(theme) {
-                document.documentElement.classList[theme === 'dark' ? 'add' : 'remove']('dark');
-                localStorage.setItem('color-theme', theme);
-            }
-    
-            function initTheme() {
-                const isDark = localStorage.getItem('color-theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches;
-                setTheme(isDark ? 'dark' : 'light');
-            }
-    
-            function toggleDarkMode() {
-                const currentTheme = localStorage.getItem('color-theme') || 'light';
-                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                setTheme(newTheme);
-    
-                this.$nextTick(() => {
-                    this.isDarkMode = newTheme === 'dark';
-                });
-            }
-        </script>
+          
     </body>
 </html>

@@ -61,7 +61,7 @@
                                     @foreach ($role->permissions as $perm)
                                     <span class="flex gap-1 items-center">
                                         <x-icons.sheild class="text-blue-400"/>
-                                        <span class="text-gray-700 dark:text-gray-100 truncate">{{$perm->name}}</span>
+                                        <span class="text-gray-700 truncate">{{$perm->name}}</span>
                                     </span>
                                     @endforeach
                                 </td>
@@ -120,7 +120,7 @@
                     </table>
                 </div>
 
-                <div class="grid grid-cols-1 justify-between items-start md:items-center space-y-3 md:space-y-0 p-4 w-full text-gray-700 dark:text-gray-100" aria-label="Table navigation">
+                <div class="grid grid-cols-1 justify-between items-start md:items-center space-y-3 md:space-y-0 p-4 w-full" aria-label="Table navigation">
                     @if ($roles->hasPages())
                         {{$roles->links()}}  
                     @else
