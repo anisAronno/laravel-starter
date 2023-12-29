@@ -12,20 +12,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.head_ref }}
+            ref: ${{ github.head_ref }}
+            fetch-depth: 0  # Ensures all branches are fetched
+
+      - name: Set up Git Identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Run PHP CS Fixer
         uses: docker://oskarstark/php-cs-fixer-ga
         with:
-          args: --config=.php-cs-fixer.dist.php --allow-risky=yes
-      - name: Set up Git credentials
-        run: |
-          echo "machine github.com" >> ~/.netrc
-          echo "login github-actions[bot]" >> ~/.netrc
-          echo "password ${{ secrets.AUTH_ACCESS_TOKEN }}" >> ~/.netrc
-          git config --global credential.helper 'store --file ~/.netrc'
+            args: --config=.php-cs-fixer.dist.php --allow-risky=yes
+
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Fix styling
-        env:
-          GITHUB_TOKEN: ${{ secrets.AUTH_ACCESS_TOKEN }}
+            commit_message: Fix styling
+            branch: ${{ github.head_ref }}
+            push_options: |
+              -c http.extraheader="AUTHORIZATION: bearer ${{ secrets.AUTH_ACCESS_TOKEN }}"
+
