@@ -9,8 +9,8 @@ $rules = [
     'blank_line_after_opening_tag' => true,
     'braces'                       => [
         'allow_single_line_anonymous_class_with_empty_body' => true,
-        'position_after_anonymous_constructs'               => 'next',
-    ],
+        'position_after_anonymous_constructs' => 'next',    
+    ],    
     'cast_spaces'                  => true,
     'concat_space'                 => [
         'spacing' => 'none',
