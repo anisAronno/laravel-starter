@@ -27,6 +27,7 @@ class UniqueSlug
 
             for ($i = 2; ; $i++) {
                 $newSlug = $slug.$separator.$i;
+
                 if (! $allSlugs->contains("$field", $newSlug)) {
                     return $newSlug;
                 }
@@ -37,7 +38,7 @@ class UniqueSlug
     }
 
     /**
-     * Get All Releated slug from db
+     * Get All Releated slug from db.
      *
      * @param  mixed  $model
      * @param  mixed  $field

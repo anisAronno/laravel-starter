@@ -175,7 +175,7 @@ return [
 
     'button_text' => [
         'confirm' => env('SWEET_ALERT_CONFIRM_BUTTON_TEXT', 'OK'),
-        'cancel' => env('SWEET_ALERT_CANCEL_BUTTON_TEXT', 'Cancel'),
+        'cancel'  => env('SWEET_ALERT_CANCEL_BUTTON_TEXT', 'Cancel'),
     ],
 
     /*
@@ -233,19 +233,19 @@ return [
 
     'customClass' => [
 
-        'container' => env('SWEET_ALERT_CONTAINER_CLASS'),
-        'popup' => env('SWEET_ALERT_POPUP_CLASS'),
-        'header' => env('SWEET_ALERT_HEADER_CLASS'),
-        'title' => env('SWEET_ALERT_TITLE_CLASS'),
-        'closeButton' => env('SWEET_ALERT_CLOSE_BUTTON_CLASS'),
-        'icon' => env('SWEET_ALERT_ICON_CLASS'),
-        'image' => env('SWEET_ALERT_IMAGE_CLASS'),
-        'content' => env('SWEET_ALERT_CONTENT_CLASS'),
-        'input' => env('SWEET_ALERT_INPUT_CLASS'),
-        'actions' => env('SWEET_ALERT_ACTIONS_CLASS'),
+        'container'     => env('SWEET_ALERT_CONTAINER_CLASS'),
+        'popup'         => env('SWEET_ALERT_POPUP_CLASS'),
+        'header'        => env('SWEET_ALERT_HEADER_CLASS'),
+        'title'         => env('SWEET_ALERT_TITLE_CLASS'),
+        'closeButton'   => env('SWEET_ALERT_CLOSE_BUTTON_CLASS'),
+        'icon'          => env('SWEET_ALERT_ICON_CLASS'),
+        'image'         => env('SWEET_ALERT_IMAGE_CLASS'),
+        'content'       => env('SWEET_ALERT_CONTENT_CLASS'),
+        'input'         => env('SWEET_ALERT_INPUT_CLASS'),
+        'actions'       => env('SWEET_ALERT_ACTIONS_CLASS'),
         'confirmButton' => env('SWEET_ALERT_CONFIRM_BUTTON_CLASS'),
-        'cancelButton' => env('SWEET_ALERT_CANCEL_BUTTON_CLASS'),
-        'footer' => env('SWEET_ALERT_FOOTER_CLASS'),
+        'cancelButton'  => env('SWEET_ALERT_CANCEL_BUTTON_CLASS'),
+        'footer'        => env('SWEET_ALERT_FOOTER_CLASS'),
     ],
 
     /*
@@ -256,13 +256,13 @@ return [
     |
     */
 
-    'confirm_delete_confirm_button_text' => env('SWEET_ALERT_CONFIRM_DELETE_CONFIRM_BUTTON_TEXT', 'Yes, delete it!'),
-    'confirm_delete_confirm_button_color' => env('SWEET_ALERT_CONFIRM_DELETE_CONFIRM_BUTTON_COLOR'),
-    'confirm_delete_cancel_button_color' => env('SWEET_ALERT_CONFIRM_DELETE_CANCEL_BUTTON_COLOR', '#d33'),
-    'confirm_delete_cancel_button_text' => env('SWEET_ALERT_CONFIRM_DELETE_CANCEL_BUTTON_TEXT', 'Cancel'),
-    'confirm_delete_show_cancel_button' => env('SWEET_ALERT_CONFIRM_DELETE_SHOW_CANCEL_BUTTON', true),
-    'confirm_delete_show_close_button' => env('SWEET_ALERT_CONFIRM_DELETE_SHOW_CLOSE_BUTTON', false),
-    'confirm_delete_icon' => env('SWEET_ALERT_CONFIRM_DELETE_ICON', 'warning'),
+    'confirm_delete_confirm_button_text'    => env('SWEET_ALERT_CONFIRM_DELETE_CONFIRM_BUTTON_TEXT', 'Yes, delete it!'),
+    'confirm_delete_confirm_button_color'   => env('SWEET_ALERT_CONFIRM_DELETE_CONFIRM_BUTTON_COLOR'),
+    'confirm_delete_cancel_button_color'    => env('SWEET_ALERT_CONFIRM_DELETE_CANCEL_BUTTON_COLOR', '#d33'),
+    'confirm_delete_cancel_button_text'     => env('SWEET_ALERT_CONFIRM_DELETE_CANCEL_BUTTON_TEXT', 'Cancel'),
+    'confirm_delete_show_cancel_button'     => env('SWEET_ALERT_CONFIRM_DELETE_SHOW_CANCEL_BUTTON', true),
+    'confirm_delete_show_close_button'      => env('SWEET_ALERT_CONFIRM_DELETE_SHOW_CLOSE_BUTTON', false),
+    'confirm_delete_icon'                   => env('SWEET_ALERT_CONFIRM_DELETE_ICON', 'warning'),
     'confirm_delete_show_loader_on_confirm' => env('SWEET_ALERT_CONFIRM_DELETE_SHOW_LOADER_ON_CONFIRM', true),
 
 ];
