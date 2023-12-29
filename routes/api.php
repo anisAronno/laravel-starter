@@ -11,24 +11,20 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::prefix('v1')->group(function ()
-{
+Route::prefix('v1')->group(function () {
     // Guest Route
-    Route::middleware('guest')->group(function ()
-    {
+    Route::middleware('guest')->group(function () {
         Route::post('login', [AuthController::class, 'login']);
         Route::post('register', [RegisteredUserController::class, 'store']);
     });
 
     // Api Route with token
-    Route::middleware('auth:api')->get('/user', function (Request $request)
-    {
+    Route::middleware('auth:api')->get('/user', function (Request $request) {
         return $request->user();
     });
 
     // Api Route with sanctum
-    Route::middleware(['auth:sanctum', 'verified'])->group(function ()
-    {
+    Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::post('logout', [AuthController::class, 'logout']);
         Route::get('profile', [AuthController::class, 'profile']);
     });
