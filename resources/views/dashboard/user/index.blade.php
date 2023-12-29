@@ -1,12 +1,12 @@
-@can('role.view')
+@can('user.view')
 <x-app-layout> 
     <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
         <div class="mx-auto   px-4 lg:px-6">
             <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                 <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                     <div class="w-full md:w-1/2">
-                        @if ($roles->count()>0)
-                        <form class="flex items-center" method="GET" action="{{ route('admin.roles.index') }}">
+                        @if ($users->count()>0)
+                        <form class="flex items-center" method="GET" action="{{ route('admin.user.index') }}">
                             <label for="simple-search" class="sr-only">Search</label>
                             <div class="relative w-full">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -30,64 +30,69 @@
 
                     </div>
                     <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                        @can('role.create')
-                            <a href="{{route('admin.roles.create')}}" type="button" class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                        @can('user.create')
+                            <a href="{{route('admin.user.create')}}" type="button" class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
                                 <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
                                 </svg>
-                                Add Role
+                                Add User
                             </a>
                         @endcan 
                     </div>
                 </div>
-                @if ($roles->count()>0)
+                @if ($users->count()>0)
                     
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-md text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th scope="col" class="px-4 py-3">Role name</th>
-                                <th scope="col" class="px-4 py-3">Permissions</th>
+                                <th scope="col" class="px-4 py-3">Name</th>
+                                <th scope="col" class="px-4 py-3">email</th>
+                                <th scope="col" class="px-4 py-3">phone</th>
+                                <th scope="col" class="px-4 py-3">Role</th>
+                                <th scope="col" class="px-4 py-3">status</th>
                                 <th scope="col" class="px-4 py-3">Created At</th> 
                                 <th scope="col" class="px-4  py-3">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($roles as $role)
+                            @foreach ($users as $user)
 
                             <tr class="border-b dark:border-gray-700 ">
-                                <th scope="row" class="px-4 py-3 font-medium text-md xl:text-lg text-gray-900 whitespace-nowrap dark:text-white capitalize">{{$role->name}}</th>
-                                <td class="px-4 py-3 text-md xl:text-lg text-gray-500 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ">
-                                    @foreach ($role->permissions as $perm)
+                                <th scope="row" class="px-4 py-3 font-medium text-md xl:text-lg text-gray-900 whitespace-nowrap dark:text-white capitalize">{{$user->name}}</th>
+                                <th scope="row" class="px-4 py-3 font-medium text-md  text-gray-900 whitespace-nowrap dark:text-white  ">{{$user->email}}</th>
+                                <th scope="row" class="px-4 py-3 font-medium text-md  text-gray-900 whitespace-nowrap dark:text-white  ">{{$user->phone}}</th>
+                                <td class="px-4 py-3 text-md  text-gray-500 grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-4  gap-2 truncate">
+                                    @foreach ($user->roles as $role)
                                     <span class="flex gap-1 items-center">
                                         <x-icons.sheild class="text-blue-400"/>
-                                        <span class="text-gray-700 dark:text-gray-100 truncate">{{$perm->name}}</span>
+                                        <span class="text-gray-700 dark:text-gray-100 truncate">{{$role->name}}</span>
                                     </span>
                                     @endforeach
                                 </td>
-                                <td class="px-4 py-3 text-md xl:text-lg">{{$role->created_at->diffForHumans()}}</td> 
+                                <th scope="row" class="px-4 py-3 font-medium text-md xl:text-lg text-gray-900 whitespace-nowrap dark:text-white capitalize">{{$user->status}}</th>
+                                <td class="px-4 py-3 text-md xl:text-lg">{{$user->created_at->diffForHumans()}}</td> 
                                 <td class="px-4 py-3">
-                                    <button id="{{$role->name}}-dropdown-button" data-dropdown-toggle="{{$role->name}}-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100 float-end " type="button">
+                                    <button id="{{$user->name}}-dropdown-button" data-dropdown-toggle="{{$user->name}}-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100 float-end " type="button">
                                         <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                                         </svg>
                                     </button>
-                                    <div id="{{$role->name}}-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="{{$role->name}}-dropdown-button">
-                                            @can('role.view')
+                                    <div id="{{$user->name}}-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                                        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="{{$user->name}}-dropdown-button">
+                                            @can('user.view')
                                             <li>
-                                                <a href="{{route('admin.roles.show', $role->id)}}" class=" py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center">
+                                                <a href="{{route('admin.user.show', $user->id)}}" class=" py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center">
                                                     <x-icons.eye/>
-
                                                     Show
                                                 </a>
                                             </li>
                                             @endcan
 
-                                            @can('role.edit')
-                                                @if ($role->id !=1 ))
+                                            @can('user.edit')
+                                                @if ($user->id !=1 )
                                                     <li>
-                                                        <a href="{{route('admin.roles.edit', $role->id)}}" class="flex items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                        <a href="{{route('admin.user.edit', $user->id)}}" class="flex items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                                             <x-icons.edit/>
                                                             Edit
                                                         </a>
@@ -95,15 +100,15 @@
                                                 @endif
                                             @endcan
                                         </ul>
-                                        @can('role.delete')
-                                            @if (! in_array($role->id, [1,2]))
+                                        @can('user.delete')
+                                            @if (! in_array($user->id, [1,2]))
                                                 <div class="py-1">
-                                                    <a href="#" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this role?')) { document.getElementById('delete-role-{{$role->id}}').submit(); }" class="flex items-center py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                                    <a href="#" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user?')) { document.getElementById('delete-user-{{$user->id}}').submit(); }" class="flex items-center py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                                                         <x-icons.trash/>
                                                         Delete
                                                     </a>
 
-                                                    <form id="delete-role-{{$role->id}}" action="{{route('admin.roles.destroy', $role->id)}}" method="POST" style="display: none;">
+                                                    <form id="delete-user-{{$user->id}}" action="{{route('admin.user.destroy', $user->id)}}" method="POST" style="display: none;">
                                                         @csrf
                                                         @method('DELETE')
                                                     </form>
@@ -121,8 +126,8 @@
                 </div>
 
                 <div class="grid grid-cols-1 justify-between items-start md:items-center space-y-3 md:space-y-0 p-4 w-full text-gray-700 dark:text-gray-100" aria-label="Table navigation">
-                    @if ($roles->hasPages())
-                        {{$roles->links()}}  
+                    @if ($users->hasPages())
+                        {{$users->links()}}  
                     @else
                         <p class="text-center">All available data is currently displayed</p>
                     @endif
