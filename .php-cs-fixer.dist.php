@@ -7,10 +7,7 @@ $rules = [
     'array_syntax'                 => ['syntax' => 'short'],
     'blank_line_after_namespace'   => true,
     'blank_line_after_opening_tag' => true,
-    'braces'                       => [
-        'allow_single_line_anonymous_class_with_empty_body' => true,
-        'position_after_anonymous_constructs' => 'next',    
-    ],    
+    'braces'                       => true,
     'cast_spaces'                  => true,
     'concat_space'                 => [
         'spacing' => 'none',
@@ -150,10 +147,12 @@ $rules = [
 ];
 
 $finder = Finder::create()
+    ->exclude('/database/migrations')
     ->in([
         __DIR__.'/app',
         __DIR__.'/config',
-        __DIR__.'/database',
+        __DIR__.'/database/seeders',
+        __DIR__.'/database/factories',
         __DIR__.'/resources',
         __DIR__.'/routes',
         __DIR__.'/tests',
