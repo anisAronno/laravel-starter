@@ -20,6 +20,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+      - name: Set up Git Authorization
+        env:
+          ACCESS_TOKEN: ${{ secrets.AUTH_ACCESS_TOKEN }}
+        run: |
+          git config --global http.extraheader "AUTHORIZATION: bearer ${ACCESS_TOKEN}"
+
       - name: Run PHP CS Fixer
         uses: docker://oskarstark/php-cs-fixer-ga
         with:
@@ -30,6 +36,3 @@ jobs:
         with:
             commit_message: Fix styling
             branch: ${{ github.head_ref }}
-            push_options: |
-              -c http.extraheader="AUTHORIZATION: bearer ${{ secrets.AUTH_ACCESS_TOKEN }}"
-
