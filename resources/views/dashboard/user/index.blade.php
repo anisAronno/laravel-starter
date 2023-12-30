@@ -58,68 +58,65 @@
                         <tbody>
                             @foreach ($users as $user)
 
-                            <tr class="border-b dark:border-gray-700 ">
-                                <th scope="row" class="px-4 py-3 font-medium text-md xl:text-lg text-gray-900 whitespace-nowrap dark:text-white capitalize">{{$user->name}}</th>
-                                <th scope="row" class="px-4 py-3 font-medium text-md  text-gray-900 whitespace-nowrap dark:text-white  ">{{$user->email}}</th>
-                                <th scope="row" class="px-4 py-3 font-medium text-md  text-gray-900 whitespace-nowrap dark:text-white  ">{{$user->phone}}</th>
-                                <td class="px-4 py-3 text-md  text-gray-500 grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-4  gap-2 truncate">
-                                    @foreach ($user->roles as $role)
-                                    <span class="flex gap-1 items-center">
-                                        <x-icons.sheild class="text-blue-400"/>
-                                        <span class="text-gray-700 dark:text-gray-100 truncate">{{$role->name}}</span>
-                                    </span>
-                                    @endforeach
-                                </td>
-                                <th scope="row" class="px-4 py-3 font-medium text-md xl:text-lg text-gray-900 whitespace-nowrap dark:text-white capitalize">{{$user->status}}</th>
-                                <td class="px-4 py-3 text-md xl:text-lg">{{$user->created_at->diffForHumans()}}</td> 
-                                <td class="px-4 py-3">
-                                    <button id="{{$user->name}}-dropdown-button" data-dropdown-toggle="{{$user->name}}-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100 float-end " type="button">
-                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                        </svg>
-                                    </button>
-                                    <div id="{{$user->name}}-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="{{$user->name}}-dropdown-button">
-                                            @can('user.view')
-                                            <li>
-                                                <a href="{{route('admin.user.show', $user->id)}}" class=" py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center">
-                                                    <x-icons.eye/>
-                                                    Show
-                                                </a>
-                                            </li>
-                                            @endcan
-
-                                            @can('user.edit')
-                                                @if ($user->id !=1 )
-                                                    <li>
-                                                        <a href="{{route('admin.user.edit', $user->id)}}" class="flex items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                                            <x-icons.edit/>
-                                                            Edit
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                            @endcan
-                                        </ul>
-                                        @can('user.delete')
-                                            @if (! in_array($user->id, [1,2]))
-                                                <div class="py-1">
-                                                    <a href="#" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user?')) { document.getElementById('delete-user-{{$user->id}}').submit(); }" class="flex items-center py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                                                        <x-icons.trash/>
-                                                        Delete
+                                <tr class="border-b dark:border-gray-700 ">
+                                    <th scope="row" class="px-4 py-3 font-medium text-md xl:text-lg text-gray-900 whitespace-nowrap dark:text-white capitalize">{{$user->name}}</th>
+                                    <th scope="row" class="px-4 py-3 font-medium text-md  text-gray-900 whitespace-nowrap dark:text-white  ">{{$user->email}}</th>
+                                    <th scope="row" class="px-4 py-3 font-medium text-md  text-gray-900 whitespace-nowrap dark:text-white  ">{{$user->phone}}</th>
+                                    <td class="px-4 py-3 text-md  text-gray-500 grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-4  gap-2 truncate">
+                                        @foreach ($user->roles as $role)
+                                            <span class="flex gap-1 items-center">
+                                                <x-icons.sheild class="text-blue-400"/>
+                                                <span class="text-gray-700 dark:text-gray-100 truncate">{{$role->name}}</span>
+                                            </span>
+                                        @endforeach
+                                    </td>
+                                    <th scope="row" class="px-4 py-3 font-medium text-md xl:text-lg text-gray-900 whitespace-nowrap dark:text-white capitalize">{{$user->status}}</th>
+                                    <td class="px-4 py-3 text-md xl:text-lg">{{$user->created_at->diffForHumans()}}</td> 
+                                    <td class="px-4 py-3">
+                                        <button id="{{$user->name}}-dropdown-button" data-dropdown-toggle="{{$user->name}}-dropdown" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100 float-end " type="button">
+                                            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                            </svg>
+                                        </button>
+                                        <div id="{{$user->name}}-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                                            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="{{$user->name}}-dropdown-button">
+                                                @can('user.view')
+                                                <li>
+                                                    <a href="{{route('admin.user.show', $user->id)}}" class=" py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center">
+                                                        <x-icons.eye/>
+                                                        Show
                                                     </a>
+                                                </li>
+                                                @endcan
 
-                                                    <form id="delete-user-{{$user->id}}" action="{{route('admin.user.destroy', $user->id)}}" method="POST" style="display: none;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                    </form>
-                                                    
-                                                </div>
-                                            @endif
+                                                @can('user.edit')
+                                                         <li>
+                                                            <a href="{{route('admin.user.edit', $user->id)}}" class="flex items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                                <x-icons.edit/>
+                                                                Edit
+                                                            </a>
+                                                        </li>
+                                                 @endcan
+                                            </ul>
+                                            @can('user.delete')
+                                                @if (! $user->hasAdministrativeRole())
+                                                    <div class="py-1">
+                                                        <a href="#" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user?')) { document.getElementById('delete-user-{{$user->id}}').submit(); }" class="flex items-center py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                                            <x-icons.trash/>
+                                                            Delete
+                                                        </a>
 
-                                        @endcan
-                                    </div>
-                                </td>
-                            </tr> 
+                                                        <form id="delete-user-{{$user->id}}" action="{{route('admin.user.destroy', $user->id)}}" method="POST" style="display: none;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
+                                                    </div>
+                                                @endif
+
+                                            @endcan
+                                        </div>
+                                    </td>
+                                </tr> 
                             @endforeach
                         </tbody>
                     </table>

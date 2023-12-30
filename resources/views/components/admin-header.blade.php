@@ -62,8 +62,8 @@
           </svg>
         </button>
         <x-dark-mode/>
-       <x-notification/>
-       <x-apps/>
+        <x-notification/>
+        <x-apps/>
         <x-header-menu/>
       </div>
     </div>

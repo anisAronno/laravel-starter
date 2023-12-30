@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('username', 100)->unique();
             $table->string('phone', 50)->unique()->nullable();
-            $table->string('image')->nullable();
             $table->string('email', 100)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('api_token', 100)->unique();
@@ -29,8 +28,8 @@ return new class extends Migration
             $table->string('language', 50)->default('en');
             $table->tinyInteger('isDeletable')->default(1);
             $table->rememberToken();
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
