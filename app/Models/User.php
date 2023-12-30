@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use AnisAronno\MediaGallery\Traits\HasMedia;
 use App\Enums\UserStatus;
 use App\Helpers\UniqueSlug;
 use App\Notifications\ResetPasswordNotification;
@@ -26,6 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use LogsActivity;
     use Notifiable;
     use SoftDeletes;
+    use HasMedia;
 
     /**
      * The attributes that are mass assignable.
