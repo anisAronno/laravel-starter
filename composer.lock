@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa42349a9ab4e5bd71e4f14ef1e8010f",
+    "content-hash": "f69cfd98cb101aae444a6e6653beb5a9",
     "packages": [
         {
             "name": "anisaronno/laravel-media-helper",
