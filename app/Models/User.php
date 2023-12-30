@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use AnisAronno\MediaGallery\Traits\HasMedia;
 use App\Enums\UserStatus;
 use App\Helpers\UniqueSlug;
 use App\Notifications\ResetPasswordNotification;
@@ -26,6 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use LogsActivity;
     use Notifiable;
     use SoftDeletes;
+    use HasMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -37,7 +39,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'phone',
-        'image',
         'api_token',
         'status',
         'gender',
@@ -73,7 +74,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['name', 'email', 'password', 'image', 'status',  'api_token'])
+            ->logOnly(['name', 'email', 'password', 'status',  'api_token'])
             ->logOnlyDirty()
             ->dontSubmitEmptyLogs();
     }
@@ -137,5 +138,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function hasAdministrativeRole(): bool
     {
         return $this->hasRole(['superadmin', 'admin']);
+    }
+
+    protected $appends = ['avatar'];
+
+    public function getAvatarAttribute() : string
+    {
+        return $this->image[0]?->url ?? 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +24,7 @@ Route::prefix('v1')->group(function ()
     // Api Route with token
     Route::middleware('auth:api')->get('/user', function (Request $request)
     {
-        return $request->user();
+        return new UserResource($request->user());
     });
 
     // Api Route with sanctum

@@ -49,7 +49,6 @@ class RolePermissionSeeder extends Seeder
             'password'          => bcrypt('password'),
             'status'            => UserStatus::ACTIVE,
             'email_verified_at' => Date::now(),
-            'image'             => Media::getDefaultAvatar(),
             'gender'            => UserGender::MALE,
             'remember_token'    => Str::random(10),
             'isDeletable'       => 0,
