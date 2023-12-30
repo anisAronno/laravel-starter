@@ -4,19 +4,19 @@ Welcome to the Laravel Starter Project! This repository provides a kickstart set
 
 ## Table of Contents
 
-- [Laravel Starter Project (Version 10)](#laravel-starter-project-version-10)
-  - [Table of Contents](#table-of-contents)
-  - [Uses Packages](#uses-packages)
-  - [Other Uses](#other-uses)
-  - [Features](#features)
-  - [Getting Started](#getting-started)
-    - [Installation](#installation)
-    - [Starting with Docker](#starting-with-docker)
-  - [Deploy via FTP with CI/CD](#deploy-via-ftp-with-cicd)
-      - [GitFlow for Merge Requests](#gitflow-for-merge-requests)
-      - [FTP Deployment Process](#ftp-deployment-process)
-  - [Contribution Guide](#contribution-guide)
-  - [License](#license)
+-   [Laravel Starter Project (Version 10)](#laravel-starter-project-version-10)
+    -   [Table of Contents](#table-of-contents)
+    -   [Uses Packages](#uses-packages)
+    -   [Other Uses](#other-uses)
+    -   [Features](#features)
+    -   [Getting Started](#getting-started)
+        -   [Installation](#installation)
+        -   [Starting with Docker](#starting-with-docker)
+    -   [Deploy via FTP with CI/CD](#deploy-via-ftp-with-cicd)
+        -   [GitFlow for Merge Requests](#gitflow-for-merge-requests)
+        -   [FTP Deployment Process](#ftp-deployment-process)
+    -   [Contribution Guide](#contribution-guide)
+    -   [License](#license)
 
 ## Uses Packages
 
@@ -27,7 +27,7 @@ Welcome to the Laravel Starter Project! This repository provides a kickstart set
 -   Laravel [Horizon](https://laravel.com/docs/10.x/horizon) (Job And Queue manage)
 -   Laravel [Debugbar](https://github.com/barryvdh/laravel-debugbar) (Monitoring every request)
 -   Laravel [Settings](https://github.com/anisAronno/laravel-settings) (Personal Package for application settings)
--   Laravel [Media Uploader](https://github.com/anisAronno/Laravel-Media-Helper) (Personal Package for file management)
+-   Laravel [Media Gallery](https://github.com/anisAronno/laravel-media-gallery) (Personal Package for file management)
 -   Laravel [Activity Log](https://github.com/spatie/laravel-activitylog) (Track User Activity)
 -   Beautiful [Log Viewer](https://github.com/opcodesio/log-viewer) for local and production
 -   [Flowbite](https://flowbite.com/) For Tailwind Component

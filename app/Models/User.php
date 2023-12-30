@@ -39,7 +39,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'phone',
-        'image',
         'api_token',
         'status',
         'gender',
@@ -75,7 +74,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['name', 'email', 'password', 'image', 'status',  'api_token'])
+            ->logOnly(['name', 'email', 'password', 'status',  'api_token'])
             ->logOnlyDirty()
             ->dontSubmitEmptyLogs();
     }
@@ -139,5 +138,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function hasAdministrativeRole(): bool
     {
         return $this->hasRole(['superadmin', 'admin']);
+    }
+
+    public function getAvatarAttribute() : string
+    {
+        return $this->image[0]?->url ?? 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
     }
 }

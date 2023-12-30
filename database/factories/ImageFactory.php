@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use AnisAronno\MediaGallery\Models\Image;
 use Illuminate\Database\Eloquent\Factories\Factory;
-// use App\Models\User;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\AnisAronno\MediaGallery\Models\Image>
@@ -27,8 +27,8 @@ class ImageFactory extends Factory
             'type' => 'images/png',
             'size' => '3 MB',
             'directory' => 'images',
-            // 'owner_id' => User::factory(),
-            // 'owner_type' =>  User::class
+            'owner_id' => User::factory(),
+            'owner_type' =>  User::class
         ];
     }
 }
