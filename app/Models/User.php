@@ -140,6 +140,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasRole(['superadmin', 'admin']);
     }
 
+    protected $appends = ['avatar'];
+
     public function getAvatarAttribute() : string
     {
         return $this->image[0]?->url ?? 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
