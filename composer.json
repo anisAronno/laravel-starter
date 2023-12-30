@@ -19,7 +19,7 @@
     ],
     "require": {
         "php": "^8.1",
-        "anisaronno/laravel-media-helper": "^0.1.1",
+        "anisaronno/laravel-media-gallery": "0.2.0",
         "anisaronno/laravel-settings": "1.0.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
