@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use AnisAronno\MediaHelper\Facades\Media;
 use App\Enums\UserGender;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
