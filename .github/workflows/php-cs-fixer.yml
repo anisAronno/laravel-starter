@@ -26,5 +26,5 @@ jobs:
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Fix styling
+          commit_message: Fix styling by bot
           branch: ${{ github.head_ref }}
