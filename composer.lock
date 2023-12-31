@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eb8a98eb0f5fc233e02653576af4be7a",
+    "content-hash": "928952dceb71abde6459d98b3f921c69",
     "packages": [
         {
             "name": "anisaronno/laravel-media-gallery",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/anisAronno/laravel-media-gallery.git",
-                "reference": "2625fff4b962c2f5f57c4c8801df9b7c91e1cfb8"
+                "reference": "431b2f5a7f5052499d613297df38eec11dda2be5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anisAronno/laravel-media-gallery/zipball/2625fff4b962c2f5f57c4c8801df9b7c91e1cfb8",
-                "reference": "2625fff4b962c2f5f57c4c8801df9b7c91e1cfb8",
+                "url": "https://api.github.com/repos/anisAronno/laravel-media-gallery/zipball/431b2f5a7f5052499d613297df38eec11dda2be5",
+                "reference": "431b2f5a7f5052499d613297df38eec11dda2be5",
                 "shasum": ""
             },
             "require": {
@@ -51,7 +51,7 @@
                     "name": "MD. Anichur Rahaman",
                     "email": "contact@anichur.com",
                     "homepage": "https://anichur.com",
-                    "role": "Developer"
+                    "role": "Author, Developer"
                 }
             ],
             "description": "Laravel Settings Table",
@@ -65,9 +65,9 @@
             ],
             "support": {
                 "issues": "https://github.com/anisAronno/laravel-media-gallery/issues",
-                "source": "https://github.com/anisAronno/laravel-media-gallery/tree/v0.2.0"
+                "source": "https://github.com/anisAronno/laravel-media-gallery/tree/v0.3.0"
             },
-            "time": "2023-12-30T19:50:41+00:00"
+            "time": "2023-12-31T09:28:59+00:00"
         },
         {
             "name": "anisaronno/laravel-media-helper",

@@ -97,6 +97,17 @@ class RolePermissionSeeder extends Seeder
             ],
 
             [
+                'group_name'  => 'media',
+                'permissions' => [
+                    'media.create',
+                    'media.view',
+                    'media.edit',
+                    'media.delete',
+                    'media.status',
+                ],
+            ],
+
+            [
                 'group_name'  => 'category',
                 'permissions' => [
 
@@ -267,6 +278,12 @@ class RolePermissionSeeder extends Seeder
                 'role.delete',
                 'role.status',
 
+                'media.create',
+                'media.view',
+                'media.edit',
+                'media.delete',
+                'media.status',
+
                 'category.create',
                 'category.view',
                 'category.edit',
@@ -342,6 +359,12 @@ class RolePermissionSeeder extends Seeder
 
             'admin' => [
                 'dashboard.view',
+
+                'media.create',
+                'media.view',
+                'media.edit',
+                'media.delete',
+                'media.status',
 
                 'blog.create',
                 'blog.view',
@@ -424,6 +447,12 @@ class RolePermissionSeeder extends Seeder
             'editor' => [
                 'dashboard.view',
 
+                'media.create',
+                'media.view',
+                'media.edit',
+                'media.delete',
+                'media.status',
+                
                 'blog.create',
                 'blog.view',
                 'blog.edit',
