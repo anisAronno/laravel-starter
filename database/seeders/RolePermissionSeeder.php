@@ -452,7 +452,7 @@ class RolePermissionSeeder extends Seeder
                 'media.edit',
                 'media.delete',
                 'media.status',
-                
+
                 'blog.create',
                 'blog.view',
                 'blog.edit',
