@@ -49,7 +49,6 @@ class RolePermissionSeeder extends Seeder
             'password'          => bcrypt('password'),
             'status'            => UserStatus::ACTIVE,
             'email_verified_at' => Date::now(),
-            'image'             => Media::getDefaultAvatar(),
             'gender'            => UserGender::MALE,
             'remember_token'    => Str::random(10),
             'isDeletable'       => 0,
@@ -94,6 +93,17 @@ class RolePermissionSeeder extends Seeder
                     'role.edit',
                     'role.delete',
                     'role.status',
+                ],
+            ],
+
+            [
+                'group_name'  => 'media',
+                'permissions' => [
+                    'media.create',
+                    'media.view',
+                    'media.edit',
+                    'media.delete',
+                    'media.status',
                 ],
             ],
 
@@ -268,6 +278,12 @@ class RolePermissionSeeder extends Seeder
                 'role.delete',
                 'role.status',
 
+                'media.create',
+                'media.view',
+                'media.edit',
+                'media.delete',
+                'media.status',
+
                 'category.create',
                 'category.view',
                 'category.edit',
@@ -343,6 +359,12 @@ class RolePermissionSeeder extends Seeder
 
             'admin' => [
                 'dashboard.view',
+
+                'media.create',
+                'media.view',
+                'media.edit',
+                'media.delete',
+                'media.status',
 
                 'blog.create',
                 'blog.view',
@@ -424,6 +446,12 @@ class RolePermissionSeeder extends Seeder
 
             'editor' => [
                 'dashboard.view',
+
+                'media.create',
+                'media.view',
+                'media.edit',
+                'media.delete',
+                'media.status',
 
                 'blog.create',
                 'blog.view',
