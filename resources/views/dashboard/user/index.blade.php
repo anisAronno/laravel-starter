@@ -161,9 +161,7 @@
                         <div class="grid grid-cols-1 justify-between items-start md:items-center space-y-3 md:space-y-0 p-4 w-full text-gray-700 dark:text-gray-100"
                             aria-label="Table navigation">
                             @if ($users->hasPages())
-                                {{ $users->links() }}
-                            @else
-                                <p class="text-center">All available data is currently displayed</p>
+                                {{ $users->links() }} 
                             @endif
                         </div>
                     @else
