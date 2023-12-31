@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use AnisAronno\MediaHelper\Facades\Media;
 use App\Enums\UserGender;
 use App\Enums\UserStatus;
 use App\Models\User;
