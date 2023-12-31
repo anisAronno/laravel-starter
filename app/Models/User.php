@@ -23,11 +23,11 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
+    use HasMedia;
     use HasRoles;
     use LogsActivity;
     use Notifiable;
     use SoftDeletes;
-    use HasMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -83,8 +83,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         parent::boot();
 
-        static::creating(function ($model)
-        {
+        static::creating(function ($model) {
             $model->api_token = Uuid::uuid4()->toString();
             $model->username  = UniqueSlug::generate($model, 'username', $model->name);
         });
@@ -142,7 +141,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $appends = ['avatar'];
 
-    public function getAvatarAttribute() : string
+    public function getAvatarAttribute(): string
     {
         return $this->image[0]?->url ?? 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
     }

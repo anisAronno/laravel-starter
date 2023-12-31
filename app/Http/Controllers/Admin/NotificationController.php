@@ -11,8 +11,7 @@ class NotificationController extends Controller
     {
         auth()->user()
             ->unreadNotifications
-            ->when($request->input('id'), function ($query) use ($request)
-            {
+            ->when($request->input('id'), function ($query) use ($request) {
                 return $query->where('id', $request->input('id'));
             })
             ->markAsRead();

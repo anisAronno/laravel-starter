@@ -14,15 +14,13 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         User::factory(20)
-        ->has(ImageFactory::new()->count(5), 'images')
-        ->afterCreating(function ($user)
-        {
-            $user->images->first()->pivot->is_featured = 1;
-            $user->images->first()->pivot->save();
-        })
-        ->create()->each(function ($user)
-        {
-            $user->assignRole('user');
-        });
+            ->has(ImageFactory::new()->count(5), 'images')
+            ->afterCreating(function ($user) {
+                $user->images->first()->pivot->is_featured = 1;
+                $user->images->first()->pivot->save();
+            })
+            ->create()->each(function ($user) {
+                $user->assignRole('user');
+            });
     }
 }
