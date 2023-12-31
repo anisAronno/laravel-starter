@@ -6,7 +6,7 @@
             <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                 <div class="w-full flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                    <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                    <h2 class="font-medium text-md xl:text-lg ">All Permission for <span class="text-blue-600 capitalize">{{$role->name}}</span> Role </h2>
+                    <h2 class="font-medium text-md xl:text-lg text-gray-950 dark:text-gray-100 ">All Permission for <span class="text-blue-600 capitalize">{{$role->name}}</span> Role </h2>
                    </div>
                    <div class="w-full flex flex-col md:flex-row items-center justify-end space-y-3 md:space-y-0 md:space-x-4 p-4">
                     <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">

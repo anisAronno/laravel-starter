@@ -7,7 +7,7 @@
                   <li>
                     <a
                       href="{{route('admin.dashboard')}}"
-                      class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                      class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{request()->routeIs('admin.dashboard') ? 'text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-900' : 'text-gray-900  dark:text-white '}} active "
                     >
                       <svg
                         aria-hidden="true"
@@ -36,7 +36,7 @@
                     <ul id="dropdown-example" class="hidden py-2 space-y-2">
                           <li>
                             <a
-                                href="{{route('admin.roles.index')}}"
+                                href="#"
                                 class="flex items-center p-2 pl-11 w-full text-base font-medium 
                                 rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700
                                 {{request()->routeIs('admin.roles.index') ? 'text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-800' : 'text-gray-900  dark:text-white '}} active "
@@ -209,14 +209,15 @@
                             ></path>
                           </svg>
                         </button>
-                        <ul id="dropdown-authentication" class="{{request()->routeIs('admin.roles.index')? '':'hidden'}} py-2 space-y-2">
+                        <ul id="dropdown-authentication" class="{{ request()->routeIs('admin.roles.index') || request()->routeIs('admin.user.index') ? '' : 'hidden' }}
+                            py-2 space-y-2">
                             @can('role.view')
                                 <li> 
                                 <a
                                     href="{{route('admin.roles.index')}}"
                                     class="flex items-center p-2 pl-11 w-full text-base font-medium 
                                     rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700
-                                    {{request()->routeIs('admin.roles.index') ? 'text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-800' : 'text-gray-900  dark:text-white '}} active "
+                                    {{request()->routeIs('admin.roles.index') ? 'text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-900' : 'text-gray-900  dark:text-white '}} active "
                                 > 
                                      
                                     <x-icons.sheild/>
@@ -228,10 +229,10 @@
                             @can('user.view')
                             <li>
                                 <a
-                                href="{{route('admin.user.index')}}"
-                                class="flex items-center p-2 pl-11 w-full text-base font-medium 
-                                rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700
-                                {{request()->routeIs('admin.user.index') ? 'text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-800' : 'text-gray-900  dark:text-white '}} active "
+                                    href="{{route('admin.user.index')}}"
+                                    class="flex items-center p-2 pl-11 w-full text-base font-medium 
+                                    rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700
+                                    {{request()->routeIs('admin.user.index') ? 'text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-900' : 'text-gray-900  dark:text-white '}} active  "
                                 > 
                                 <x-icons.user/>
                                  <span class="flex-1 ms-3 whitespace-nowrap">{{__('Users')}}</span>
