@@ -9,7 +9,8 @@
                         <div
                             class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
                             <h2 class="font-medium text-md xl:text-lg text-gray-950 dark:text-gray-100 ">All Permission for
-                                <span class="text-blue-600 capitalize">{{ $role->name }}</span> Role </h2>
+                                <span class="text-blue-600 capitalize">{{ $role->name }}</span> Role
+                            </h2>
                         </div>
                         <div
                             class="w-full flex flex-col md:flex-row items-center justify-end space-y-3 md:space-y-0 md:space-x-4 p-4">
@@ -64,7 +65,7 @@
                         @foreach ($role->permissions as $permission)
                             <div class="flex-shrink-0 grow">
                                 <div
-                                    class="block   p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700   min-w-32 min-h-60 truncate">
+                                    class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700   min-w-32 min-h-60 truncate">
                                     <h5
                                         class="mb-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white capitalize underline underline-offset-8">
                                         {{ $permission->group_name }}
