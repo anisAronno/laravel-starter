@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
-use AnisAronno\MediaGallery\Models\Image;
+use AnisAronno\MediaGallery\Models\Media;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
-class ImageSeeder extends Seeder
+class MediaSeeder extends Seeder
 {
-    protected $model = Image::class;
+    protected $model = Media::class;
 
     /**
      * Run the database seeds.
@@ -18,9 +18,9 @@ class ImageSeeder extends Seeder
     public function run()
     {
         Schema::disableForeignKeyConstraints();
-        Image::truncate();
+        Media::truncate();
         Schema::enableForeignKeyConstraints();
 
-        Image::factory()->count(50)->create();
+        Media::factory()->count(50)->create();
     }
 }

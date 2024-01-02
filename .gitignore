@@ -18,5 +18,4 @@ yarn-error.log
 /.idea
 /.vscode
 .DS_Store
-/media
-media
+/packages
