@@ -23,6 +23,9 @@ class UsersTableSeeder extends Seeder
             $featuredMedia->pivot->is_featured = true;
             $featuredMedia->pivot->save();
         })
-        ->create();
+        ->create()->each(function ($user)
+        {
+            $user->assignRole('user');
+        });
     }
 }

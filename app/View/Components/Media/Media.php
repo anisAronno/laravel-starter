@@ -24,9 +24,9 @@ class Media extends Component
         ksort($queryParams);
         $queryString          = http_build_query($queryParams);
         $mediaGalleryCacheKey = CacheKey::getMediaGalleryCacheKey();
-        $key                  = $mediaGalleryCacheKey.config('gallery.view_all_media_anyone').md5($queryString);
-        $cacheTTL             = Config::get('gallery.cache_expiry_time', 1440);
-        
+        $key                  = $mediaGalleryCacheKey.config('media.view_all_media_anyone').md5($queryString);
+        $cacheTTL             = Config::get('media.cache_expiry_time', 1440);
+
         $medias               = Cache::remember(
             $key,
             now()->addMinutes($cacheTTL),
@@ -41,7 +41,7 @@ class Media extends Component
                     {
                         $query->where('directory', $this->request->input('directory'));
                     })
-                    ->when($this->request->has('owner_id') || ! config('gallery.view_all_media_anyone'), function ($query)
+                    ->when($this->request->has('owner_id') || ! config('media.view_all_media_anyone'), function ($query)
                     {
                         $query->where('owner_id', auth()->id());
                     })
