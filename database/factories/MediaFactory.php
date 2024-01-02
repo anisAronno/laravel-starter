@@ -2,16 +2,16 @@
 
 namespace Database\Factories;
 
-use AnisAronno\MediaGallery\Models\Image;
+use AnisAronno\MediaGallery\Models\Media;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\AnisAronno\MediaGallery\Models\Image>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\AnisAronno\MediaGallery\Models\Media>
  */
-class ImageFactory extends Factory
+class MediaFactory extends Factory
 {
-    protected $model = Image::class;
+    protected $model = Media::class;
 
     /**
      * Define the model's default state.
@@ -23,10 +23,10 @@ class ImageFactory extends Factory
         return [
             'title'      => $this->faker->name(),
             'url'        => $this->faker->imageUrl(),
-            'mimes'      => 'images/png',
-            'type'       => 'images/png',
+            'mimes'      => 'media/png',
+            'type'       => 'media/png',
             'size'       => '3 MB',
-            'directory'  => 'images',
+            'directory'  => 'media',
             'owner_id'   => User::factory(),
             'owner_type' => User::class,
         ];

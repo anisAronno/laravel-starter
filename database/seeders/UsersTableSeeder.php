@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Database\Factories\ImageFactory;
+use Database\Factories\MediaFactory;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -14,15 +14,18 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         User::factory(20)
-            ->has(ImageFactory::new()->count(5), 'images')
-            ->afterCreating(function ($user)
-            {
-                $user->images->first()->pivot->is_featured = 1;
-                $user->images->first()->pivot->save();
-            })
-            ->create()->each(function ($user)
-            {
-                $user->assignRole('user');
-            });
+        ->hasAttached(
+            MediaFactory::new()->count(5)
+        )
+        ->afterCreating(function (User $user)
+        {
+            $featuredMedia                     = $user->media()->first();
+            $featuredMedia->pivot->is_featured = true;
+            $featuredMedia->pivot->save();
+        })
+        ->create()->each(function ($user)
+        {
+            $user->assignRole('user');
+        });
     }
 }
