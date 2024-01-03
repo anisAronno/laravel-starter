@@ -8,7 +8,26 @@ import 'simplebar';
 
 import 'flowbite';
 import './bootstrap';
-import './custom/analytics.js';
+
+if (window.currentRoute === 'admin.ecommerce.report') {
+    import('./custom/ecommerce.js').then(module => {
+    }).catch(error => console.error("Error loading ecommerce.js:", error));
+} else if (window.currentRoute === 'admin.dashboard') {
+    import('./custom/analytics.js').then(module => {
+    }).catch(error => console.error("Error loading analytics.js:", error));
+} else if (window.currentRoute === 'admin.calendar') {
+    import('./custom/calendar.js').then(module => {
+    }).catch(error => console.error("Error loading calendar.js:", error));
+} else if (window.currentRoute === 'admin.chat') {
+    import('./custom/chat.js').then(module => {
+    }).catch(error => console.error("Error loading chat.js:", error));
+} else if (window.currentRoute === 'admin.email') {
+    import('./custom/email.js').then(module => {
+    }).catch(error => console.error("Error loading email.js:", error));
+}else if (window.currentRoute === 'admin.invoice.create') {
+    import('./custom/invoice-create.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} 
 
 window.Alpine = Alpine;
 

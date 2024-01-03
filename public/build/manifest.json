@@ -1,4 +1,16 @@
 {
+  "_apexcharts.common-QZvOTEL4.js": {
+    "file": "assets/apexcharts.common-QZvOTEL4.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_tailwind.config-NwJ4H5ae.js": {
+    "file": "assets/tailwind.config-NwJ4H5ae.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
   "node_modules/@tabler/icons-webfont/fonts/tabler-icons.eot": {
     "file": "assets/tabler-icons-OFCChHzJ.eot",
     "src": "node_modules/@tabler/icons-webfont/fonts/tabler-icons.eot"
@@ -2196,13 +2208,71 @@
     "src": "node_modules/flag-icons/flags/4x3/zw.svg"
   },
   "resources/css/app.scss": {
-    "file": "assets/app-flPiD73e.css",
+    "file": "assets/app-5H6TwvEu.css",
     "isEntry": true,
     "src": "resources/css/app.scss"
   },
   "resources/js/app.js": {
-    "file": "assets/app-WoESgJPv.js",
+    "dynamicImports": [
+      "resources/js/custom/ecommerce.js",
+      "resources/js/custom/analytics.js",
+      "resources/js/custom/calendar.js",
+      "resources/js/custom/chat.js",
+      "resources/js/custom/email.js",
+      "resources/js/custom/invoice-create.js"
+    ],
+    "file": "assets/app-ZAZF0fS1.js",
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/custom/analytics.js": {
+    "file": "assets/analytics-u8-M-Xkg.js",
+    "imports": [
+      "_tailwind.config-NwJ4H5ae.js",
+      "_apexcharts.common-QZvOTEL4.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/custom/analytics.js"
+  },
+  "resources/js/custom/calendar.js": {
+    "file": "assets/calendar-nYW8jDO5.js",
+    "imports": [
+      "_tailwind.config-NwJ4H5ae.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/custom/calendar.js"
+  },
+  "resources/js/custom/chat.js": {
+    "file": "assets/chat-KRPKmsw5.js",
+    "isDynamicEntry": true,
+    "src": "resources/js/custom/chat.js"
+  },
+  "resources/js/custom/ecommerce.js": {
+    "file": "assets/ecommerce-3A1JU27Z.js",
+    "imports": [
+      "_apexcharts.common-QZvOTEL4.js",
+      "_tailwind.config-NwJ4H5ae.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/custom/ecommerce.js"
+  },
+  "resources/js/custom/email.js": {
+    "file": "assets/email-MJX4y4LG.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/custom/email.js"
+  },
+  "resources/js/custom/invoice-create.js": {
+    "file": "assets/invoice-create-ATcobf-f.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/custom/invoice-create.js"
   }
 }

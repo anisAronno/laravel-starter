@@ -63,16 +63,7 @@ class RolePermissionSeeder extends Seeder
                     'dashboard.view',
                 ],
             ],
-            [
-                'group_name'  => 'blog',
-                'permissions' => [
-                    'blog.create',
-                    'blog.view',
-                    'blog.edit',
-                    'blog.delete',
-                    'blog.status',
-                ],
-            ],
+
             [
                 'group_name'  => 'user',
                 'permissions' => [
@@ -107,6 +98,39 @@ class RolePermissionSeeder extends Seeder
             ],
 
             [
+                'group_name'  => 'email',
+                'permissions' => [
+                    'email.create',
+                    'email.view',
+                    'email.edit',
+                    'email.delete',
+                    'email.status',
+                ],
+            ],
+
+            [
+                'group_name'  => 'chat',
+                'permissions' => [
+                    'chat.create',
+                    'chat.view',
+                    'chat.edit',
+                    'chat.delete',
+                    'chat.status',
+                ],
+            ],
+
+            [
+                'group_name'  => 'calendar',
+                'permissions' => [
+                    'calendar.create',
+                    'calendar.view',
+                    'calendar.edit',
+                    'calendar.delete',
+                    'calendar.status',
+                ],
+            ],
+
+            [
                 'group_name'  => 'category',
                 'permissions' => [
 
@@ -127,6 +151,81 @@ class RolePermissionSeeder extends Seeder
                     'tag.edit',
                     'tag.delete',
                     'tag.status',
+                ],
+            ],
+
+            [
+                'group_name'  => 'blog',
+                'permissions' => [
+                    'blog.create',
+                    'blog.view',
+                    'blog.edit',
+                    'blog.delete',
+                    'blog.status',
+                ],
+            ],
+
+            [
+                'group_name'  => 'ecommerce',
+                'permissions' => [
+                    'ecommerce.view',
+                ],
+            ],
+
+            [
+                'group_name'  => 'product',
+                'permissions' => [
+                    'product.create',
+                    'product.view',
+                    'product.edit',
+                    'product.delete',
+                    'product.status',
+                    'product.report',
+                ],
+            ],
+
+            [
+                'group_name'  => 'order',
+                'permissions' => [
+                    'order.create',
+                    'order.view',
+                    'order.edit',
+                    'order.delete',
+                    'order.status',
+                    'order.report',
+                ],
+            ],
+
+            [
+                'group_name'  => 'invoice',
+                'permissions' => [
+                    'invoice.create',
+                    'invoice.view',
+                    'invoice.edit',
+                    'invoice.delete',
+                    'invoice.status',
+                ],
+            ],
+
+            [
+                'group_name'  => 'coupon',
+                'permissions' => [
+                    'coupon.create',
+                    'coupon.view',
+                    'coupon.edit',
+                    'coupon.delete',
+                    'coupon.status',
+                ],
+            ],
+            [
+                'group_name'  => 'customer',
+                'permissions' => [
+                    'customer.create',
+                    'customer.view',
+                    'customer.edit',
+                    'customer.delete',
+                    'customer.status',
+                    'customer.report',
                 ],
             ],
 
@@ -207,39 +306,6 @@ class RolePermissionSeeder extends Seeder
                     'notification.status',
                 ],
             ],
-
-            [
-                'group_name'  => 'product',
-                'permissions' => [
-                    'product.create',
-                    'product.view',
-                    'product.edit',
-                    'product.delete',
-                    'product.status',
-                ],
-            ],
-
-            [
-                'group_name'  => 'order',
-                'permissions' => [
-                    'order.create',
-                    'order.view',
-                    'order.edit',
-                    'order.delete',
-                    'order.status',
-                ],
-            ],
-
-            [
-                'group_name'  => 'coupon',
-                'permissions' => [
-                    'coupon.create',
-                    'coupon.view',
-                    'coupon.edit',
-                    'coupon.delete',
-                    'coupon.status',
-                ],
-            ],
         ];
 
         foreach ($permissions as $group) {
@@ -264,6 +330,7 @@ class RolePermissionSeeder extends Seeder
         $permissions = [
             'superadmin' => [
                 'dashboard.view',
+                'ecommerce.view',
 
                 'user.create',
                 'user.view',
@@ -282,6 +349,30 @@ class RolePermissionSeeder extends Seeder
                 'media.edit',
                 'media.delete',
                 'media.status',
+
+                'email.create',
+                'email.view',
+                'email.edit',
+                'email.delete',
+                'email.status',
+
+                'chat.create',
+                'chat.view',
+                'chat.edit',
+                'chat.delete',
+                'chat.status',
+
+                'calendar.create',
+                'calendar.view',
+                'calendar.edit',
+                'calendar.delete',
+                'calendar.status',
+
+                'invoice.create',
+                'invoice.view',
+                'invoice.edit',
+                'invoice.delete',
+                'invoice.status',
 
                 'category.create',
                 'category.view',
@@ -342,22 +433,32 @@ class RolePermissionSeeder extends Seeder
                 'product.edit',
                 'product.delete',
                 'product.status',
+                'product.report',
 
                 'order.create',
                 'order.view',
                 'order.edit',
                 'order.delete',
                 'order.status',
+                'order.report',
 
                 'coupon.create',
                 'coupon.view',
                 'coupon.edit',
                 'coupon.delete',
                 'coupon.status',
+
+                'customer.create',
+                'customer.view',
+                'customer.edit',
+                'customer.delete',
+                'customer.status',
+                'customer.report',
             ],
 
             'admin' => [
                 'dashboard.view',
+                'ecommerce.view',
 
                 'media.create',
                 'media.view',
@@ -382,6 +483,12 @@ class RolePermissionSeeder extends Seeder
                 'about.edit',
                 'about.delete',
                 'about.status',
+
+                'invoice.create',
+                'invoice.view',
+                'invoice.edit',
+                'invoice.delete',
+                'invoice.status',
 
                 'contact.create',
                 'contact.view',
@@ -429,18 +536,27 @@ class RolePermissionSeeder extends Seeder
                 'product.edit',
                 'product.delete',
                 'product.status',
+                'product.report',
 
                 'order.create',
                 'order.view',
                 'order.edit',
                 'order.delete',
                 'order.status',
+                'order.report',
 
                 'coupon.create',
                 'coupon.view',
                 'coupon.edit',
                 'coupon.delete',
                 'coupon.status',
+
+                'customer.create',
+                'customer.view',
+                'customer.edit',
+                'customer.delete',
+                'customer.status',
+                'customer.report',
             ],
 
             'editor' => [
