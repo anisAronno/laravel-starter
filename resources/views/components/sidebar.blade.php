@@ -27,7 +27,7 @@
         @can('dashboard.view')
             <li>
                 <a href="javascript:void(0);"
-                    class="sidebar-menu  {{ request()->routeIs('admin.dashboard') || request()->routeIs('admin.ecommerce.report') ? 'active' : '' }}">
+                    class="sidebar-menu  {{ request()->routeIs('admin.dashboard', 'admin.ecommerce.report') ? 'active' : '' }}">
                     <span class="sidebar-menu-icon">
                         <i data-feather="home"></i>
                     </span>
@@ -94,7 +94,7 @@
             <li>
                 @can('invoice.create')
                     <a href="javascript:void(0);"
-                        class="sidebar-menu {{ request()->routeIs('admin.invoice.create') || request()->routeIs('admin.invoice.details') ? 'active' : '' }}">
+                        class="sidebar-menu {{ request()->routeIs('admin.invoice.create', 'admin.invoice.details') ? 'active' : '' }}">
                         <span class="sidebar-menu-icon">
                             <i data-feather="file-text"></i>
                         </span>
@@ -127,7 +127,15 @@
         @can('ecommerce.view')
             <li>
                 <a href="javascript:void(0);"
-                    class="sidebar-menu {{ request()->routeIs('admin.product.index') || request()->routeIs('admin.product.edit') || request()->routeIs('admin.order.index') || request()->routeIs('admin.order.show') || request()->routeIs('admin.customer.index') ? 'active' : '' }}">
+                    class="sidebar-menu {{ request()->routeIs([
+                        'admin.product.index',
+                        'admin.product.edit',
+                        'admin.order.index',
+                        'admin.order.show',
+                        'admin.customer.index',
+                    ])
+                        ? 'active'
+                        : '' }}">
                     <span class="sidebar-menu-icon">
                         <i data-feather="shopping-bag"></i>
                     </span>
@@ -177,7 +185,9 @@
         @endcan
         <!-- Users -->
         <li>
-            <a href="javascript:void(0);" class="sidebar-menu {{ request()->routeIs('admin.user.index') || request()->routeIs('admin.roles.index') ? 'active' : '' }}">
+            <a href="javascript:void(0);"
+                class="sidebar-menu {{ request()->routeIs(['admin.user.index', 'admin.roles.index']) ? 'active' : '' }}">
+
                 <span class="sidebar-menu-icon">
                     <i data-feather="users"></i>
                 </span>
@@ -189,12 +199,16 @@
             <ul class="sidebar-submenu ">
                 @can('user.view')
                     <li>
-                        <a href="{{route('admin.user.index')}}" class="sidebar-submenu-item {{ request()->routeIs('admin.user.index') ? 'active' : '' }}"> User</a>
+                        <a href="{{ route('admin.user.index') }}"
+                            class="sidebar-submenu-item {{ request()->routeIs('admin.user.index') ? 'active' : '' }}">
+                            User</a>
                     </li>
                 @endcan
                 @can('role.view')
                     <li>
-                        <a href="{{route('admin.roles.index')}}" class="sidebar-submenu-item {{ request()->routeIs('admin.roles.index') ? 'active' : '' }}"> Role </a>
+                        <a href="{{ route('admin.roles.index') }}"
+                            class="sidebar-submenu-item {{ request()->routeIs('admin.roles.index') ? 'active' : '' }}">
+                            Role & Permission </a>
                     </li>
                 @endcan
             </ul>
@@ -202,8 +216,33 @@
         <!--  Commponents  -->
         <div class="sidebar-menu-header">Components</div>
         <!-- Common  -->
+        @php
+            $commonRoutes = [
+                'admin.common.accordion' => 'Accordion',
+                'admin.common.alert' => 'Alert',
+                'admin.common.avatar' => 'Avatar',
+                'admin.common.badge' => 'Badge',
+                'admin.common.button' => 'Button',
+                'admin.common.card' => 'Card',
+                'admin.common.carousel' => 'Carousel',
+                'admin.common.drawer' => 'Drawer',
+                'admin.common.dropdown' => 'Dropdown',
+                'admin.common.list.group' => 'List Group',
+                'admin.common.modal' => 'Modal',
+                'admin.common.pagination' => 'Pagination',
+                'admin.common.progress.bar' => 'Progress',
+                'admin.common.spinner' => 'Spinner',
+                'admin.common.tabs' => 'Tab',
+                'admin.common.toast' => 'Toast',
+                'admin.common.tooltip' => 'Tooltip',
+                'admin.common.skeleton' => 'Skeleton',
+            ];
+
+        @endphp
+
         <li>
-            <a href="javascript:void(0);" class="sidebar-menu">
+            <a href="javascript:void(0);"
+                class="sidebar-menu {{ collect($commonRoutes)->keys()->contains(request()->route()->getName())? 'active': '' }}">
                 <span class="sidebar-menu-icon">
                     <i data-feather="box"></i>
                 </span>
@@ -213,64 +252,37 @@
                 </span>
             </a>
             <ul class="sidebar-submenu">
-                <li>
-                    <a href="./accordion.html" class="sidebar-submenu-item"> Accordion </a>
-                </li>
-                <li>
-                    <a href="./alert.html" class="sidebar-submenu-item">Alert</a>
-                </li>
-                <li>
-                    <a href="./avatar.html" class="sidebar-submenu-item">Avatar</a>
-                </li>
-                <li>
-                    <a href="./badge.html" class="sidebar-submenu-item">Badge</a>
-                </li>
-                <li>
-                    <a href="./button.html" class="sidebar-submenu-item">Button</a>
-                </li>
-                <li>
-                    <a href="./card.html" class="sidebar-submenu-item">Card</a>
-                </li>
-                <li>
-                    <a href="./carousel.html" class="sidebar-submenu-item"> Carousel </a>
-                </li>
-
-                <li>
-                    <a href="./drawer.html" class="sidebar-submenu-item">Drawer</a>
-                </li>
-                <li>
-                    <a href="./dropdown.html" class="sidebar-submenu-item"> Dropdown </a>
-                </li>
-                <li>
-                    <a href="./list-group.html" class="sidebar-submenu-item"> List Group </a>
-                </li>
-                <li>
-                    <a href="./modal.html" class="sidebar-submenu-item">Modal</a>
-                </li>
-                <li>
-                    <a href="./pagination.html" class="sidebar-submenu-item"> Pagination </a>
-                </li>
-                <li>
-                    <a href="./progress-bar.html" class="sidebar-submenu-item"> Progress </a>
-                </li>
-
-                <li>
-                    <a href="./spinner.html" class="sidebar-submenu-item"> Spinner </a>
-                </li>
-                <li>
-                    <a href="./tabs.html" class="sidebar-submenu-item">Tab</a>
-                </li>
-                <li>
-                    <a href="./toast.html" class="sidebar-submenu-item">Toast</a>
-                </li>
-                <li>
-                    <a href="./tooltip.html" class="sidebar-submenu-item"> Tooltip </a>
-                </li>
+                @foreach ($commonRoutes as $route => $name)
+                    <li>
+                        <a href="{{ route($route) }}"
+                            class="sidebar-submenu-item {{ request()->routeIs($route) ? 'active' : '' }}">
+                            {{ $name }}
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         </li>
+
         <!-- Forms  -->
+        @php
+            $formRoutes = [
+                'admin.form.input' => 'Input',
+                'admin.form.input.group' => 'Input Group',
+                'admin.form.textarea' => 'Textarea',
+                'admin.form.checkbox' => 'Checkbox',
+                'admin.form.radio' => 'Radio',
+                'admin.form.toggle' => 'Toggle',
+                'admin.form.select' => 'Select',
+                'admin.form.datepicker' => 'Datepicker',
+                'admin.form.editor' => 'Editor',
+                'admin.form.uploader' => 'Uploader',
+                'admin.form.layout' => 'Layout',
+                'admin.form.validation' => 'Validation',
+            ];
+        @endphp
         <li>
-            <a href="javascript:void(0);" class="sidebar-menu">
+            <a href="javascript:void(0);"
+                class="sidebar-menu {{ collect($formRoutes)->keys()->contains(request()->route()->getName())? 'active': '' }}">
                 <span class="sidebar-menu-icon">
                     <i data-feather="edit"></i>
                 </span>
@@ -280,48 +292,21 @@
                 </span>
             </a>
             <ul class="sidebar-submenu">
-                <li>
-                    <a href="./input.html" class="sidebar-submenu-item">Input</a>
-                </li>
-                <li>
-                    <a href="./input-group.html" class="sidebar-submenu-item"> Input Group </a>
-                </li>
-                <li>
-                    <a href="./textarea.html" class="sidebar-submenu-item"> Textarea </a>
-                </li>
-                <li>
-                    <a href="./checkbox.html" class="sidebar-submenu-item"> Checkbox </a>
-                </li>
-                <li>
-                    <a href="./radio.html" class="sidebar-submenu-item">Radio</a>
-                </li>
-                <li>
-                    <a href="./toggle.html" class="sidebar-submenu-item">Toggle</a>
-                </li>
-                <li>
-                    <a href="./select.html" class="sidebar-submenu-item">Select</a>
-                </li>
-
-                <li>
-                    <a href="./datepicker.html" class="sidebar-submenu-item"> Datepicker </a>
-                </li>
-                <li>
-                    <a href="./editor.html" class="sidebar-submenu-item">Editor</a>
-                </li>
-                <li>
-                    <a href="./uploader.html" class="sidebar-submenu-item"> Uploader </a>
-                </li>
-                <li>
-                    <a href="./form-layout.html" class="sidebar-submenu-item">Layout</a>
-                </li>
-                <li>
-                    <a href="./form-validation.html" class="sidebar-submenu-item"> Validation </a>
-                </li>
+                @foreach ($formRoutes as $route => $name)
+                    <li>
+                        <a href="{{ route($route) }}"
+                            class="sidebar-submenu-item {{ request()->routeIs($route) ? 'active' : '' }}">
+                            {{ $name }}
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         </li>
+
         <!-- Tables  -->
         <li>
-            <a href="javascript:void(0);" class="sidebar-menu">
+            <a href="javascript:void(0);"
+                class="sidebar-menu {{ request()->routeIs('admin.table.data', 'admin.table.basic') ? 'active' : '' }}">
                 <span class="sidebar-menu-icon">
                     <i data-feather="list"></i>
                 </span>
@@ -332,16 +317,21 @@
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="./basic-table.html" class="sidebar-submenu-item"> Basic Table </a>
+                    <a href="{{ route('admin.table.basic') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.table.basic') ? 'active' : '' }}">
+                        Basic Table </a>
                 </li>
                 <li>
-                    <a href="./data-table.html" class="sidebar-submenu-item"> Data Table </a>
+                    <a href="{{ route('admin.table.data') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.table.data') ? 'active' : '' }}">
+                        Data Table </a>
                 </li>
             </ul>
         </li>
         <!-- Charts  -->
         <li>
-            <a href="./chart.html" class="sidebar-menu">
+            <a href="{{ route('admin.chart.index') }}"
+                class="sidebar-menu {{ request()->routeIs('admin.chart.index') ? 'active' : '' }}">
                 <span class="sidebar-menu-icon">
                     <i data-feather="pie-chart"></i>
                 </span>
@@ -350,7 +340,8 @@
         </li>
         <!-- Icons-->
         <li>
-            <a href="./icons.html" class="sidebar-menu">
+            <a href="{{ route('admin.icons.index') }}"
+                class="sidebar-menu {{ request()->routeIs('admin.icons.index') ? 'active' : '' }}">
                 <span class="sidebar-menu-icon">
                     <i data-feather="italic"></i>
                 </span>
@@ -359,7 +350,8 @@
         </li>
         <!-- Typography-->
         <li>
-            <a href="./typography.html" class="sidebar-menu">
+            <a href="{{ route('admin.typography.index') }}"
+                class="sidebar-menu {{ request()->routeIs('admin.typography.index') ? 'active' : '' }}">
                 <span class="sidebar-menu-icon">
                     <i data-feather="type"></i>
                 </span>
@@ -370,7 +362,16 @@
         <div class="sidebar-menu-header">Pages</div>
         <!-- Authentication  -->
         <li>
-            <a href="javascript:void(0);" class="sidebar-menu">
+            <a href="javascript:void(0);"
+                class="sidebar-menu {{ request()->routeIs([
+                    'admin.authentication.login',
+                    'admin.authentication.register',
+                    'admin.authentication.recover.password',
+                    'admin.authentication.reset.password',
+                ])
+                    ? 'active'
+                    : '' }}">
+
                 <span class="sidebar-menu-icon">
                     <i data-feather="lock"></i>
                 </span>
@@ -381,22 +382,30 @@
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="./login.html" class="sidebar-submenu-item">Login</a>
+                    <a href="{{ route('admin.authentication.login') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.authentication.login') ? 'active' : '' }}">Login</a>
                 </li>
                 <li>
-                    <a href="./register.html" class="sidebar-submenu-item"> Register </a>
+                    <a href="{{ route('admin.authentication.register') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.authentication.register') ? 'active' : '' }}">
+                        Register </a>
                 </li>
                 <li>
-                    <a href="./recover-password.html" class="sidebar-submenu-item"> Forgot Password </a>
+                    <a href="{{ route('admin.authentication.recover.password') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.authentication.recover.password') ? 'active' : '' }}">
+                        Forgot Password </a>
                 </li>
                 <li>
-                    <a href="./reset-password.html" class="sidebar-submenu-item"> Reset Password </a>
+                    <a href="{{ route('admin.authentication.reset.password') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.authentication.reset.password') ? 'active' : '' }}">
+                        Reset Password </a>
                 </li>
             </ul>
         </li>
         <!-- Miscellaneous  -->
         <li>
-            <a href="javascript:void(0);" class="sidebar-menu">
+            <a href="javascript:void(0);"
+                class="sidebar-menu {{ request()->routeIs('admin.miscellaneous.starter', 'admin.miscellaneous.comming.soon', 'admin.miscellaneous.maintenance', 'admin.miscellaneous.404', 'admin.miscellaneous.500', 'admin.miscellaneous.403') ? 'active' : '' }}">
                 <span class="sidebar-menu-icon">
                     <i data-feather="grid"></i>
                 </span>
@@ -407,22 +416,34 @@
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="./starter.html" class="sidebar-submenu-item"> Starter Page </a>
+                    <a href="{{ route('admin.miscellaneous.starter') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.miscellaneous.starter') ? 'active' : '' }}">
+                        Starter Page </a>
                 </li>
                 <li>
-                    <a href="./comming-soon.html" class="sidebar-submenu-item"> Coming Soon </a>
+                    <a href="{{ route('admin.miscellaneous.comming.soon') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.miscellaneous.comming.soon') ? 'active' : '' }}">
+                        Coming Soon </a>
                 </li>
                 <li>
-                    <a href="./maintenance.html" class="sidebar-submenu-item"> Maintenance </a>
+                    <a href="{{ route('admin.miscellaneous.maintenance') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.miscellaneous.maintenance') ? 'active' : '' }}">
+                        Maintenance </a>
                 </li>
                 <li>
-                    <a href="./404-error.html" class="sidebar-submenu-item"> Error 404 </a>
+                    <a href="{{ route('admin.miscellaneous.404') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.miscellaneous.404') ? 'active' : '' }}">
+                        Error 404 </a>
                 </li>
                 <li>
-                    <a href="./500-error.html" class="sidebar-submenu-item"> Error 500 </a>
+                    <a href="{{ route('admin.miscellaneous.500') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.miscellaneous.500') ? 'active' : '' }}">
+                        Error 500 </a>
                 </li>
                 <li>
-                    <a href="./not-authorized.html" class="sidebar-submenu-item"> Not Authorized </a>
+                    <a href="{{ route('admin.miscellaneous.403') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.miscellaneous.403') ? 'active' : '' }}">
+                        Not Authorized </a>
                 </li>
             </ul>
         </li>

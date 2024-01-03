@@ -1,5 +1,5 @@
 import DataTable from '../components/data-table';
-import tableData from '@/json/datatable.json';
+import tableData from '../../json/datatable.json';
 
 async function loadTable(table) {
   const tbody = table.querySelector('tbody');

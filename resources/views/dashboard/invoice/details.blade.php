@@ -1,20 +1,8 @@
 <x-app-layout>
     <!-- Page Title Starts -->
-    <div class="mb-6 flex flex-col justify-between gap-y-1 sm:flex-row sm:gap-y-0">
-        <h5>Invoice Details #1001</h5>
 
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="/">Home</a>
-            </li>
-            <li class="breadcrumb-item">
-                <a href="#">Invoice</a>
-            </li>
-            <li class="breadcrumb-item">
-                <a href="#">Details</a>
-            </li>
-        </ol>
-    </div>
+    <x-page-title header="Invoice" page="Details" />
+
     <!-- Page Title Ends -->
 
     <!-- Invoice Details Starts -->

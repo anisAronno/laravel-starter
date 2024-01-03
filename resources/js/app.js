@@ -27,6 +27,36 @@ if (window.currentRoute === 'admin.ecommerce.report') {
 }else if (window.currentRoute === 'admin.invoice.create') {
     import('./custom/invoice-create.js').then(module => {
     }).catch(error => console.error("Error loading invoice-create.js:", error));
+} else if (window.currentRoute === 'admin.table.data') {
+    import('./custom/data-table.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} else if (window.currentRoute === 'admin.chart.index') {
+    import('./custom/apex-charts.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} else if (window.currentRoute === 'admin.form.datepicker') {
+    import('./custom/datepicker.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+}  else if (window.currentRoute === 'admin.form.editor') {
+    import('./custom/editor.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} else if (window.currentRoute === 'admin.form.uploader') {
+    import('./custom/uploader.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} else if (window.currentRoute === 'admin.form.validation') {
+    import('./custom/form-validation.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} else if (window.currentRoute === 'admin.common.toast') {
+    import('./custom/toast.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} else if (window.currentRoute === 'admin.common.modal') {
+    import('./custom/modal.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} else if (window.currentRoute === 'admin.common.drawer') {
+    import('./custom/drawer.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+}  else if (window.currentRoute === 'admin.common.carousel') {
+    import('./custom/carousel.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
 } 
 
 window.Alpine = Alpine;

@@ -7,7 +7,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="{{ hasSettings('logo') ? Media::getURL(getSettings('logo')) : Media::getDefaultLogo() }}" type="image/svg+xml" />
+    <link rel="icon" href="{{ hasSettings('logo') ? Media::getURL(getSettings('logo')) : Media::getDefaultLogo() }}"
+        type="image/svg+xml" />
     <title>{{ config('app.name', 'Ecommerce') }}</title>
     <meta name="description"
         content="Admin Toolkit is a modern admin dashboard template based on Tailwindcss. It comes with a variety of useful ui components and pre-built pages" />
@@ -32,7 +33,7 @@
         window.currentRoute = '{{ Route::currentRouteName() }}';
     </script>
 
-    @vite(['resources/css/app.scss', 'resources/js/app.js'])
+    @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 
 </head>
 

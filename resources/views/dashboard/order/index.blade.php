@@ -1,20 +1,8 @@
 <x-app-layout>
     <!-- Page Title Starts -->
-    <div class="mb-6 flex flex-col justify-between gap-y-1 sm:flex-row sm:gap-y-0">
-        <h5>Order List</h5>
+   
+    <x-page-title page="Ecommerce" header="Order List" />
 
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="/">Home</a>
-            </li>
-            <li class="breadcrumb-item">
-                <a href="#">Ecommerce</a>
-            </li>
-            <li class="breadcrumb-item">
-                <a href="#">Order List</a>
-            </li>
-        </ol>
-    </div>
     <!-- Page Title Ends -->
 
     <!-- Order Listing Starts -->

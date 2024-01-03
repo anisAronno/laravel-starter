@@ -1,17 +1,8 @@
 <x-app-layout>
     <!-- Page Title Starts -->
-    <div class="mb-6 flex flex-col justify-between gap-y-1 sm:flex-row sm:gap-y-0">
-        <h5>Dashboard</h5>
+     
+    <x-page-title header="Ecommerce Report" />
 
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="/">Home</a>
-            </li>
-            <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
-            </li>
-        </ol>
-    </div>
     <!-- Page Title Ends -->
 
     <div class="space-y-6">
