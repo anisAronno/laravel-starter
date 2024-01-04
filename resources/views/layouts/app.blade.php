@@ -34,7 +34,17 @@
     </script>
 
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+    <style>
+        .custom-data-table {
+            display: none;
+        }
 
+        @media (min-width: 640px) {
+            .custom-data-table {
+                display: table;
+            }
+        }
+    </style>
 </head>
 
 <body>

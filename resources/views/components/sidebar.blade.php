@@ -89,6 +89,18 @@
                 </a>
             </li>
         @endcan
+        <!-- Media -->
+        @can('media.view')
+            <li>
+                <a href="{{ route('admin.media.index') }}"
+                    class="sidebar-menu {{ request()->routeIs('admin.media.index') ? 'active' : '' }}">
+                    <span class="sidebar-menu-icon">
+                        <i data-feather="image"></i>
+                    </span>
+                    <span class="sidebar-menu-text">Media</span>
+                </a>
+            </li>
+        @endcan
         <!-- Invoice -->
         @can('invoice.view')
             <li>
