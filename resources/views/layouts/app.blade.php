@@ -2,56 +2,73 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @use('AnisAronno\MediaHelper\Facades\Media')
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="{{ hasSettings('logo') ? Media::getURL(getSettings('logo')) : Media::getDefaultLogo() }}"
+        type="image/svg+xml" />
+    <title>{{ config('app.name', 'Ecommerce') }}</title>
+    <meta name="description"
+        content="Admin Toolkit is a modern admin dashboard template based on Tailwindcss. It comes with a variety of useful ui components and pre-built pages" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script>
+        if (
+            localStorage.getItem('theme') === 'dark' ||
+            (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <script>
+        window.currentRoute = '{{ Route::currentRouteName() }}';
+    </script>
+
+    @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 
 </head>
 
-<body class="font-sans antialiased bg-gray-50 dark:bg-gray-900" x-data="{ isDarkMode: localStorage.getItem('color-theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches }" x-init="initTheme()">
-
-    @include('sweetalert::alert')
-
-    <div class="antialiased ">
-        <x-admin-header />
+<body>
+    <div id="app">
+        <!-- Sidebar Starts -->
         <x-sidebar />
+        <!-- Sidebar Ends -->
 
-        <main class="p-4 md:ml-64 min-h-screen pt-20 ">
-            {{ $slot }}
-        </main>
+        <!-- Wrapper Starts -->
+        <div class="wrapper">
+            <!-- Header Starts -->
+            <x-header />
+            <!-- Header Ends -->
+
+            <!-- Page Content Starts -->
+            <div class="content">
+                <!-- Main Content Starts -->
+                <main class="container flex-grow p-2 sm:p-4 md:p-6">
+                    {{ $slot }}
+                </main>
+                <!-- Main Content Ends -->
+
+                <!-- Footer Starts -->
+                <x-footer />
+                <!-- Footer Ends -->
+            </div>
+            <!-- Page Content Ends -->
+        </div>
+        <!-- Wrapper Ends -->
+
+        <!-- Search Modal Start -->
+        <x-search-modal />
+        <!-- Search Modal Ends -->
     </div>
-
-    <script>
-        function setTheme(theme) {
-            document.documentElement.classList[theme === 'dark' ? 'add' : 'remove']('dark');
-            localStorage.setItem('color-theme', theme);
-        }
-
-        function initTheme() {
-            const isDark = localStorage.getItem('color-theme') === 'dark' || window.matchMedia(
-                '(prefers-color-scheme: dark)').matches;
-            setTheme(isDark ? 'dark' : 'light');
-        }
-
-        function toggleDarkMode() {
-            const currentTheme = localStorage.getItem('color-theme') || 'light';
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            setTheme(newTheme);
-
-            this.$nextTick(() => {
-                this.isDarkMode = newTheme === 'dark';
-            });
-        }
-    </script>
 </body>
 
 </html>

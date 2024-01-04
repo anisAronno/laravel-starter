@@ -1,183 +1,452 @@
-<aside
-    class="fixed top-10 md:top-0 left-0 z-40  w-64 h-screen pt-14 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
-    aria-label="Sidenav" id="drawer-navigation">
-    <div class="overflow-y-auto py-5 px-3 h-full bg-white dark:bg-gray-800">
-        <ul class="space-y-2">
-            <li>
-                <a href="{{ route('admin.dashboard') }}"
-                    class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('admin.dashboard') ? 'text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-900' : 'text-gray-900  dark:text-white ' }} active ">
-                    <x-icons.pie />
-                    <span class="ml-3">{{ __('Overview') }}</span>
-                </a>
-            </li>
+<aside class="sidebar">
+    <!-- Sidebar Header Starts -->
+    <a href="{{ route('admin.dashboard') }}">
+        <div class="sidebar-header">
+            <div class="sidebar-logo-icon">
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            </div>
 
-            <li>
-                <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                    aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                    <x-icons.cart />
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">E-commerce</span>
-                    <x-icons.down-arrow />
+            <div class="sidebar-logo-text">
+                <h1 class="flex text-xl">
+                    <span class="font-bold text-slate-800 dark:text-slate-200">
+                        {{ hasSettings('site_name') ? getSettings('site_name') : config('app.name') }}
+                    </span>
+                </h1>
 
-                </button>
-                <ul id="dropdown-example" class="hidden py-2 space-y-2">
-                    <li>
-                        <a href="#"
-                            class="flex items-center p-2 pl-11 w-full text-base font-medium 
-                                rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700
-                                {{ request()->routeIs('admin.roles.index') ? 'text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-800' : 'text-gray-900  dark:text-white ' }} active ">
-                            <x-icons.product />
-                            <span class="flex-1 ms-3 whitespace-nowrap">{{ __('Products') }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                            <x-icons.category />
-                            <span class="flex-1 ms-3 whitespace-nowrap">{{ __('Category') }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                            <x-icons.tags />
-                            <span class="flex-1 ms-3 whitespace-nowrap">{{ __('Tags') }}</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <button type="button"
-                    class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                    aria-controls="dropdown-sales" data-collapse-toggle="dropdown-sales">
-                    <x-icons.bag />
-                    <span class="flex-1 ml-3 text-left whitespace-nowrap">Sales</span>
-                    <x-icons.down-arrow />
-                </button>
-                <ul id="dropdown-sales" class=" hidden py-2 space-y-2">
-                    <li>
-                        <a href="#"
-                            class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                            <x-icons.order />
-                            <span class="flex-1 ms-2 whitespace-nowrap">{{ __('Order') }}</span>
-                        </a>
+                <p class="whitespace-nowrap text-xs text-slate-400">
+                    {{ hasSettings('site_title') ? getSettings('site_title') : config('app.name') }}
+                </p>
+            </div>
+        </div>
+    </a>
+    <!-- Sidebar Header Ends -->
 
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                            <x-icons.report />
-                            <span class="flex-1 ms-2 whitespace-nowrap">{{ __('Report') }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                            <x-icons.user />
-                            <span class="flex-1 ms-2 whitespace-nowrap">{{ __('Customer') }}</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+    <!-- Sidebar Menu Starts -->
+    <ul class="sidebar-content">
+        <!-- Dashboard -->
+        @can('dashboard.view')
             <li>
-                <a href="#"
-                    class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <x-icons.message />
-                    <span class="flex-1 ml-3 whitespace-nowrap">Messages</span>
-                    <span
-                        class="inline-flex justify-center items-center w-5 h-5 text-xs font-semibold rounded-full text-primary-800 bg-primary-100 dark:bg-primary-200 dark:text-primary-800">
-                        4
+                <a href="javascript:void(0);"
+                    class="sidebar-menu  {{ request()->routeIs('admin.dashboard', 'admin.ecommerce.report') ? 'active' : '' }}">
+                    <span class="sidebar-menu-icon">
+                        <i data-feather="home"></i>
+                    </span>
+                    <span class="sidebar-menu-text">Dashboard</span>
+                    <span class="sidebar-menu-arrow">
+                        <i data-feather="chevron-right"></i>
                     </span>
                 </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.dashboard') }}"
+                            class="sidebar-submenu-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">Analytics</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.ecommerce.report') }}"
+                            class="sidebar-submenu-item {{ request()->routeIs('admin.ecommerce.report') ? 'active' : '' }}">Ecommerce</a>
+                    </li>
+                </ul>
             </li>
+        @endcan
 
+        <div class="sidebar-menu-header">Applications</div>
+
+        <!-- Email -->
+        @can('email.view')
             <li>
-                <a href="{{ route('admin.media.index') }}"
-                    class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group
-                    {{ request()->routeIs('admin.media.index') ? 'bg-gray-200 dark:bg-gray-700' : '' }} active ">
-                    <x-icons.media />
-                    <span class="ml-3">Media </span>
+                <a href="{{ route('admin.email') }}"
+                    class="sidebar-menu {{ request()->routeIs('admin.email') ? 'active' : '' }}">
+                    <span class="sidebar-menu-icon">
+                        <i data-feather="mail"></i>
+                    </span>
+                    <span class="sidebar-menu-text">Email</span>
                 </a>
             </li>
+        @endcan
+
+        <!-- Chat -->
+        @can('chat.view')
             <li>
-                <a href="#"
-                    class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
-                    <x-icons.support />
-                    <span class="ml-3">Support</span>
+                <a href="{{ route('admin.chat') }}"
+                    class="sidebar-menu {{ request()->routeIs('admin.chat') ? 'active' : '' }}">
+                    <span class="sidebar-menu-icon">
+                        <i data-feather="message-square"></i>
+                    </span>
+                    <span class="sidebar-menu-text">Chat</span>
                 </a>
             </li>
-        </ul>
-        <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
+        @endcan
 
+        <!-- Calendar -->
+        @can('calendar.view')
             <li>
-                <button type="button"
-                    class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                    aria-controls="dropdown-authentication" data-collapse-toggle="dropdown-authentication">
-                    <x-icons.lock />
-                    <span class="flex-1 ml-3 text-left whitespace-nowrap">Authentication</span>
-                    <x-icons.down-arrow />
-
-                </button>
-                <ul id="dropdown-authentication"
-                    class="{{ request()->routeIs('admin.roles.index') || request()->routeIs('admin.user.index') ? '' : 'hidden' }}
-                            py-2 space-y-2">
-                    @can('role.view')
+                <a href="{{ route('admin.calendar') }}"
+                    class="sidebar-menu {{ request()->routeIs('admin.calendar') ? 'active' : '' }}">
+                    <span class="sidebar-menu-icon">
+                        <i data-feather="calendar"></i>
+                    </span>
+                    <span class="sidebar-menu-text">Calendar</span>
+                </a>
+            </li>
+        @endcan
+        <!-- Invoice -->
+        @can('invoice.view')
+            <li>
+                @can('invoice.create')
+                    <a href="javascript:void(0);"
+                        class="sidebar-menu {{ request()->routeIs('admin.invoice.create', 'admin.invoice.details') ? 'active' : '' }}">
+                        <span class="sidebar-menu-icon">
+                            <i data-feather="file-text"></i>
+                        </span>
+                        <span class="sidebar-menu-text ">Invoice</span>
+                        <span class="sidebar-menu-arrow">
+                            <i data-feather="chevron-right"></i>
+                        </span>
+                    </a>
+                @endcan
+                @can('invoice.view')
+                    <ul class="sidebar-submenu">
                         <li>
-                            <a href="{{ route('admin.roles.index') }}"
-                                class="flex items-center p-2 pl-11 w-full text-base font-medium 
-                                    rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700
-                                    {{ request()->routeIs('admin.roles.index') ? 'text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-900' : 'text-gray-900  dark:text-white ' }} active ">
-
-                                <x-icons.sheild />
-                                <span class="flex-1 ms-3 whitespace-nowrap">{{ __('Role') }}</span>
+                            <a href="{{ route('admin.invoice.create') }}"
+                                class="sidebar-submenu-item {{ request()->routeIs('admin.invoice.create') ? 'active' : '' }}">
+                                Create
                             </a>
+                        </li>
 
+                        <li>
+                            <a href="{{ route('admin.invoice.details') }}"
+                                class="sidebar-submenu-item {{ request()->routeIs('admin.invoice.details') ? 'active' : '' }}">
+                                Details
+                            </a>
+                        </li>
+                    </ul>
+                @endcan
+            </li>
+        @endcan
+        <!-- ecommnerce -->
+        @can('ecommerce.view')
+            <li>
+                <a href="javascript:void(0);"
+                    class="sidebar-menu {{ request()->routeIs([
+                        'admin.product.index',
+                        'admin.product.edit',
+                        'admin.order.index',
+                        'admin.order.show',
+                        'admin.customer.index',
+                    ])
+                        ? 'active'
+                        : '' }}">
+                    <span class="sidebar-menu-icon">
+                        <i data-feather="shopping-bag"></i>
+                    </span>
+                    <span class="sidebar-menu-text">Ecommerce</span>
+                    <span class="sidebar-menu-arrow">
+                        <i data-feather="chevron-right"></i>
+                    </span>
+                </a>
+                <ul class="sidebar-submenu">
+                    @can('product.view')
+                        <li>
+                            <a href="{{ route('admin.product.index') }}"
+                                class="sidebar-submenu-item {{ request()->routeIs('admin.product.index') ? 'active' : '' }}">
+                                Product List </a>
                         </li>
                     @endcan
-                    @can('user.view')
+                    @can('product.edit')
                         <li>
-                            <a href="{{ route('admin.user.index') }}"
-                                class="flex items-center p-2 pl-11 w-full text-base font-medium 
-                                    rounded-lg transition duration-75 group hover:bg-gray-100 dark:hover:bg-gray-700
-                                    {{ request()->routeIs('admin.user.index') ? 'text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-900' : 'text-gray-900  dark:text-white ' }} active  ">
-                                <x-icons.user />
-                                <span class="flex-1 ms-3 whitespace-nowrap">{{ __('Users') }}</span>
-                            </a>
+                            <a href="{{ route('admin.product.edit') }}"
+                                class="sidebar-submenu-item {{ request()->routeIs('admin.product.edit') ? 'active' : '' }}">
+                                Product Edit </a>
+                        </li>
+                    @endcan
+                    @can('order.view')
+                        <li>
+                            <a href="{{ route('admin.order.index') }}"
+                                class="sidebar-submenu-item {{ request()->routeIs('admin.order.index') ? 'active' : '' }}">
+                                Order List </a>
+                        </li>
+                    @endcan
+                    @can('order.view')
+                        <li>
+                            <a href="{{ route('admin.order.show') }}"
+                                class="sidebar-submenu-item {{ request()->routeIs('admin.order.show') ? 'active' : '' }}">
+                                Order Details </a>
+                        </li>
+                    @endcan
+                    @can('customer.view')
+                        <li>
+                            <a href="{{ route('admin.customer.index') }}"
+                                class="sidebar-submenu-item {{ request()->routeIs('admin.customer.index') ? 'active' : '' }}">
+                                Customer List </a>
                         </li>
                     @endcan
                 </ul>
             </li>
+        @endcan
+        <!-- Users -->
+        <li>
+            <a href="javascript:void(0);"
+                class="sidebar-menu {{ request()->routeIs(['admin.user.index', 'admin.roles.index']) ? 'active' : '' }}">
 
-            <li>
-                <button type="button"
-                    class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                    aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
-                    <x-icons.file-docs />
-
-                    <span class="flex-1 ml-3 text-left whitespace-nowrap">{{ __('Pages') }}</span>
-                    <x-icons.down-arrow />
-
-                </button>
-                <ul id="dropdown-pages" class="hidden py-2 space-y-2">
+                <span class="sidebar-menu-icon">
+                    <i data-feather="users"></i>
+                </span>
+                <span class="sidebar-menu-text">Users</span>
+                <span class="sidebar-menu-arrow">
+                    <i data-feather="chevron-right"></i>
+                </span>
+            </a>
+            <ul class="sidebar-submenu ">
+                @can('user.view')
                     <li>
+                        <a href="{{ route('admin.user.index') }}"
+                            class="sidebar-submenu-item {{ request()->routeIs('admin.user.index') ? 'active' : '' }}">
+                            User</a>
+                    </li>
+                @endcan
+                @can('role.view')
+                    <li>
+                        <a href="{{ route('admin.roles.index') }}"
+                            class="sidebar-submenu-item {{ request()->routeIs('admin.roles.index') ? 'active' : '' }}">
+                            Role & Permission </a>
+                    </li>
+                @endcan
+            </ul>
+        </li>
+        <!--  Commponents  -->
+        <div class="sidebar-menu-header">Components</div>
+        <!-- Common  -->
+        @php
+            $commonRoutes = [
+                'admin.common.accordion' => 'Accordion',
+                'admin.common.alert' => 'Alert',
+                'admin.common.avatar' => 'Avatar',
+                'admin.common.badge' => 'Badge',
+                'admin.common.button' => 'Button',
+                'admin.common.card' => 'Card',
+                'admin.common.carousel' => 'Carousel',
+                'admin.common.drawer' => 'Drawer',
+                'admin.common.dropdown' => 'Dropdown',
+                'admin.common.list.group' => 'List Group',
+                'admin.common.modal' => 'Modal',
+                'admin.common.pagination' => 'Pagination',
+                'admin.common.progress.bar' => 'Progress',
+                'admin.common.spinner' => 'Spinner',
+                'admin.common.tabs' => 'Tab',
+                'admin.common.toast' => 'Toast',
+                'admin.common.tooltip' => 'Tooltip',
+                'admin.common.skeleton' => 'Skeleton',
+            ];
 
-                        <a href="#"
-                            class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                            <x-icons.pages />
-                            <span class="flex-1 ms-2 whitespace-nowrap">{{ __('All pages') }}</span>
+        @endphp
+
+        <li>
+            <a href="javascript:void(0);"
+                class="sidebar-menu {{ collect($commonRoutes)->keys()->contains(request()->route()->getName())? 'active': '' }}">
+                <span class="sidebar-menu-icon">
+                    <i data-feather="box"></i>
+                </span>
+                <span class="sidebar-menu-text">Common</span>
+                <span class="sidebar-menu-arrow">
+                    <i data-feather="chevron-right"></i>
+                </span>
+            </a>
+            <ul class="sidebar-submenu">
+                @foreach ($commonRoutes as $route => $name)
+                    <li>
+                        <a href="{{ route($route) }}"
+                            class="sidebar-submenu-item {{ request()->routeIs($route) ? 'active' : '' }}">
+                            {{ $name }}
                         </a>
                     </li>
+                @endforeach
+            </ul>
+        </li>
+
+        <!-- Forms  -->
+        @php
+            $formRoutes = [
+                'admin.form.input' => 'Input',
+                'admin.form.input.group' => 'Input Group',
+                'admin.form.textarea' => 'Textarea',
+                'admin.form.checkbox' => 'Checkbox',
+                'admin.form.radio' => 'Radio',
+                'admin.form.toggle' => 'Toggle',
+                'admin.form.select' => 'Select',
+                'admin.form.datepicker' => 'Datepicker',
+                'admin.form.editor' => 'Editor',
+                'admin.form.uploader' => 'Uploader',
+                'admin.form.layout' => 'Layout',
+                'admin.form.validation' => 'Validation',
+            ];
+        @endphp
+        <li>
+            <a href="javascript:void(0);"
+                class="sidebar-menu {{ collect($formRoutes)->keys()->contains(request()->route()->getName())? 'active': '' }}">
+                <span class="sidebar-menu-icon">
+                    <i data-feather="edit"></i>
+                </span>
+                <span class="sidebar-menu-text">Forms</span>
+                <span class="sidebar-menu-arrow">
+                    <i data-feather="chevron-right"></i>
+                </span>
+            </a>
+            <ul class="sidebar-submenu">
+                @foreach ($formRoutes as $route => $name)
                     <li>
-                        <a href="#"
-                            class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                            <x-icons.category />
-                            <span class="flex-1 ms-2 whitespace-nowrap">{{ __('Menu') }}</span>
+                        <a href="{{ route($route) }}"
+                            class="sidebar-submenu-item {{ request()->routeIs($route) ? 'active' : '' }}">
+                            {{ $name }}
                         </a>
                     </li>
-                </ul>
-            </li>
+                @endforeach
+            </ul>
+        </li>
 
-        </ul>
-    </div>
-    <x-sidebar-footer />
+        <!-- Tables  -->
+        <li>
+            <a href="javascript:void(0);"
+                class="sidebar-menu {{ request()->routeIs('admin.table.data', 'admin.table.basic') ? 'active' : '' }}">
+                <span class="sidebar-menu-icon">
+                    <i data-feather="list"></i>
+                </span>
+                <span class="sidebar-menu-text">Tables</span>
+                <span class="sidebar-menu-arrow">
+                    <i data-feather="chevron-right"></i>
+                </span>
+            </a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="{{ route('admin.table.basic') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.table.basic') ? 'active' : '' }}">
+                        Basic Table </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.table.data') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.table.data') ? 'active' : '' }}">
+                        Data Table </a>
+                </li>
+            </ul>
+        </li>
+        <!-- Charts  -->
+        <li>
+            <a href="{{ route('admin.chart.index') }}"
+                class="sidebar-menu {{ request()->routeIs('admin.chart.index') ? 'active' : '' }}">
+                <span class="sidebar-menu-icon">
+                    <i data-feather="pie-chart"></i>
+                </span>
+                <span class="sidebar-menu-text">Charts</span>
+            </a>
+        </li>
+        <!-- Icons-->
+        <li>
+            <a href="{{ route('admin.icons.index') }}"
+                class="sidebar-menu {{ request()->routeIs('admin.icons.index') ? 'active' : '' }}">
+                <span class="sidebar-menu-icon">
+                    <i data-feather="italic"></i>
+                </span>
+                <span class="sidebar-menu-text">Icons</span>
+            </a>
+        </li>
+        <!-- Typography-->
+        <li>
+            <a href="{{ route('admin.typography.index') }}"
+                class="sidebar-menu {{ request()->routeIs('admin.typography.index') ? 'active' : '' }}">
+                <span class="sidebar-menu-icon">
+                    <i data-feather="type"></i>
+                </span>
+                <span class="sidebar-menu-text">Typography</span>
+            </a>
+        </li>
+        <!--  Pages  -->
+        <div class="sidebar-menu-header">Pages</div>
+        <!-- Authentication  -->
+        <li>
+            <a href="javascript:void(0);"
+                class="sidebar-menu {{ request()->routeIs([
+                    'admin.authentication.login',
+                    'admin.authentication.register',
+                    'admin.authentication.recover.password',
+                    'admin.authentication.reset.password',
+                ])
+                    ? 'active'
+                    : '' }}">
+
+                <span class="sidebar-menu-icon">
+                    <i data-feather="lock"></i>
+                </span>
+                <span class="sidebar-menu-text">Authentication</span>
+                <span class="sidebar-menu-arrow">
+                    <i data-feather="chevron-right"></i>
+                </span>
+            </a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="{{ route('admin.authentication.login') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.authentication.login') ? 'active' : '' }}">Login</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.authentication.register') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.authentication.register') ? 'active' : '' }}">
+                        Register </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.authentication.recover.password') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.authentication.recover.password') ? 'active' : '' }}">
+                        Forgot Password </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.authentication.reset.password') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.authentication.reset.password') ? 'active' : '' }}">
+                        Reset Password </a>
+                </li>
+            </ul>
+        </li>
+        <!-- Miscellaneous  -->
+        <li>
+            <a href="javascript:void(0);"
+                class="sidebar-menu {{ request()->routeIs('admin.miscellaneous.starter', 'admin.miscellaneous.comming.soon', 'admin.miscellaneous.maintenance', 'admin.miscellaneous.404', 'admin.miscellaneous.500', 'admin.miscellaneous.403') ? 'active' : '' }}">
+                <span class="sidebar-menu-icon">
+                    <i data-feather="grid"></i>
+                </span>
+                <span class="sidebar-menu-text">Miscellaneous</span>
+                <span class="sidebar-menu-arrow">
+                    <i data-feather="chevron-right"></i>
+                </span>
+            </a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="{{ route('admin.miscellaneous.starter') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.miscellaneous.starter') ? 'active' : '' }}">
+                        Starter Page </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.miscellaneous.comming.soon') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.miscellaneous.comming.soon') ? 'active' : '' }}">
+                        Coming Soon </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.miscellaneous.maintenance') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.miscellaneous.maintenance') ? 'active' : '' }}">
+                        Maintenance </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.miscellaneous.404') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.miscellaneous.404') ? 'active' : '' }}">
+                        Error 404 </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.miscellaneous.500') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.miscellaneous.500') ? 'active' : '' }}">
+                        Error 500 </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.miscellaneous.403') }}"
+                        class="sidebar-submenu-item {{ request()->routeIs('admin.miscellaneous.403') ? 'active' : '' }}">
+                        Not Authorized </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <!-- Sidebar Menu Ends -->
 </aside>

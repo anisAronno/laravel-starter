@@ -1,64 +1,129 @@
- <!-- Notifications -->
- <button type="button" data-dropdown-toggle="notification-dropdown"
-     class="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
-     <span class="sr-only">View notifications</span>
-     <!-- Bell icon -->
-     <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-         <path
-             d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z">
-         </path>
-     </svg>
- </button>
- <!-- Dropdown menu -->
- <div class="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700 rounded-xl"
-     id="notification-dropdown">
-     <div
-         class="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-600 dark:text-gray-300">
-         Notifications
-     </div>
-     <div>
-         <a href="#"
-             class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
-             <div class="flex-shrink-0">
-                 <img class="w-11 h-11 rounded-full"
-                     src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-                     alt="Bonnie Green avatar" />
-                 <div
-                     class="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 rounded-full border border-white bg-primary-700 dark:border-gray-700">
-                     <svg aria-hidden="true" class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"
-                         xmlns="http://www.w3.org/2000/svg">
-                         <path
-                             d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z">
-                         </path>
-                         <path
-                             d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z">
-                         </path>
-                     </svg>
-                 </div>
-             </div>
-             <div class="pl-3 w-full">
-                 <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
-                     New message from
-                     <span class="font-semibold text-gray-900 dark:text-white">Bonnie Green</span>: "Hey, what's up? All
-                     set for the presentation?"
-                 </div>
-                 <div class="text-xs font-medium text-primary-600 dark:text-primary-500">
-                     a few moments ago
-                 </div>
-             </div>
-         </a>
-     </div>
-     <a href="#"
-         class="block py-2 text-md font-medium text-center text-gray-900 bg-gray-50 hover:bg-gray-100 dark:bg-gray-600 dark:text-white dark:hover:underline">
-         <div class="inline-flex items-center">
-             <svg aria-hidden="true" class="mr-2 w-4 h-4 text-gray-500 dark:text-gray-400" fill="currentColor"
-                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                 <path fill-rule="evenodd"
-                     d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                     clip-rule="evenodd"></path>
-             </svg>
-             View all
-         </div>
-     </a>
- </div>
+<div class="dropdown -mt-0.5" data-strategy="absolute">
+    <div class="dropdown-toggle px-3">
+      <button
+        class="relative mt-1 flex items-center justify-center rounded-full text-slate-500 transition-colors duration-150 hover:text-slate-700 focus:text-primary-500 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:text-primary-500"
+      >
+        <i width="24" height="24" data-feather="bell"></i>
+        <span
+          class="absolute -right-1 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-danger-500 text-[11px] text-slate-200"
+        >
+          5
+        </span>
+      </button>
+    </div>
+
+    <div class="dropdown-content mt-3 w-[17.5rem] divide-y dark:divide-slate-700 sm:w-80">
+      <div class="flex items-center justify-between px-4 py-4">
+        <h6 class="text-slate-800 dark:text-slate-300">Notifications</h6>
+        <button class="text-xs font-medium text-slate-600 hover:text-primary-500 dark:text-slate-300">
+          Clear All
+        </button>
+      </div>
+
+      <div class="h-80 w-full" data-simplebar>
+        <ul>
+          <li
+            class="flex cursor-pointer gap-4 px-4 py-3 transition-colors duration-150 hover:bg-slate-100/70 dark:hover:bg-slate-700"
+          >
+            <div
+              class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-500"
+            >
+              <i data-feather="alert-circle" width="20" height="20"></i>
+            </div>
+
+            <div>
+              <h6 class="text-sm font-normal">New order received</h6>
+              <p class="text-xs text-slate-400">Order #1234 has been placed</p>
+              <p class="mt-1 flex items-center gap-1 text-xs text-slate-400">
+                <i data-feather="clock" width="1em" height="1em"></i>
+                <span>2 min ago</span>
+              </p>
+            </div>
+          </li>
+
+          <li
+            class="flex cursor-pointer gap-4 px-4 py-3 transition-colors duration-150 hover:bg-slate-100/70 dark:hover:bg-slate-700"
+          >
+            <div
+              class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-yellow-100 text-yellow-500"
+            >
+              <i data-feather="alert-triangle" width="20" height="20"></i>
+            </div>
+
+            <div>
+              <h6 class="text-sm font-normal">High CPU usage</h6>
+              <p class="text-xs text-slate-400">CPU usage is at 92%</p>
+              <p class="mt-1 flex items-center gap-1 text-xs text-slate-400">
+                <i data-feather="clock" width="1em" height="1em"></i>
+                <span>5 min ago</span>
+              </p>
+            </div>
+          </li>
+
+          <li
+            class="flex cursor-pointer gap-4 px-4 py-3 transition-colors duration-150 hover:bg-slate-100/70 dark:hover:bg-slate-700"
+          >
+            <div
+              class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-green-100 text-green-500"
+            >
+              <i data-feather="check-circle" width="20" height="20"></i>
+            </div>
+
+            <div>
+              <h6 class="text-sm font-normal">Your order has been shipped</h6>
+              <p class="text-xs text-slate-400">Order #1234 has been shipped</p>
+              <p class="mt-1 flex items-center gap-1 text-xs text-slate-400">
+                <i data-feather="clock" width="1em" height="1em"></i>
+                <span>10 min ago</span>
+              </p>
+            </div>
+          </li>
+
+          <li
+            class="flex cursor-pointer gap-4 px-4 py-3 transition-colors duration-150 hover:bg-slate-100/70 dark:hover:bg-slate-700"
+          >
+            <div
+              class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-danger-100 text-danger-500"
+            >
+              <i data-feather="x-circle" width="20" height="20"></i>
+            </div>
+
+            <div>
+              <h6 class="text-sm font-normal">Something went wrong</h6>
+              <p class="text-xs text-slate-400">Order #1234 has been placed</p>
+              <p class="mt-1 flex items-center gap-1 text-xs text-slate-400">
+                <i data-feather="clock" width="1em" height="1em"></i>
+                <span>1 hour ago</span>
+              </p>
+            </div>
+          </li>
+
+          <li
+            class="flex cursor-pointer gap-4 px-4 py-3 transition-colors duration-150 hover:bg-slate-100/70 dark:hover:bg-slate-700"
+          >
+            <div
+              class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-green-100 text-green-500"
+            >
+              <i data-feather="check-circle" width="20" height="20"></i>
+            </div>
+
+            <div>
+              <h6 class="text-sm font-normal">Your order has been shipped</h6>
+              <p class="text-xs text-slate-400">Order #1234 has been shipped</p>
+              <p class="mt-1 flex items-center gap-1 text-xs text-slate-400">
+                <i data-feather="clock" width="1em" height="1em"></i>
+                <span>10 min ago</span>
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="px-4 py-2">
+        <button class="btn btn-primary-plain btn-sm w-full" type="button">
+          <span>View More</span>
+          <i data-feather="arrow-right" width="1rem" height="1rem"></i>
+        </button>
+      </div>
+    </div>
+  </div>

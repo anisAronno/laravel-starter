@@ -1,0 +1,64 @@
+@layer components {
+  .modal {
+    $modal: &;
+    @apply fixed inset-0 z-[999] hidden h-full w-full flex-col overflow-y-auto overflow-x-hidden px-4 py-10;
+
+    &-full {
+      @apply p-0;
+    }
+
+    &-centered {
+      @apply justify-center;
+    }
+
+    &-dialog {
+      @apply relative z-[1001] mx-auto w-full max-w-xl origin-center scale-90 transform opacity-0 transition-all duration-500 ease-in-out;
+
+      #{$modal}-sm & {
+        @apply max-w-md;
+      }
+
+      #{$modal}-lg & {
+        @apply max-w-3xl;
+      }
+
+      #{$modal}-full & {
+        @apply h-screen max-w-full;
+      }
+
+      #{$modal}.show & {
+        @apply scale-100 opacity-100;
+      }
+    }
+
+    &-content {
+      @apply relative flex h-full w-full flex-col overflow-hidden rounded-primary bg-white shadow-xl dark:bg-slate-800;
+    }
+
+    &-header,
+    &-body,
+    &-footer {
+      @apply px-4 py-4;
+    }
+
+    &-header {
+      @apply border-b border-b-slate-200 dark:border-b-slate-600;
+    }
+
+    &-body {
+      @apply flex-grow overflow-auto;
+    }
+
+    &-footer {
+      @apply border-t border-t-slate-300 dark:border-t-slate-600;
+    }
+
+    &-backdrop {
+      @apply fixed inset-0 z-[1000] h-full w-full bg-black opacity-0 transition-opacity duration-500 ease-in-out;
+
+      &.show {
+        @apply opacity-40;
+      }
+    }
+  }
+}
