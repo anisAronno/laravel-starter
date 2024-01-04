@@ -6,7 +6,6 @@ import feather from 'feather-icons';
 import ResizeObserver from 'resize-observer-polyfill';
 import 'simplebar';
 
-import 'flowbite';
 import './bootstrap';
 
 if (window.currentRoute === 'admin.ecommerce.report') {

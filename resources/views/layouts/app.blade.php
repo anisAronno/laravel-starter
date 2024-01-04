@@ -52,7 +52,7 @@
             <!-- Page Content Starts -->
             <div class="content">
                 <!-- Main Content Starts -->
-                <main class="container flex-grow p-4 sm:p-6">
+                <main class="container flex-grow p-2 sm:p-4 md:p-6">
                     {{ $slot }}
                 </main>
                 <!-- Main Content Ends -->
