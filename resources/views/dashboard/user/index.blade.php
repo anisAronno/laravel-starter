@@ -53,7 +53,7 @@
                     </div>
                     @if ($users->count() > 0)
                         <div class="overflow-x-auto p-5 md:p-0">
-                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 hidden sm:table">
+                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 custom-data-table">
                                 <thead
                                     class="text-md text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>

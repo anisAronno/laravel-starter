@@ -53,7 +53,7 @@
                     </div>
                     @if ($roles->count() > 0)
                         <div class="overflow-x-auto">
-                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 hidden sm:table">
+                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 custom-data-table">
                                 <thead
                                     class="text-md text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
@@ -81,7 +81,8 @@
                                             </td>
                                             <td class="px-4 py-3 text-md xl:text-lg">
                                                 {{ $role->created_at->diffForHumans() }}</td>
-                                            <td class="px-4 py-3 dropdown">
+
+                                            <td class="px-4 py-3 text-md xl:text-lg">
                                                 <button
                                                     class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100 float-end dropdown-toggle"
                                                     type="button">
@@ -149,8 +150,9 @@
                                         <div class="card-header flex justify-between items-center">
                                             <div class="card-title capitalize">
                                                 <p>{{ $role->name }}</p>
-                                                <p class=" text-xs font-light"> <span>Created: </span> {{ $role->created_at->diffForHumans() }} </p>
-                                                
+                                                <p class=" text-xs font-light"> <span>Created: </span>
+                                                    {{ $role->created_at->diffForHumans() }} </p>
+
                                             </div>
                                             <div class="px-4 py-3 dropdown">
                                                 <button
@@ -210,7 +212,7 @@
                                         <div class="card-body">
                                             <div class="card-content">
                                                 <p class="card-title flex gap-2 ">
-                                                     @foreach ($role->permissions as $permission)
+                                                    @foreach ($role->permissions as $permission)
                                                         <div class="flex flex-wrap grow my-1">
                                                             <span class="flex gap-2 items-center">
                                                                 <x-icons.sheild class="text-blue-400" />
@@ -220,7 +222,7 @@
                                                             </span>
                                                         </div>
                                                     @endforeach
-                                                </p> 
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
