@@ -53,7 +53,7 @@
                     </div>
                     @if ($roles->count() > 0)
                         <div class="overflow-x-auto">
-                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 hidden sm:table">
                                 <thead
                                     class="text-md text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
@@ -81,10 +81,9 @@
                                             </td>
                                             <td class="px-4 py-3 text-md xl:text-lg">
                                                 {{ $role->created_at->diffForHumans() }}</td>
-                                            <td class="px-4 py-3">
-                                                <button id="{{ $role->name }}-dropdown-button"
-                                                    data-dropdown-toggle="{{ $role->name }}-dropdown"
-                                                    class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100 float-end "
+                                            <td class="px-4 py-3 dropdown">
+                                                <button
+                                                    class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100 float-end dropdown-toggle"
                                                     type="button">
                                                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor"
                                                         viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -92,10 +91,9 @@
                                                             d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                                                     </svg>
                                                 </button>
-                                                <div id="{{ $role->name }}-dropdown"
-                                                    class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                                                        aria-labelledby="{{ $role->name }}-dropdown-button">
+                                                <div
+                                                    class=" dropdown-content z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                                                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200">
                                                         @can('role.view')
                                                             <li>
                                                                 <a href="{{ route('admin.roles.show', $role->id) }}"
@@ -109,7 +107,6 @@
 
                                                         @can('role.edit')
                                                             @if ($role->id != 1)
-                                                                )
                                                                 <li>
                                                                     <a href="{{ route('admin.roles.edit', $role->id) }}"
                                                                         class="flex items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
@@ -146,12 +143,95 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="sm:hidden">
+                                @foreach ($roles as $role)
+                                    <div class="card my-4 overflow-x-auto shadow-sm shadow-gray-300 dark:shadow-gray-700">
+                                        <div class="card-header flex justify-between items-center">
+                                            <div class="card-title capitalize">
+                                                <p>{{ $role->name }}</p>
+                                                <p class=" text-xs font-light"> <span>Created: </span> {{ $role->created_at->diffForHumans() }} </p>
+                                                
+                                            </div>
+                                            <div class="px-4 py-3 dropdown">
+                                                <button
+                                                    class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100 float-end dropdown-toggle"
+                                                    type="button">
+                                                    <i class="ti ti-dots-vertical text-xl"></i>
+
+                                                </button>
+                                                <div
+                                                    class="z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 dropdown-content">
+                                                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200">
+                                                        @can('user.view')
+                                                            <li>
+                                                                <a href="{{ route('admin.user.show', $role->id) }}"
+                                                                    class=" py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center">
+                                                                    <x-icons.eye />
+                                                                    Show
+                                                                </a>
+                                                            </li>
+                                                        @endcan
+
+                                                        @can('user.edit')
+                                                            @if ($role->id != 1)
+                                                                <li>
+                                                                    <a href="{{ route('admin.user.edit', $role->id) }}"
+                                                                        class="flex items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                                        <x-icons.edit />
+                                                                        Edit
+                                                                    </a>
+                                                                </li>
+                                                            @endif
+                                                        @endcan
+                                                    </ul>
+                                                    @can('user.delete')
+                                                        @if (!in_array($role->id, [1, 2]))
+                                                            <div class="py-1">
+                                                                <a href="#"
+                                                                    onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user?')) { document.getElementById('delete-user-{{ $role->id }}').submit(); }"
+                                                                    class="flex items-center py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                                                    <x-icons.trash />
+                                                                    Delete
+                                                                </a>
+
+                                                                <form id="delete-user-{{ $role->id }}"
+                                                                    action="{{ route('admin.user.destroy', $role->id) }}"
+                                                                    method="POST" style="display: none;">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                </form>
+
+                                                            </div>
+                                                        @endif
+                                                    @endcan
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="card-content">
+                                                <p class="card-title flex gap-2 ">
+                                                     @foreach ($role->permissions as $permission)
+                                                        <div class="flex flex-wrap grow my-1">
+                                                            <span class="flex gap-2 items-center">
+                                                                <x-icons.sheild class="text-blue-400" />
+                                                                <span class="text-gray-700 dark:text-gray-100 ">
+                                                                    {{ $permission->name }}
+                                                                </span>
+                                                            </span>
+                                                        </div>
+                                                    @endforeach
+                                                </p> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
 
                         <div class="grid grid-cols-1 justify-between items-start md:items-center space-y-3 md:space-y-0 p-4 w-full text-gray-700 dark:text-gray-100"
                             aria-label="Table navigation">
                             @if ($roles->hasPages())
-                                {{ $roles->links() }} 
+                                {{ $roles->links() }}
                             @endif
                         </div>
                     @else

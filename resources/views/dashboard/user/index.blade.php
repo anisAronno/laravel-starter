@@ -1,7 +1,7 @@
 @can('user.view')
     <x-app-layout>
-        <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
-            <div class="mx-auto   px-4 lg:px-6">
+        <section class="bg-gray-50 dark:bg-gray-900 p-2 sm:p-5">
+            <div class="mx-auto px-1 sm:px-4 lg:px-6">
                 <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                     <div
                         class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
@@ -52,15 +52,15 @@
                         </div>
                     </div>
                     @if ($users->count() > 0)
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <div class="overflow-x-auto p-5 md:p-0">
+                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 hidden sm:table">
                                 <thead
                                     class="text-md text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th scope="col" class="px-4 py-3">Name</th>
-                                        <th scope="col" class="px-4 py-3">email</th>
-                                        <th scope="col" class="px-4 py-3">phone</th>
-                                        <th scope="col" class="px-4 py-3">Role</th>
+                                        <th scope="col" class="px-4 py-3 hidden lg:table-cell">email</th>
+                                        <th scope="col" class="px-4 py-3 hidden md:table-cell">phone</th>
+                                        <th scope="col" class="px-4 py-3 ">Role</th>
                                         <th scope="col" class="px-4 py-3">status</th>
                                         <th scope="col" class="px-4 py-3">Created At</th>
                                         <th scope="col" class="px-4  py-3">Actions</th>
@@ -69,34 +69,50 @@
                                 <tbody>
                                     @foreach ($users as $user)
                                         <tr class="border-b dark:border-gray-700 ">
-                                            <th scope="row"
-                                                class="px-4 py-3 font-medium text-md xl:text-lg text-gray-900 whitespace-nowrap dark:text-white capitalize">
-                                                {{ $user->name }}</th>
-                                            <th scope="row"
-                                                class="px-4 py-3 font-medium text-md  text-gray-900 whitespace-nowrap dark:text-white  ">
-                                                {{ $user->email }}</th>
-                                            <th scope="row"
-                                                class="px-4 py-3 font-medium text-md  text-gray-900 whitespace-nowrap dark:text-white  ">
-                                                {{ $user->phone }}</th>
-                                            <td
-                                                class="px-4 py-3 text-md  text-gray-500 grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-4  gap-2 truncate">
+                                            <td scope="row"
+                                                class="px-4 py-3 font-medium text-sm xl:text-md text-gray-900   dark:text-white  w-full sm:w-min max-w-0 sm:max-w-none ">
+                                                <span class="capitalize">
+                                                    {{ $user->name }}
+                                                </span>
+                                                <dl class="lg:hidden font-normal">
+                                                    <dt class="sr-only ">Email</dt>
+                                                    <dd
+                                                        class="mt-1 text-gray-800 dark:text-gray-200 md:text-gray-900 md:dark:text-gray-100 lg:hidden truncate">
+                                                        {{ $user->email }}
+                                                    </dd>
+                                                    <dt class="sr-only lg:hidden">Phone:</dt>
+                                                    <dd class="mt-1 md:hidden text-gray-700 dark:text-gray-300 truncate">
+                                                        {{ $user->phone }}
+                                                    </dd>
+                                                </dl>
+
+                                            </td>
+                                            <td scope="row"
+                                                class="px-4 py-3 font-medium text-md  text-gray-900 whitespace-nowrap dark:text-white hidden lg:table-cell max-w-0 lg:max-w-none truncate">
+                                                {{ $user->email }}</td>
+                                            <td scope="row"
+                                                class="px-4 py-3 font-medium text-md  text-gray-900 whitespace-nowrap dark:text-white hidden md:table-cell max-w-0 md:max-w-none truncate">
+                                                {{ $user->phone }}</td>
+                                            <td class="px-4 py-3 text-md  text-gray-500  ">
                                                 @foreach ($user->roles as $role)
                                                     <span class="flex gap-1 items-center">
                                                         <x-icons.sheild class="text-blue-400" />
-                                                        <span
-                                                            class="text-gray-700 dark:text-gray-100 truncate">{{ $role->name }}</span>
+                                                        <span class="text-gray-700 dark:text-gray-100 ">
+                                                            {{ $role->name }}
+                                                        </span>
                                                     </span>
                                                 @endforeach
                                             </td>
-                                            <th scope="row"
-                                                class="px-4 py-3 font-medium text-md xl:text-lg text-gray-900 whitespace-nowrap dark:text-white capitalize">
-                                                {{ $user->status }}</th>
-                                            <td class="px-4 py-3 text-md xl:text-lg">
-                                                {{ $user->created_at->diffForHumans() }}</td>
-                                            <td class="px-4 py-3">
-                                                <button id="{{ $user->name }}-dropdown-button"
-                                                    data-dropdown-toggle="{{ $user->name }}-dropdown"
-                                                    class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100 float-end "
+                                            <td scope="row"
+                                                class="px-4 py-3 font-medium text-sm xl:text-md text-gray-900 whitespace-nowrap dark:text-white capitalize">
+                                                {{ $user->status }}
+                                            </td>
+                                            <td class="px-4 py-3 text-sm xl:text-md  truncate">
+                                                {{ $user->created_at->diffForHumans() }}
+                                            </td>
+                                            <td class="px-4 py-3 dropdown">
+                                                <button
+                                                    class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100 float-end dropdown-toggle"
                                                     type="button">
                                                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor"
                                                         viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -104,10 +120,9 @@
                                                             d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                                                     </svg>
                                                 </button>
-                                                <div id="{{ $user->name }}-dropdown"
-                                                    class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                                                        aria-labelledby="{{ $user->name }}-dropdown-button">
+                                                <div
+                                                    class="z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 dropdown-content">
+                                                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200">
                                                         @can('user.view')
                                                             <li>
                                                                 <a href="{{ route('admin.user.show', $user->id) }}"
@@ -131,7 +146,7 @@
                                                         @endcan
                                                     </ul>
                                                     @can('user.delete')
-                                                        @if (!in_array($user->id, [1, 2]))
+                                                        @if ($user->isDeletable)
                                                             <div class="py-1">
                                                                 <a href="#"
                                                                     onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user?')) { document.getElementById('delete-user-{{ $user->id }}').submit(); }"
@@ -156,12 +171,102 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="sm:hidden">
+                                @foreach ($users as $user)
+                                    <div class="card my-3 overflow-x-auto shadow-md shadow-gray-300 dark:shadow-gray-700">
+                                        <div class="card-header flex justify-between items-center">
+                                            <h4 class="card-title">{{ $user->name }}</h4>
+                                            <div class="px-4 py-3 dropdown">
+                                                <button
+                                                    class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100 float-end dropdown-toggle"
+                                                    type="button">
+                                                    <i class="ti ti-dots-vertical text-xl"></i>
+
+                                                </button>
+                                                <div
+                                                    class="z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 dropdown-content">
+                                                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200">
+                                                        @can('user.view')
+                                                            <li>
+                                                                <a href="{{ route('admin.user.show', $user->id) }}"
+                                                                    class=" py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center">
+                                                                    <x-icons.eye />
+                                                                    Show
+                                                                </a>
+                                                            </li>
+                                                        @endcan
+
+                                                        @can('user.edit')
+                                                            @if ($user->id != 1)
+                                                                <li>
+                                                                    <a href="{{ route('admin.user.edit', $user->id) }}"
+                                                                        class="flex items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                                        <x-icons.edit />
+                                                                        Edit
+                                                                    </a>
+                                                                </li>
+                                                            @endif
+                                                        @endcan
+                                                    </ul>
+                                                    @can('user.delete')
+                                                        @if ($user->isDeletable)
+                                                            <div class="py-1">
+                                                                <a href="#"
+                                                                    onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user?')) { document.getElementById('delete-user-{{ $user->id }}').submit(); }"
+                                                                    class="flex items-center py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                                                    <x-icons.trash />
+                                                                    Delete
+                                                                </a>
+
+                                                                <form id="delete-user-{{ $user->id }}"
+                                                                    action="{{ route('admin.user.destroy', $user->id) }}"
+                                                                    method="POST" style="display: none;">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                </form>
+
+                                                            </div>
+                                                        @endif
+                                                    @endcan
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-title flex gap-2 ">
+                                                <span>Email: </span> {{ $user->email }}
+                                            </p>
+                                            <div class="card-content">
+                                                <p class="card-title flex gap-2 ">
+                                                    <span>Phone: </span> {{ $user->phone }}
+                                                </p>
+                                                <p class="card-title flex gap-2 ">
+                                                    <span>Role: </span>
+                                                    @foreach ($user->roles as $role)
+                                                        <span class="flex gap-1 items-center">
+                                                            <x-icons.sheild class="text-blue-400" />
+                                                            <span class="text-gray-700 dark:text-gray-100 ">
+                                                                {{ $role->name }}
+                                                            </span>
+                                                        </span>
+                                                    @endforeach
+                                                </p>
+                                                <p class="card-title flex gap-2 ">
+                                                    <span>Status: </span> {{ $user->status }}
+                                                </p>
+                                                <p class="card-title flex gap-2 ">
+                                                    <span>Created: </span> {{ $user->created_at->diffForHumans() }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
 
                         <div class="grid grid-cols-1 justify-between items-start md:items-center space-y-3 md:space-y-0 p-4 w-full text-gray-700 dark:text-gray-100"
                             aria-label="Table navigation">
                             @if ($users->hasPages())
-                                {{ $users->links() }} 
+                                {{ $users->links() }}
                             @endif
                         </div>
                     @else

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3953ee3010ca207c799911774ebea482",
+    "content-hash": "dca6b1ca7e260997ace595b99a8e5bb6",
     "packages": [
         {
             "name": "anisaronno/laravel-media-gallery",
@@ -133,16 +133,16 @@
         },
         {
             "name": "anisaronno/laravel-settings",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/anisAronno/laravel-settings.git",
-                "reference": "4a81c08865873ecef23d7823243d7f54dc68e81d"
+                "reference": "8d7611c14f07382b016a9a7b3894214bd45485fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anisAronno/laravel-settings/zipball/4a81c08865873ecef23d7823243d7f54dc68e81d",
-                "reference": "4a81c08865873ecef23d7823243d7f54dc68e81d",
+                "url": "https://api.github.com/repos/anisAronno/laravel-settings/zipball/8d7611c14f07382b016a9a7b3894214bd45485fe",
+                "reference": "8d7611c14f07382b016a9a7b3894214bd45485fe",
                 "shasum": ""
             },
             "require": {
@@ -192,9 +192,9 @@
             ],
             "support": {
                 "issues": "https://github.com/anisAronno/laravel-settings/issues",
-                "source": "https://github.com/anisAronno/laravel-settings/tree/v1.0.0"
+                "source": "https://github.com/anisAronno/laravel-settings/tree/v1.1.0"
             },
-            "time": "2023-12-28T19:41:02+00:00"
+            "time": "2024-01-03T15:14:34+00:00"
         },
         {
             "name": "brick/math",
