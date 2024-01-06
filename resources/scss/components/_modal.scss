@@ -26,6 +26,10 @@
         @apply h-screen max-w-full;
       }
 
+      #{$modal}-semi-full & {
+        @apply h-screen max-w-[90%];
+      }
+
       #{$modal}.show & {
         @apply scale-100 opacity-100;
       }

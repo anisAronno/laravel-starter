@@ -22,6 +22,7 @@ class MediaFactory extends Factory
     {
         return [
             'title'      => $this->faker->name(),
+            'caption'    => $this->faker->name(),
             'url'        => $this->faker->imageUrl(),
             'mimes'      => 'media/png',
             'type'       => 'media/png',

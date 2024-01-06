@@ -17,6 +17,7 @@ return new class() extends Migration
         {
             $table->id();
             $table->string('title', 255)->nullable();
+            $table->string('caption', 255)->nullable();
             $table->string('url', 255);
             $table->string('mimes', 50)->nullable();
             $table->string('type', 50)->index()->nullable();

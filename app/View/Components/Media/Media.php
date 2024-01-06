@@ -32,7 +32,7 @@ class Media extends Component
             now()->addMinutes($cacheTTL),
             function ()
             {
-                return MediaGallery::query()
+                return MediaGallery::query()->with(['owner'])
                     ->when($this->request->has('search'), function ($query)
                     {
                         $query->where('title', 'LIKE', '%'.$this->request->input('search').'%');
