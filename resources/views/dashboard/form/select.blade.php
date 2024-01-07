@@ -239,7 +239,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content overflow-visible bg-white">
+                    <div class="code-viewer-content overflow-visible bg-white dark:bg-slate-900">
                         <select class="tom-select" autocomplete="off">
                             <option value="">Select a color</option>
                             <option value="1">Green</option>
@@ -270,7 +270,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content overflow-visible bg-white">
+                    <div class="code-viewer-content overflow-visible bg-white dark:bg-slate-900">
                         <select class="tom-select" multiple autocomplete="off">
                             <option value="">Select a color</option>
                             <option value="1">Green</option>
@@ -307,7 +307,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content overflow-visible bg-white">
+                    <div class="code-viewer-content overflow-visible bg-white dark:bg-slate-900">
                         <select class="tom-select" autocomplete="off">
                             <option value="">Select a color</option>
                             <optgroup label="Colors">
