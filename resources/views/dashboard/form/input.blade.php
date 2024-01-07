@@ -13,7 +13,7 @@
                 <p class="card-subtitle">Use the <code>input</code> class to create a basic input.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input type="text" class="input" placeholder="Phone" />
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                 <p class="card-subtitle">Example of an input with label.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <label class="label label-required mb-1" for="phone">Phone</label>
                         <input type="text" class="input" id="phone" />
                     </div>
@@ -46,7 +46,7 @@
                 <p class="card-subtitle">Example of an input with helper text.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input type="text" class="input" placeholder="Phone" />
                         <p class="help-text mt-1">The Phone must be a valid Phone address</p>
                     </div>
@@ -66,7 +66,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <div class="flex flex-col gap-4">
                             <input type="text" class="input input-sm" placeholder="Phone" />
                             <input type="text" class="input input-md" placeholder="Phone" />
@@ -86,7 +86,7 @@
                 <p class="card-subtitle">Use the <code>is-valid</code> class to create a valid input.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input type="text" class="input is-valid" placeholder="Phone" />
                         <p class="success-message mt-1">Looks good</p>
                     </div>
@@ -103,7 +103,7 @@
                 <p class="card-subtitle">Use the <code>is-invalid</code> class to create an invalid input.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input type="text" class="input is-invalid" placeholder="Phone" />
                         <p class="error-message mt-1">This field is required</p>
                     </div>
@@ -120,7 +120,7 @@
                 <p class="card-subtitle">Use the <code>disabled</code> attribute to create a disabled input.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input type="text" class="input" placeholder="Phone" disabled />
                     </div>
                 </div>

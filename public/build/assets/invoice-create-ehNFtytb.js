@@ -1,4 +1,4 @@
-import{f as r}from"./app-PCjOKslU.js";const l=document.querySelector("#table-products"),o=document.querySelector("#btn-add-item"),n=document.querySelectorAll(".btn-remove-item"),i=`
+import{f as r}from"./app-O_D2ROx5.js";const l=document.querySelector("#table-products"),o=document.querySelector("#btn-add-item"),n=document.querySelectorAll(".btn-remove-item"),i=`
   <tr>
     <td>
       <select class="select" autocomplete="off">

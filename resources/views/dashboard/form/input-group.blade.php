@@ -15,7 +15,7 @@
                 <p class="card-subtitle">Example of basic input groups.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <div class="flex flex-col gap-4">
                             <div class="input-group">
                                 <span class="input-group-text">@</span>
@@ -57,7 +57,7 @@
                 <p class="card-subtitle">Example of different sizes input group.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <div class="flex flex-col gap-4">
                             <div class="input-group">
                                 <span class="input-group-text">@</span>
@@ -86,7 +86,7 @@
                 <p class="card-subtitle">Example of multiple inputs in input group.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <div class="input-group">
                             <span class="input-group-text">Full name</span>
                             <input class="input" type="text" placeholder="First name" />
@@ -106,7 +106,7 @@
                 <p class="card-subtitle">Example of addons in input group.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <div class="flex flex-col gap-4">
                             <div class="input-group">
                                 <span class="input-group-text">$</span>
@@ -138,7 +138,7 @@
                 <p class="card-subtitle">Example of valid input in input group.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <div class="input-group">
                             <span class="input-group-text">@</span>
                             <input class="input is-valid" type="text" placeholder="Username" />
@@ -158,7 +158,7 @@
                 <p class="card-subtitle">Example of invalid input group.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <div class="input-group">
                             <span class="input-group-text">@</span>
                             <input class="input is-invalid" type="text" placeholder="Username" />
@@ -178,7 +178,7 @@
                 <p class="card-subtitle">Example of disabled input group.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <div class="input-group input-group-disabled">
                             <span class="input-group-text">@</span>
                             <input class="input" type="text" placeholder="Username" disabled />

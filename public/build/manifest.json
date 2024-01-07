@@ -1,12 +1,12 @@
 {
-  "_apexcharts.common-krrshxKX.js": {
-    "file": "assets/apexcharts.common-krrshxKX.js",
+  "_apexcharts.common-JDZGCvNX.js": {
+    "file": "assets/apexcharts.common-JDZGCvNX.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_tailwind.config-aQwIGLoG.js": {
-    "file": "assets/tailwind.config-aQwIGLoG.js",
+  "_tailwind.config-2rRSkGFz.js": {
+    "file": "assets/tailwind.config-2rRSkGFz.js",
     "imports": [
       "resources/js/app.js"
     ]
@@ -2226,34 +2226,34 @@
       "resources/js/custom/drawer.js",
       "resources/js/custom/carousel.js"
     ],
-    "file": "assets/app-PCjOKslU.js",
+    "file": "assets/app-O_D2ROx5.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
   "resources/js/custom/analytics.js": {
-    "file": "assets/analytics-FcvOFwri.js",
+    "file": "assets/analytics-Z9JHYkmO.js",
     "imports": [
-      "_tailwind.config-aQwIGLoG.js",
-      "_apexcharts.common-krrshxKX.js",
+      "_tailwind.config-2rRSkGFz.js",
+      "_apexcharts.common-JDZGCvNX.js",
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/custom/analytics.js"
   },
   "resources/js/custom/apex-charts.js": {
-    "file": "assets/apex-charts-nR69Y1WB.js",
+    "file": "assets/apex-charts-J8q4uQ0o.js",
     "imports": [
-      "_tailwind.config-aQwIGLoG.js",
-      "_apexcharts.common-krrshxKX.js",
+      "_tailwind.config-2rRSkGFz.js",
+      "_apexcharts.common-JDZGCvNX.js",
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/custom/apex-charts.js"
   },
   "resources/js/custom/calendar.js": {
-    "file": "assets/calendar-KeUycUU4.js",
+    "file": "assets/calendar-yZdpAGvz.js",
     "imports": [
-      "_tailwind.config-aQwIGLoG.js",
+      "_tailwind.config-2rRSkGFz.js",
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
@@ -2285,10 +2285,10 @@
     "src": "resources/js/custom/drawer.js"
   },
   "resources/js/custom/ecommerce.js": {
-    "file": "assets/ecommerce-Ur3opvpo.js",
+    "file": "assets/ecommerce-DnLDbMJ4.js",
     "imports": [
-      "_apexcharts.common-krrshxKX.js",
-      "_tailwind.config-aQwIGLoG.js",
+      "_apexcharts.common-JDZGCvNX.js",
+      "_tailwind.config-2rRSkGFz.js",
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
@@ -2300,7 +2300,7 @@
     "src": "resources/js/custom/editor.js"
   },
   "resources/js/custom/email.js": {
-    "file": "assets/email-neM2cqVF.js",
+    "file": "assets/email-OnYzo8x4.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -2313,7 +2313,7 @@
     "src": "resources/js/custom/form-validation.js"
   },
   "resources/js/custom/invoice-create.js": {
-    "file": "assets/invoice-create-a1XN9382.js",
+    "file": "assets/invoice-create-ehNFtytb.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -2326,7 +2326,7 @@
     "src": "resources/js/custom/modal.js"
   },
   "resources/js/custom/toast.js": {
-    "file": "assets/toast-M5tAzPJc.js",
+    "file": "assets/toast-_YrG9ahb.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -2339,7 +2339,7 @@
     "src": "resources/js/custom/uploader.js"
   },
   "resources/scss/app.scss": {
-    "file": "assets/app-zRqYGGvI.css",
+    "file": "assets/app-lLr7XPmv.css",
     "isEntry": true,
     "src": "resources/scss/app.scss"
   }

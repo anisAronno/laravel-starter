@@ -19,7 +19,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input class="input input-date" type="text" placeholder="YYYY-MM-DD" />
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input class="input input-datetime" type="text" placeholder="YYYY-MM-DD HH:MM" />
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input class="input input-date-range" type="text" placeholder="YYYY-MM-DD to YYYY-MM-DD" />
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input class="input input-time" type="text" placeholder="HH:MM" />
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input class="input input-date-multiple" type="text" placeholder="YYYY-MM-DD" />
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input class="input input-date-formated" type="text" placeholder="Month DD, YYYY" />
                     </div>
                 </div>
@@ -139,7 +139,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input class="input input-date-inline" type="text" placeholder="Month DD, YYYY" />
                     </div>
                 </div>
@@ -155,7 +155,7 @@
                 <p class="card-subtitle">Example of disabling date range.</p>
 
                 <div id="disabled-datepicker-code-viewer" class="code-viewer mt-4" data-render-source="false">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input class="input input-date-range-disabled" type="text" placeholder="YYYY-MM-DD" />
                     </div>
                 </div>
@@ -171,7 +171,7 @@
                 <p class="card-subtitle">Example of custom datepicker.</p>
 
                 <div id="custom-datepicker-code-viewer" class="code-viewer mt-4" data-render-source="false">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input class="input input-date-custom" type="text" placeholder="YYYY-MM-DD" />
                     </div>
                 </div>
