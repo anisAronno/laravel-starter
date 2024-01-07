@@ -1,66 +1,8 @@
-import Alpine from 'alpinejs';
-
 //Third party packages
 import '@fortawesome/fontawesome-free/js/all';
 import feather from 'feather-icons';
 import ResizeObserver from 'resize-observer-polyfill';
 import 'simplebar';
-
-import './bootstrap';
-
-if (window.currentRoute === 'admin.ecommerce.report') {
-    import('./custom/ecommerce.js').then(module => {
-    }).catch(error => console.error("Error loading ecommerce.js:", error));
-} else if (window.currentRoute === 'admin.dashboard') {
-    import('./custom/analytics.js').then(module => {
-    }).catch(error => console.error("Error loading analytics.js:", error));
-} else if (window.currentRoute === 'admin.calendar') {
-    import('./custom/calendar.js').then(module => {
-    }).catch(error => console.error("Error loading calendar.js:", error));
-} else if (window.currentRoute === 'admin.chat') {
-    import('./custom/chat.js').then(module => {
-    }).catch(error => console.error("Error loading chat.js:", error));
-} else if (window.currentRoute === 'admin.email') {
-    import('./custom/email.js').then(module => {
-    }).catch(error => console.error("Error loading email.js:", error));
-}else if (window.currentRoute === 'admin.invoice.create') {
-    import('./custom/invoice-create.js').then(module => {
-    }).catch(error => console.error("Error loading invoice-create.js:", error));
-} else if (window.currentRoute === 'admin.table.data') {
-    import('./custom/data-table.js').then(module => {
-    }).catch(error => console.error("Error loading invoice-create.js:", error));
-} else if (window.currentRoute === 'admin.chart.index') {
-    import('./custom/apex-charts.js').then(module => {
-    }).catch(error => console.error("Error loading invoice-create.js:", error));
-} else if (window.currentRoute === 'admin.form.datepicker') {
-    import('./custom/datepicker.js').then(module => {
-    }).catch(error => console.error("Error loading invoice-create.js:", error));
-}  else if (window.currentRoute === 'admin.form.editor') {
-    import('./custom/editor.js').then(module => {
-    }).catch(error => console.error("Error loading invoice-create.js:", error));
-} else if (window.currentRoute === 'admin.form.uploader') {
-    import('./custom/uploader.js').then(module => {
-    }).catch(error => console.error("Error loading invoice-create.js:", error));
-} else if (window.currentRoute === 'admin.form.validation') {
-    import('./custom/form-validation.js').then(module => {
-    }).catch(error => console.error("Error loading invoice-create.js:", error));
-} else if (window.currentRoute === 'admin.common.toast') {
-    import('./custom/toast.js').then(module => {
-    }).catch(error => console.error("Error loading invoice-create.js:", error));
-} else if (window.currentRoute === 'admin.common.modal') {
-    import('./custom/modal.js').then(module => {
-    }).catch(error => console.error("Error loading invoice-create.js:", error));
-} else if (window.currentRoute === 'admin.common.drawer') {
-    import('./custom/drawer.js').then(module => {
-    }).catch(error => console.error("Error loading invoice-create.js:", error));
-}  else if (window.currentRoute === 'admin.common.carousel') {
-    import('./custom/carousel.js').then(module => {
-    }).catch(error => console.error("Error loading invoice-create.js:", error));
-} 
-
-window.Alpine = Alpine;
-
-Alpine.start();
 
 //Core components
 import accordion from './components/accordion';
@@ -80,9 +22,7 @@ import tabs from './components/tabs';
 import themeSwitcher from './components/theme-switcher';
 import tooltip from './components/tooltip';
 import uploader from './components/uploader';
-import toast from "./components/toast";
-
-window.toast= toast;
+import toast from './components/toast';
 
 // Initialize searchModal
 searchModal.init();
@@ -140,3 +80,57 @@ feather.replace();
 
 // Polyfill for ResizeObserver
 window.ResizeObserver = ResizeObserver;
+
+import './bootstrap';
+
+if (window.currentRoute === 'admin.ecommerce.report') {
+    import('./custom/ecommerce.js').then(module => {
+    }).catch(error => console.error("Error loading ecommerce.js:", error));
+} else if (window.currentRoute === 'admin.dashboard') {
+    import('./custom/analytics.js').then(module => {
+    }).catch(error => console.error("Error loading analytics.js:", error));
+} else if (window.currentRoute === 'admin.calendar') {
+    import('./custom/calendar.js').then(module => {
+    }).catch(error => console.error("Error loading calendar.js:", error));
+} else if (window.currentRoute === 'admin.chat') {
+    import('./custom/chat.js').then(module => {
+    }).catch(error => console.error("Error loading chat.js:", error));
+} else if (window.currentRoute === 'admin.email') {
+    import('./custom/email.js').then(module => {
+    }).catch(error => console.error("Error loading email.js:", error));
+}else if (window.currentRoute === 'admin.invoice.create') {
+    import('./custom/invoice-create.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} else if (window.currentRoute === 'admin.table.data') {
+    import('./custom/data-table.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} else if (window.currentRoute === 'admin.chart.index') {
+    import('./custom/apex-charts.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} else if (window.currentRoute === 'admin.form.datepicker') {
+    import('./custom/datepicker.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+}  else if (window.currentRoute === 'admin.form.editor') {
+    import('./custom/editor.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} else if (window.currentRoute === 'admin.form.uploader') {
+    import('./custom/uploader.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} else if (window.currentRoute === 'admin.form.validation') {
+    import('./custom/form-validation.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} else if (window.currentRoute === 'admin.common.toast') {
+    import('./custom/toast.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} else if (window.currentRoute === 'admin.common.modal') {
+    import('./custom/modal.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} else if (window.currentRoute === 'admin.common.drawer') {
+    import('./custom/drawer.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+}  else if (window.currentRoute === 'admin.common.carousel') {
+    import('./custom/carousel.js').then(module => {
+    }).catch(error => console.error("Error loading invoice-create.js:", error));
+} 
+
+window.toast= toast;

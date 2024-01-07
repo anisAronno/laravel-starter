@@ -5,25 +5,23 @@ import typography from '@tailwindcss/typography';
 import colors from 'tailwindcss/colors';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
-// Add your custom theme colors here
 export const themeColors = {
-  primary: colors.violet,
-  secondary: colors.gray,
-  success: colors.emerald,
-  warning: colors.amber,
-  danger: colors.rose,
-  info: colors.indigo,
-  dark: colors.slate,
-};
-
+    primary: colors.violet,
+    secondary: colors.gray,
+    success: colors.emerald,
+    warning: colors.amber,
+    danger: colors.rose,
+    info: colors.indigo,
+    dark: colors.slate,
+  };
+  
 export default {
   darkMode: 'class',
   content: [
-    './src/**/*.{html,css,scss,js}',
-    './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-    './storage/framework/views/*.php',
-    './resources/views/**/*.blade.php',
-],
+    "./resources/**/*.blade.php",
+    "./resources/**/*.js",
+    "./resources/**/*.vue",
+  ],
   theme: {
     fontFamily: {
       sans: ['Poppins', ...defaultTheme.fontFamily.sans],
@@ -35,7 +33,7 @@ export default {
         md: '100%',
         lg: '100%',
         xl: '100%',
-        "2xl": "1536px",
+        '2xl': '1536px',
       },
     },
     extend: {
@@ -140,17 +138,12 @@ export default {
             },
             table: {
               overflowX: 'auto',
-            }
+            },
           },
         },
       }),
-      
     },
   },
-  plugins: [
-    forms,
-    variables,
-    typography,
-  ],
+  plugins: [forms, variables, typography],
 }
 

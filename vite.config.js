@@ -5,7 +5,8 @@ import { resolve } from 'path'; // Import resolve from Node.js path module
 export default defineConfig({
     resolve: {
         alias: {
-            '@tailwind.config': resolve(__dirname, './tailwind.config.js'),
+          '@tailwind.config': resolve(__dirname, './tailwind.config.js'),
+          '@': resolve(__dirname, '/resources'),
         }
     },
     plugins: [

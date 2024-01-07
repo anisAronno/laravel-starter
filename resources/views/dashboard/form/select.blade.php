@@ -19,7 +19,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <select class="select">
                             <option value="">Select a color</option>
                             <option value="1">Green</option>
@@ -45,7 +45,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <div class="flex flex-col gap-4">
                             <select class="select select-sm">
                                 <option value="" selected>Select a color</option>
@@ -104,7 +104,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <select class="select is-valid">
                             <option value="">Select a color</option>
                             <option value="1">Green</option>
@@ -137,7 +137,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <select class="select is-invalid">
                             <option value="">Select a color</option>
                             <option value="1">Green</option>
@@ -170,7 +170,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <select class="select" disabled>
                             <option value="">Select a color</option>
                             <option value="1">Green</option>
@@ -198,7 +198,7 @@
                 <p class="card-subtitle">Use <code>disabled</code> attribute on an option to disable it.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <select class="select">
                             <option value="">Select a color</option>
                             <option value="1">Green</option>

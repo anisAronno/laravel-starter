@@ -1,6 +1,6 @@
 import SimpleBar from 'simplebar';
-import searchData from '../../json/search-data.json';
-import recentSearchData from '../../json/recent-search-data.json';
+import searchData from '@/json/search-data.json';
+import recentSearchData from '@/json/recent-search-data.json';
 
 export class SearchModal {
   constructor(trigger, target) {

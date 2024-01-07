@@ -13,7 +13,7 @@
                 <p class="card-subtitle">Use the <code>.textarea</code> class to create a textarea.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <textarea class="textarea" placeholder="Write message"></textarea>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                 <p class="card-subtitle">Example of a textarea with label.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <label class="label label-required mb-1">Message</label>
                         <textarea class="textarea" placeholder="Write message"></textarea>
                     </div>
@@ -46,7 +46,7 @@
                 <p class="card-subtitle">Example of a textarea with helper text.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <textarea class="textarea" placeholder="Write message"></textarea>
                         <p class="help-text mt-1">Here you can provide some helper text to fill the field</p>
                     </div>
@@ -66,7 +66,7 @@
                 </p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <div class="flex flex-col gap-y-4">
                             <textarea class="textarea textarea-sm" placeholder="Write message"></textarea>
                             <textarea class="textarea textarea-md" placeholder="Write message"></textarea>
@@ -86,7 +86,7 @@
                 <p class="card-subtitle">Use the <code>is-valid</code> class to create a valid textarea.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <textarea class="textarea is-valid" placeholder="Write message"></textarea>
                         <p class="success-message mt-1">Looks good</p>
                     </div>
@@ -103,7 +103,7 @@
                 <p class="card-subtitle">Use the <code>is-invalid</code> class to create an invalid textarea.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <textarea class="textarea is-invalid" placeholder="Write message"></textarea>
                         <p class="error-message mt-1">This field is required</p>
                     </div>
@@ -120,7 +120,7 @@
                 <p class="card-subtitle">Use the <code>disabled</code> attribute to create a disabled textarea.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <textarea class="textarea" placeholder="Write message" disabled></textarea>
                     </div>
                 </div>

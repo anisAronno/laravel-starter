@@ -14,7 +14,7 @@
                 <p class="card-subtitle">Example of basic file uploader.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input class="input" type="file" name="file" />
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                 <p class="card-subtitle">Example of basic file uploader with multiple files upload.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input class="input" type="file" name="file" multiple />
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                 <p class="card-subtitle">Example disabled file uploader.</p>
 
                 <div class="code-viewer mt-4">
-                    <div class="code-viewer-content bg-white">
+                    <div class="code-viewer-content bg-white dark:bg-slate-900">
                         <input class="input" type="file" name="file" disabled />
                     </div>
                 </div>

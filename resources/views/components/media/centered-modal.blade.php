@@ -111,8 +111,13 @@
 
         const closeModal = () => {
             const modal = document.getElementById(`modal-centered-${id}`);
+            const modalUpdateBtn = document.getElementById(`modalUpdateBtn_${id}`);
+            const modalCloseBtn = document.getElementById(`modalCloseBtn_${id}`);
+
             modal.classList.remove('show');
             modal.removeAttribute('style');
+            modalUpdateBtn.classList.add('hidden');
+            modalCloseBtn.innerText = 'Ok';
         };
 
         axios.post(`/api/media/update/${id}`, {
