@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dca6b1ca7e260997ace595b99a8e5bb6",
+    "content-hash": "b9a2277c41cbcbdc11ee3c67c1cff0d2",
     "packages": [
         {
             "name": "anisaronno/laravel-media-gallery",
-            "version": "0.5.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/anisAronno/laravel-media-gallery.git",
-                "reference": "1780e5960da721da7684a495d15aef39e8d1478e"
+                "reference": "6fe38d812426e25bdf234306a81f6a4dc6b7fcf0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anisAronno/laravel-media-gallery/zipball/1780e5960da721da7684a495d15aef39e8d1478e",
-                "reference": "1780e5960da721da7684a495d15aef39e8d1478e",
+                "url": "https://api.github.com/repos/anisAronno/laravel-media-gallery/zipball/6fe38d812426e25bdf234306a81f6a4dc6b7fcf0",
+                "reference": "6fe38d812426e25bdf234306a81f6a4dc6b7fcf0",
                 "shasum": ""
             },
             "require": {
-                "anisaronno/laravel-media-helper": "^0.1.0",
+                "anisaronno/laravel-media-helper": "*",
                 "laravel/framework": "^8.0|^9.0|^10.0",
                 "php": "^7.4|^8.0"
             },
@@ -57,6 +57,7 @@
             "description": "Laravel Settings Table",
             "homepage": "https://github.com/anisAronno/laravel-media-media",
             "keywords": [
+                "gallery",
                 "laravel",
                 "media",
                 "wedevs",
@@ -64,22 +65,22 @@
             ],
             "support": {
                 "issues": "https://github.com/anisAronno/laravel-media-gallery/issues",
-                "source": "https://github.com/anisAronno/laravel-media-gallery/tree/v0.5.0"
+                "source": "https://github.com/anisAronno/laravel-media-gallery/tree/v0.4.0"
             },
-            "time": "2024-01-02T19:01:45+00:00"
+            "time": "2024-01-06T11:29:03+00:00"
         },
         {
             "name": "anisaronno/laravel-media-helper",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/anisAronno/Laravel-Media-Helper.git",
-                "reference": "21cc30e7fc1ddc95f39750e6d98f8433d5b94c06"
+                "reference": "048b7db850834516abc4f6960b2c0104c591ac6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anisAronno/Laravel-Media-Helper/zipball/21cc30e7fc1ddc95f39750e6d98f8433d5b94c06",
-                "reference": "21cc30e7fc1ddc95f39750e6d98f8433d5b94c06",
+                "url": "https://api.github.com/repos/anisAronno/Laravel-Media-Helper/zipball/048b7db850834516abc4f6960b2c0104c591ac6e",
+                "reference": "048b7db850834516abc4f6960b2c0104c591ac6e",
                 "shasum": ""
             },
             "require": {
@@ -127,9 +128,9 @@
             ],
             "support": {
                 "issues": "https://github.com/anisAronno/Laravel-Media-Helper/issues",
-                "source": "https://github.com/anisAronno/Laravel-Media-Helper/tree/v0.1.1"
+                "source": "https://github.com/anisAronno/Laravel-Media-Helper/tree/v0.1.2"
             },
-            "time": "2023-10-25T04:41:44+00:00"
+            "time": "2024-01-06T10:29:25+00:00"
         },
         {
             "name": "anisaronno/laravel-settings",
@@ -2304,35 +2305,35 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v3.3.4",
+            "version": "v3.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "470290c99b001d61751b4fe7e56327db4370cb87"
+                "reference": "1ef880fbcdc7b6e5e405cc9135a62cd5fdbcd06a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/470290c99b001d61751b4fe7e56327db4370cb87",
-                "reference": "470290c99b001d61751b4fe7e56327db4370cb87",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/1ef880fbcdc7b6e5e405cc9135a62cd5fdbcd06a",
+                "reference": "1ef880fbcdc7b6e5e405cc9135a62cd5fdbcd06a",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "^10.0",
-                "illuminate/support": "^10.0",
-                "illuminate/validation": "^10.0",
+                "illuminate/database": "^10.0|^11.0",
+                "illuminate/support": "^10.0|^11.0",
+                "illuminate/validation": "^10.0|^11.0",
                 "league/mime-type-detection": "^1.9",
                 "php": "^8.1",
-                "symfony/http-kernel": "^6.2"
+                "symfony/http-kernel": "^6.2|^7.0"
             },
             "require-dev": {
                 "calebporzio/sushi": "^2.1",
-                "laravel/framework": "^10.0",
+                "laravel/framework": "^10.0|^11.0",
                 "laravel/prompts": "^0.1.6",
                 "mockery/mockery": "^1.3.1",
-                "orchestra/testbench": "^8.0",
-                "orchestra/testbench-dusk": "^8.0",
-                "phpunit/phpunit": "^9.0",
-                "psy/psysh": "@stable"
+                "orchestra/testbench": "^8.0|^9.0",
+                "orchestra/testbench-dusk": "^8.0|^9.0",
+                "phpunit/phpunit": "^10.4",
+                "psy/psysh": "^0.11.22|^0.12"
             },
             "type": "library",
             "extra": {
@@ -2366,7 +2367,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v3.3.4"
+                "source": "https://github.com/livewire/livewire/tree/v3.3.5"
             },
             "funding": [
                 {
@@ -2374,7 +2375,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-01-01T17:22:47+00:00"
+            "time": "2024-01-02T14:29:17+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -9138,16 +9139,16 @@
         },
         {
             "name": "spatie/ignition",
-            "version": "1.11.3",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ignition.git",
-                "reference": "3d886de644ff7a5b42e4d27c1e1f67c8b5f00044"
+                "reference": "5b6f801c605a593106b623e45ca41496a6e7d56d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ignition/zipball/3d886de644ff7a5b42e4d27c1e1f67c8b5f00044",
-                "reference": "3d886de644ff7a5b42e4d27c1e1f67c8b5f00044",
+                "url": "https://api.github.com/repos/spatie/ignition/zipball/5b6f801c605a593106b623e45ca41496a6e7d56d",
+                "reference": "5b6f801c605a593106b623e45ca41496a6e7d56d",
                 "shasum": ""
             },
             "require": {
@@ -9217,39 +9218,39 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-10-18T14:09:40+00:00"
+            "time": "2024-01-03T15:49:39+00:00"
         },
         {
             "name": "spatie/laravel-ignition",
-            "version": "2.3.3",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ignition.git",
-                "reference": "66499cd3c858642ded56dafb8fa0352057ca20dd"
+                "reference": "b9395ba48d3f30d42092cf6ceff75ed7256cd604"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/66499cd3c858642ded56dafb8fa0352057ca20dd",
-                "reference": "66499cd3c858642ded56dafb8fa0352057ca20dd",
+                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/b9395ba48d3f30d42092cf6ceff75ed7256cd604",
+                "reference": "b9395ba48d3f30d42092cf6ceff75ed7256cd604",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "illuminate/support": "^10.0",
+                "illuminate/support": "^10.0|^11.0",
                 "php": "^8.1",
                 "spatie/flare-client-php": "^1.3.5",
                 "spatie/ignition": "^1.9",
-                "symfony/console": "^6.2.3",
-                "symfony/var-dumper": "^6.2.3"
+                "symfony/console": "^6.2.3|^7.0",
+                "symfony/var-dumper": "^6.2.3|^7.0"
             },
             "require-dev": {
-                "livewire/livewire": "^2.11",
+                "livewire/livewire": "^2.11|^3.3.5",
                 "mockery/mockery": "^1.5.1",
-                "openai-php/client": "^0.3.4",
-                "orchestra/testbench": "^8.0",
-                "pestphp/pest": "^1.22.3",
+                "openai-php/client": "^0.8.1",
+                "orchestra/testbench": "^8.0|^9.0",
+                "pestphp/pest": "^2.30",
                 "phpstan/extension-installer": "^1.2",
                 "phpstan/phpstan-deprecation-rules": "^1.1.1",
                 "phpstan/phpstan-phpunit": "^1.3.3",
@@ -9309,7 +9310,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-21T09:43:05+00:00"
+            "time": "2024-01-04T14:51:24+00:00"
         },
         {
             "name": "symfony/yaml",

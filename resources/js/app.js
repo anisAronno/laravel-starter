@@ -80,6 +80,9 @@ import tabs from './components/tabs';
 import themeSwitcher from './components/theme-switcher';
 import tooltip from './components/tooltip';
 import uploader from './components/uploader';
+import toast from "./components/toast";
+
+window.toast= toast;
 
 // Initialize searchModal
 searchModal.init();
