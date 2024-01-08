@@ -28,9 +28,9 @@ class UserController extends Controller
             {
                 return $query
                     ->where('name', 'LIKE', '%'.$request->search.'%')
-                    ->where('email', 'LIKE', '%'.$request->search.'%')
-                    ->where('phone', 'LIKE', '%'.$request->search.'%')
-                    ->where('status', 'LIKE', '%'.$request->search.'%');
+                    ->orWhere('email', 'LIKE', '%'.$request->search.'%')
+                    ->orWhere('phone', 'LIKE', '%'.$request->search.'%')
+                    ->orWhere('status', 'LIKE', '%'.$request->search.'%');
             })
             ->paginate(10)
             ->withQueryString();
