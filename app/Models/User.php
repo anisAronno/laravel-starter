@@ -4,6 +4,7 @@ namespace App\Models;
 
 use AnisAronno\MediaGallery\Traits\HasMedia;
 use AnisAronno\MediaGallery\Traits\HasOwnedMedia;
+use App\Enums\UserGender;
 use App\Enums\UserStatus;
 use App\Helpers\UniqueSlug;
 use App\Notifications\ResetPasswordNotification;
@@ -36,29 +37,14 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'phone',
-        'api_token',
-        'status',
-        'gender',
-        'time_zone',
-        'language',
-        'isDeletable',
-    ];
+    protected $fillable = ['name', 'email', 'username', 'password', 'phone', 'api_token', 'status', 'gender', 'time_zone', 'language', 'isDeletable'];
 
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-        'api_token',
-    ];
+    protected $hidden = ['password', 'remember_token', 'api_token'];
 
     /**
      * The attributes that should be cast.
@@ -69,6 +55,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password'          => 'hashed',
         'status'            => UserStatus::class,
+        'gender'            => UserGender::class,
     ];
 
     protected static $recordEvents = ['deleted', 'created', 'updated'];
@@ -76,7 +63,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['name', 'email', 'password', 'status',  'api_token'])
+            ->logOnly(['name', 'email', 'password', 'status', 'api_token'])
             ->logOnlyDirty()
             ->dontSubmitEmptyLogs();
     }

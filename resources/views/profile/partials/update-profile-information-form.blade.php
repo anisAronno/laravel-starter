@@ -25,6 +25,36 @@
         </div>
 
         <div>
+            <x-input-label for="username" :value="__('User Name')" />
+            <x-text-input id="username" name="username" type="text" class="mt-1 block w-full" :value="old('username', $user->username)"
+                required autofocus autocomplete="username" />
+            <x-input-error class="mt-2" :messages="$errors->get('username')" />
+        </div>
+
+        <div>
+            <x-input-label for="phone" :value="__('Phone')" />
+            <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full" :value="old('phone', $user->phone)"
+                required autofocus autocomplete="phone" />
+            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
+        </div>
+
+        <div> 
+            <x-input-label for="phone" :value="__('Gender')" />
+            <select class="select select-lg mt-1 block w-full bg-white dark:bg-slate-900" id="gender" name="gender"
+                required autofocus autocomplete="gender">
+                @php
+                    $genders = App\Enums\UserGender::array();
+                @endphp
+                @foreach ($genders as $key => $gender)
+                    <option value="{{ $gender }}" {{ $user->gender?->value == $gender ? 'selected' : '' }}>
+                        {{ $gender }}
+                    </option>
+                @endforeach
+            </select>
+            <x-input-error class="mt-2" :messages="$errors->get('gender')" />
+        </div>
+
+        <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)"
                 required autocomplete="username" />
