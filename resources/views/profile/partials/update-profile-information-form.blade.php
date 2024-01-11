@@ -38,7 +38,7 @@
             <x-input-error class="mt-2" :messages="$errors->get('phone')" />
         </div>
 
-        <div> 
+        <div>
             <x-input-label for="phone" :value="__('Gender')" />
             <select class="select select-lg mt-1 block w-full bg-white dark:bg-slate-900" id="gender" name="gender"
                 required autofocus autocomplete="gender">
@@ -84,8 +84,7 @@
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
-                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>
+                <p x-data="{ show: true }" class="text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>
             @endif
         </div>
     </form>
