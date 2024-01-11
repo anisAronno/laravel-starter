@@ -9,6 +9,8 @@
                 <img src="{{ Media::getURL($media->url) }}" alt="{{ $media->title }}"
                     class="w-full h-auto image-item object-cover">
             </div>
+            <x-media.centered-modal :media="$media" />
+
          @endforeach
     </div>
     <div class="grid grid-cols-1 justify-between items-start md:items-center space-y-3 md:space-y-0 p-4 w-full text-gray-700 dark:text-gray-100"

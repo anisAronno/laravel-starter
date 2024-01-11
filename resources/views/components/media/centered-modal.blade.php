@@ -22,11 +22,11 @@
                         <div class="border-b border-gray-500 pb-3 leading-normal ">
                             <div class="flex flex-wrap gap-3 md:gap-5 justify-start">
                                 <span class="font-medium">File name :</span>
-                                <span>{{ $media?->title }}</span>
+                                <span id="badge_title_{{ $media->id }}">{{ $media?->title }}</span>
                             </div>
                             <div class="flex flex-wrap gap-3 md:gap-5 justify-start">
                                 <span class="font-medium">Caption :</span>
-                                <span>{{ $media?->caption }}</span>
+                                <span id="badge_caption_{{ $media->id }}">{{ $media?->caption }}</span>
                             </div>
                             <div class="flex flex-wrap gap-3 md:gap-5 justify-start">
                                 <span class="font-medium">Directory :</span>
@@ -54,17 +54,33 @@
                                     <span>{{ $media?->created_at?->format('F d, Y') }}</span>
                                 </div>
                             @endif
+
+                            <div class="flex flex-wrap gap-3 md:gap-5 justify-start my-3">
+                                <a href="#"
+                                    onclick="event.preventDefault(); 
+                                         if(confirm('Are you sure you want to delete this file?')) { 
+                                             deleteFile('{{ route('media.destroy', $media?->id) }}', '{{ $media?->owner?->api_token }}');
+                                         }"
+                                    class="font-medium text-red-500 hover:text-red-700 dark:hover:text-red-400 flex items-center">
+                                    <i class="h-5 text-red-500 hover:text-red-700 dark:hover:text-red-400 mr-1"
+                                        data-feather="trash">
+                                    </i>
+                                    Delete this file
+                                </a>
+                            </div>
                         </div>
                         <div class="p-2 md:p-4 space-y-4">
                             <div class="flex flex-wrap">
                                 <label class="label label-required mb-1" for="title">Title: </label>
                                 <input type="text" class="input" id="title_{{ $media->id }}" placeholder="Title"
-                                    onkeypress="changeData('{{ $media->id }}')" value="{{ $media?->title }}">
+                                    onchange="updateData('{{ $media->id }}', '{{ $media?->owner?->api_token }}')"
+                                    value="{{ $media?->title }}">
                             </div>
                             <div class="flex flex-wrap">
                                 <label class="label mb-1" for="phone">Caption: </label>
                                 <input type="text" class="input" id="caption_{{ $media->id }}"
-                                    placeholder="Caption" onkeypress="changeData('{{ $media->id }}')"
+                                    placeholder="Caption"
+                                    onchange="updateData('{{ $media->id }}', '{{ $media?->owner?->api_token }}')"
                                     value="{{ $media?->caption }}">
                             </div>
                         </div>
@@ -73,11 +89,7 @@
             </div>
             <div class="modal-footer">
                 <div class="flex items-center justify-end gap-4">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        id="modalCloseBtn_{{ $media->id }}">Ok</button>
-                    <button type="button" class="btn btn-primary hidden " id="modalUpdateBtn_{{ $media->id }}"
-                        onclick="updateMediaDetails(
-                        {{ $media->id }}, '{{ $media?->owner?->api_token }}')">Update</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
                 </div>
             </div>
         </div>
@@ -85,14 +97,7 @@
 </div>
 
 <script>
-    function changeData(id) {
-        const modalUpdateBtn = document.getElementById(`modalUpdateBtn_${id}`);
-        const modalCloseBtn = document.getElementById(`modalCloseBtn_${id}`);
-        modalUpdateBtn.classList.remove('hidden');
-        modalCloseBtn.innerText = 'Cancel';
-    }
-
-    function updateMediaDetails(id, token) {
+    function updateData(id, token) {
         const titleInput = document.getElementById(`title_${id}`);
         const captionInput = document.getElementById(`caption_${id}`);
 
@@ -109,20 +114,16 @@
             return;
         }
 
-        const closeModal = () => {
-            const modal = document.getElementById(`modal-centered-${id}`);
-            const modalUpdateBtn = document.getElementById(`modalUpdateBtn_${id}`);
-            const modalCloseBtn = document.getElementById(`modalCloseBtn_${id}`);
-
-            modal.classList.remove('show');
-            modal.removeAttribute('style');
-            modalUpdateBtn.classList.add('hidden');
-            modalCloseBtn.innerText = 'Ok';
-        };
+        const updateBadge = () => {
+            const badgeTitle = document.getElementById(`badge_title_${id}`);
+            const badgeCaption = document.getElementById(`badge_caption_${id}`);
+            badgeTitle.innerText = title;
+            badgeCaption.innerText = caption;
+        }
 
         axios.post(`/api/media/update/${id}`, {
                 title: title,
-                caption: caption
+                caption: caption,
             }, {
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -131,14 +132,14 @@
             .then(response => {
                 if (response.data && response.status === 200) {
                     toast.success(response.data.message);
-                    closeModal();
+                    updateBadge();
+
                 } else {
                     toast.warning('Update was not successful.');
                 }
             })
             .catch(error => {
                 const errorMessage = error.response?.data?.message || error.message;
-
                 toast.danger(`Error: ${errorMessage}`, {
                     style: {
                         background: '#f00',
@@ -150,5 +151,38 @@
                 titleInput.value = title;
                 captionInput.value = caption;
             });
+    }
+
+    function deleteFile(route, apiToken) {
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiToken}`
+        };
+
+        axios.delete(route, {
+                headers
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    toast.success(response.data.message);
+                    const deletedFileElement = document.getElementById(`file-${response.data.fileId}`);
+                    if (deletedFileElement) {
+                        deletedFileElement.remove();
+                    }
+                } else {
+                    toast.warning('Deletion was not successful.');
+                }
+            })
+            .catch(error => {
+                const errorMessage = error.response?.data?.message || error.message;
+                toast.danger(`Error: ${errorMessage}`, {
+                    style: {
+                        background: '#f00',
+                        color: '#fff'
+                    }
+                });
+            }).finally(() => {
+                location.reload()
+            })
     }
 </script>
