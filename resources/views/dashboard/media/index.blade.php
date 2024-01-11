@@ -1,5 +1,5 @@
 @can('media.view')
     <x-app-layout>
-        <x-media.media visible="true"/>
+        <x-media.media singleView="true" />
     </x-app-layout>
 @endcan
