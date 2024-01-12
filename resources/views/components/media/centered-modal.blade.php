@@ -53,21 +53,23 @@
                                     <span class="font-medium">Uploaded on :</span>
                                     <span>{{ $media?->created_at?->format('F d, Y') }}</span>
                                 </div>
-                            @endif
+                            @endif 
 
-                            <div class="flex flex-wrap gap-3 md:gap-5 justify-start my-3">
-                                <a href="#"
-                                    onclick="event.preventDefault(); 
+                            @if ( auth()->user()?->hasAdministrativeRole() || auth()->id() == $media?->owner?->id )
+                                <div class="flex flex-wrap gap-3 md:gap-5 justify-start my-3">
+                                    <a href="#"
+                                        onclick="event.preventDefault(); 
                                          if(confirm('Are you sure you want to delete this file?')) { 
                                              deleteFile('{{ route('media.destroy', $media?->id) }}', '{{ $media?->owner?->api_token }}');
                                          }"
-                                    class="font-medium text-red-500 hover:text-red-700 dark:hover:text-red-400 flex items-center">
-                                    <i class="h-5 text-red-500 hover:text-red-700 dark:hover:text-red-400 mr-1"
-                                        data-feather="trash">
-                                    </i>
-                                    Delete this file
-                                </a>
-                            </div>
+                                        class="font-medium text-red-500 hover:text-red-700 dark:hover:text-red-400 flex items-center">
+                                        <i class="h-5 text-red-500 hover:text-red-700 dark:hover:text-red-400 mr-1"
+                                            data-feather="trash">
+                                        </i>
+                                        Delete this file
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                         <div class="p-2 md:p-4 space-y-4">
                             <div class="flex flex-wrap">

@@ -196,35 +196,37 @@
             </li>
         @endcan
         <!-- Users -->
-        <li>
-            <a href="javascript:void(0);"
-                class="sidebar-menu {{ request()->routeIs(['admin.user.index', 'admin.roles.index']) ? 'active' : '' }}">
+        @can('user.view')
+            <li>
+                <a href="javascript:void(0);"
+                    class="sidebar-menu {{ request()->routeIs(['admin.user.index', 'admin.roles.index']) ? 'active' : '' }}">
 
-                <span class="sidebar-menu-icon">
-                    <i data-feather="users"></i>
-                </span>
-                <span class="sidebar-menu-text">Users</span>
-                <span class="sidebar-menu-arrow">
-                    <i data-feather="chevron-right"></i>
-                </span>
-            </a>
-            <ul class="sidebar-submenu ">
-                @can('user.view')
-                    <li>
-                        <a href="{{ route('admin.user.index') }}"
-                            class="sidebar-submenu-item {{ request()->routeIs('admin.user.index') ? 'active' : '' }}">
-                            User</a>
-                    </li>
-                @endcan
-                @can('role.view')
-                    <li>
-                        <a href="{{ route('admin.roles.index') }}"
-                            class="sidebar-submenu-item {{ request()->routeIs('admin.roles.index') ? 'active' : '' }}">
-                            Role & Permission </a>
-                    </li>
-                @endcan
-            </ul>
-        </li>
+                    <span class="sidebar-menu-icon">
+                        <i data-feather="users"></i>
+                    </span>
+                    <span class="sidebar-menu-text">Users</span>
+                    <span class="sidebar-menu-arrow">
+                        <i data-feather="chevron-right"></i>
+                    </span>
+                </a>
+                <ul class="sidebar-submenu ">
+                    @can('user.view')
+                        <li>
+                            <a href="{{ route('admin.user.index') }}"
+                                class="sidebar-submenu-item {{ request()->routeIs('admin.user.index') ? 'active' : '' }}">
+                                User</a>
+                        </li>
+                    @endcan
+                    @can('role.view')
+                        <li>
+                            <a href="{{ route('admin.roles.index') }}"
+                                class="sidebar-submenu-item {{ request()->routeIs('admin.roles.index') ? 'active' : '' }}">
+                                Role & Permission </a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+        @endcan
         <!--  Commponents  -->
         <div class="sidebar-menu-header">Components</div>
         <!-- Common  -->
