@@ -14,14 +14,14 @@
                     <div class="relative my-2 h-24 w-24 rounded-full">
                         <img src="{{ $user?->avatar }}" alt="="{{ $user?->name }}" id="user-image"
                             class="h-full w-full rounded-full" />
-                        <label for="upload-avatar"
+                        <span data-toggle="modal" data-target="#modal-centered-media"
                             class="absolute bottom-0 right-0 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-slate-50 p-2 dark:bg-slate-900">
                             <span class="text-slate-600 dark:text-slate-300">
                                 <i class="w-full" data-feather="camera"></i>
                             </span>
                             <input type="file" accept="image/jpeg, image/png, image/jpg" class="hidden"
                                 id="upload-avatar" />
-                        </label>
+                        </span>
                     </div>
                     <h2 class="text-[16px] font-medium text-slate-700 dark:text-slate-200">{{ $user->name }}</h2>
                     <p class="text-sm font-normal tracking-tight text-slate-400 space-y-1 mt-2">
@@ -34,7 +34,8 @@
                             </span>
                         @endforeach
                     </p>
-                    <div class="badge {{ $user->status->color() }} my-3 md:my-5 inline-block px-4 text-md md:text-lg">{{ $user->status }}</div>
+                    <div class="badge {{ $user->status->color() }} my-3 md:my-5 inline-block px-4 text-md md:text-lg">
+                        {{ $user->status }}</div>
                 </div>
             </div>
 

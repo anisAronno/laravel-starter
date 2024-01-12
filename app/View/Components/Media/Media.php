@@ -13,7 +13,7 @@ use Illuminate\View\Component;
 
 class Media extends Component
 {
-    public function __construct(public Request $request, public bool $visible)
+    public function __construct(public Request $request)
     {
         //
     }
