@@ -85,7 +85,17 @@
                     <span class="sidebar-menu-icon">
                         <i data-feather="bell"></i>
                     </span>
-                    <span class="sidebar-menu-text">Notification</span>
+                    <span class="sidebar-menu-text flex gap-2 items-center">
+                        Notification
+
+                        @if (auth()->user()->unreadNotifications->count() > 0)
+                            <span
+                                class="flex h-4 w-4 items-center justify-center rounded-full bg-danger-500 text-[11px] text-slate-200">
+                                {{ auth()->user()->unreadNotifications->count() }}
+                            </span>
+                        @endif
+                    </span>
+
                 </a>
             </li>
         @endcan

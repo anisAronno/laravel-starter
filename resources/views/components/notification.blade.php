@@ -26,9 +26,9 @@
 
             <ul>
                 @foreach (auth()->user()->unreadNotifications as $notification)
-                    <li>
+                    <li class="my-2">
                         <a href="{{ route('admin.notification', ['id' => $notification->id]) }}"
-                            class="flex cursor-pointer gap-4 px-4 py-3 transition-colors duration-150 hover:bg-slate-100/70 dark:hover:bg-slate-700 {{ $notification->read_at == null ? 'bg-slate-100/50 dark:bg-gray-900' : '' }}">
+                            class="flex cursor-pointer gap-2 px-2 py-2 transition-colors duration-150 hover:bg-gray-200 dark:hover:bg-gray-700  {{ $notification->read_at == null ? 'bg-gray-100 dark:bg-gray-900' : '' }}">
                             <div
                                 class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-500">
                                 <i data-feather="alert-circle" width="20" height="20"></i>
@@ -48,7 +48,8 @@
         </div>
 
         <div class="px-4 py-2">
-            <a href="{{route('admin.notification.index')}}" class="btn btn-primary-plain btn-sm w-full" type="button">
+            <a href="{{ route('admin.notification.index') }}" class="btn btn-primary-plain btn-sm w-full"
+                type="button">
                 <span>View All</span>
                 <i data-feather="arrow-right" width="1rem" height="1rem"></i>
             </a>

@@ -10,7 +10,7 @@ Route::middleware('auth')->name('admin.')->group(function ()
 {
     Route::get('/', [DashboardController::class, 'index'])->middleware(['verified'])->name('dashboard');
     Route::get('/markNotification', [NotificationController::class, 'markNotification'])->name('notification');
-    Route::get('/notification', [NotificationController::class, 'index'])->name('notification.index');
+    Route::resource('/notification', NotificationController::class);
     Route::resource('roles', RolesController::class);
     Route::resource('user', UserController::class);
     Route::view('media', 'dashboard.media.index')->name('media.index');
