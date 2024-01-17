@@ -77,6 +77,19 @@
             </li>
         @endcan
 
+        <!-- Notification -->
+        @can('notification.view')
+            <li>
+                <a href="{{ route('admin.notification.index') }}"
+                    class="sidebar-menu {{ request()->routeIs('admin.notification.index') ? 'active' : '' }}">
+                    <span class="sidebar-menu-icon">
+                        <i data-feather="bell"></i>
+                    </span>
+                    <span class="sidebar-menu-text">Notification</span>
+                </a>
+            </li>
+        @endcan
+
         <!-- Calendar -->
         @can('calendar.view')
             <li>
