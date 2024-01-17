@@ -4,12 +4,22 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class NotificationController extends Controller
 {
+    public function index() : View
+    {
+       $notifications = auth()
+            ->user()
+            ->notifications;
+        return view('dashboard.notification/index', compact('notifications'));
+    }
+
     public function markNotification(Request $request)
     {
-        auth()->user()
+        auth()
+            ->user()
             ->unreadNotifications
             ->when($request->input('id'), function ($query) use ($request)
             {
@@ -17,6 +27,6 @@ class NotificationController extends Controller
             })
             ->markAsRead();
 
-        return response()->noContent();
+        return back();
     }
 }

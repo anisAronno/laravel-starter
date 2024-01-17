@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -8,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->name('admin.')->group(function ()
 {
     Route::get('/', [DashboardController::class, 'index'])->middleware(['verified'])->name('dashboard');
+    Route::get('/markNotification', [NotificationController::class, 'markNotification'])->name('notification');
+    Route::get('/notification', [NotificationController::class, 'index'])->name('notification.index');
     Route::resource('roles', RolesController::class);
     Route::resource('user', UserController::class);
     Route::view('media', 'dashboard.media.index')->name('media.index');
