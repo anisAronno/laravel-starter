@@ -24,6 +24,18 @@ class NotificationController extends Controller
         return view('dashboard.notification/index', compact('notifications'));
     }
 
+    public function show($id): View
+    {
+        $notification = auth()
+            ->user()
+            ->notifications->where('id', $id)
+            ->first();
+
+        $notification->markAsRead();
+
+        return view('dashboard.notification/show', compact('notification'));
+    }
+
     public function markNotification(Request $request)
     {
         auth()

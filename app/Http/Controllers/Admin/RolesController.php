@@ -93,7 +93,7 @@ class RolesController extends Controller
         ];
         $resultAsObject = json_decode(json_encode($result));
 
-        return view('dashboard.roles.view', ['role' => $resultAsObject]);
+        return view('dashboard.roles.show', ['role' => $resultAsObject]);
     }
 
     /**

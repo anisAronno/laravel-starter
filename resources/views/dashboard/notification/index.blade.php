@@ -22,18 +22,18 @@
                         type="text" placeholder="Search" value="{{ request()->input('search') }}" name="search" />
                 </form>
 
-
-
                 <!-- User Search Ends -->
 
                 <!-- User Action Starts -->
                 <div class="flex w-full items-center justify-between gap-x-4 md:w-auto">
 
                     @can('notification.create')
-                        <a class="btn btn-primary" href="{{ route('admin.notification') }}" role="button">
-                            <i data-feather="eye" height="1rem" width="1rem"></i>
-                            <span class="hidden sm:inline-block">Mark All as Read</span>
-                        </a>
+                        @if (auth()->user()->unreadNotifications->count() > 0)
+                            <a class="btn btn-primary" href="{{ route('admin.notification') }}" role="button">
+                                <i data-feather="eye" height="1rem" width="1rem"></i>
+                                <span>Mark All as Read</span>
+                            </a>
+                        @endif
                     @endcan
                 </div>
                 <!-- User Action Ends -->
@@ -55,9 +55,11 @@
                     <table class="table custom-data-table">
                         <thead>
                             <tr>
-                                <th class="w-[30%] uppercase">Data</th>
-                                <th class="w-[15%] uppercase">Created Date</th>
-                                <th class="w-[5%] !text-right uppercase">Status</th>
+                                <th class="w-[50%] uppercase">Data</th>
+                                <th class="w-[20%] uppercase">Type</th>
+                                <th class="w-[10%] uppercase">Created Date</th>
+                                <th class="w-[10%] uppercase">Status</th>
+                                <th class="w-[10%] !text-right uppercase">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -66,13 +68,17 @@
                                     <td>
                                         {!! $notification->data['message'] !!}
                                     </td>
+                                    <td>
+                                        <span
+                                            class="text-sm">{{ preg_replace('/(?<!\s)([A-Z])/', ' $1', class_basename($notification->type) ?? '') }}</span>
+                                    </td>
                                     <td>{{ $notification?->created_at->diffForHumans() }}</td>
 
                                     <td>
                                         @if ($notification->read_at == null)
                                             <a href="{{ route('admin.notification', ['id' => $notification->id]) }}"
-                                                class="flex cursor-pointer gap-2 px-2 py-2 transition-colors duration-150 hover:bg-gray-400 dark:hover:bg-gray-700  {{ $notification->read_at == null ? 'bg-gray-300 dark:bg-gray-900' : '' }}">
-                                                <i data-feather="eye" height="1rem" width="1rem"></i>
+                                                class="flex cursor-pointer gap-2 px-2 py-2 transition-colors duration-150 hover:bg-gray-400 dark:hover:bg-gray-700 max-w-min {{ $notification->read_at == null ? 'bg-gray-300 dark:bg-gray-900' : '' }}">
+                                                <i data-feather="check-circle" height="1rem" width="1rem"></i>
                                                 <span>Mark as Read</span>
                                             </a>
                                         @else
@@ -81,6 +87,14 @@
                                         @endif
 
                                     </td>
+                                    <td>
+                                        <a href="{{ route('admin.notification.show', $notification->id) }}"
+                                            class="!text-right flex justify-end gap-2 items-center text-blue-500">
+                                            <i data-feather="eye" height="1rem" width="1rem"></i>
+                                            View
+                                        </a>
+                                    </td>
+
                                 </tr>
                             @endforeach
 
@@ -90,7 +104,10 @@
                         @foreach ($notifications as $notification)
                             <div
                                 class="card my-3 overflow-x-auto shadow-md shadow-gray-300 dark:shadow-gray-700 cursor-pointer gap-2 px-2 py-2 transition-colors duration-150 hover:bg-gray-400 dark:hover:bg-gray-700  {{ $notification->read_at == null ? 'bg-gray-300 dark:bg-gray-600' : '' }}">
-
+                                <div class="card-header flex justify-between items-center ">
+                                    <span
+                                        class="text-sm">{{ preg_replace('/(?<!\s)([A-Z])/', ' $1', class_basename($notification->type) ?? '') }}</span>
+                                </div>
                                 <div class="card-body space-y-1 flex justify-between">
                                     <div>
                                         <p class="card-title  text-wrap text-sm ">
@@ -100,16 +117,13 @@
                                             <span>Created: </span> {{ $notification->created_at->diffForHumans() }}
                                         </div>
                                     </div>
-                                    @if ($notification->read_at == null)
-                                        <div class="  flex justify-between items-center text-xs">
-                                            <a href="{{ route('admin.notification', ['id' => $notification->id]) }}"
-                                                class="flex items-center cursor-pointer gap-2 px-2 py-2 transition-colors duration-150 hover:bg-gray-400 dark:hover:bg-gray-700  {{ $notification->read_at == null ? 'bg-gray-300 dark:bg-gray-900' : '' }}">
-                                                <i data-feather="eye" height="1rem" width="1rem"></i>
-                                             </a>
-                                        </div>
-                                    @endif
+                                    <div class="  flex justify-between items-center text-xs">
+                                        <a href="{{ route('admin.notification.show', $notification->id) }}"
+                                            class="!text-right flex justify-end gap-2 items-center ">
+                                            <i data-feather="eye" height="1rem" width="1rem"></i>
+                                        </a>
+                                    </div>
                                 </div>
-
                             </div>
                         @endforeach
                     </div>
