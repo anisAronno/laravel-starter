@@ -1,7 +1,7 @@
 {
   "name": "anisaronno/laravel-starter",
   "type": "project",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A perfect laravel starter project for any kind of project.",
   "keywords": [
     "laravel",
@@ -35,7 +35,6 @@
     "spatie/laravel-permission": "^6.3"
   },
   "require-dev": {
-    "barryvdh/laravel-debugbar": "^3.9",
     "fakerphp/faker": "^1.9.1",
     "laravel/breeze": "^1.27",
     "laravel/pint": "^1.13",

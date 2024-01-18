@@ -26,7 +26,6 @@ Welcome to the Laravel Starter Project! This repository provides a kickstart set
 - Laravel [Pulse](https://laravel.com/docs/10.x/pulse) (Application's performance Monitoring)
 - Laravel [Clockwork](https://github.com/itsgoingd/clockwork) (Request Monitoring)
 - Laravel [Horizon](https://laravel.com/docs/10.x/horizon) (Job And Queue manage)
-- Laravel [Debugbar](https://github.com/barryvdh/laravel-debugbar) (Monitoring every request)
 - Laravel [Settings](https://github.com/anisAronno/laravel-settings) (Personal Package for application settings)
 - Laravel [Media Gallery](https://github.com/anisAronno/laravel-media-gallery) (Personal Package for file management)
 - Laravel [Activity Log](https://github.com/spatie/laravel-activitylog) (Track User Activity)
