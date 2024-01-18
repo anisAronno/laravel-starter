@@ -30,7 +30,6 @@ jobs:
           sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=${{ secrets.DB_PASSWORD }}/' .env
           echo "APP_ENV=production" >> .env
           echo "APP_DEBUG=false" >> .env
-          echo "TELESCOPE_ENABLED=false" >> .env
 
       - name: Generate application key
         run: php artisan key:generate
