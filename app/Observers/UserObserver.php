@@ -14,7 +14,11 @@ class UserObserver
      */
     public function created(User $user): void
     {
-        Notification::send($user, new NewUserNotification($user));
+        $admins = User::role(['superadmin', 'admin'])->get();
+
+        foreach ($admins as $admin) {
+            Notification::send($admin, new NewUserNotification($user));
+        }
 
         $userRole = Role::query()->where('name', 'user');
 

@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('CanManageMediaContent', function ($user)
         {
-            return $user->hasAdministrativeRole();
+            return $user?->hasAdministrativeRole();
         });
     }
 }
