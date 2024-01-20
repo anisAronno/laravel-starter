@@ -21,17 +21,15 @@ Welcome to the Laravel Starter Project! This repository provides a kickstart set
 
 ## Uses Packages
 
-- Laravel [Breeze](https://laravel.com/docs/10.x/starter-kits#laravel-breeze) (authentication and application starter kits)
+- Laravel [Breeze](https://laravel.com/docs/10.x/starter-kits#laravel-breeze) (Used only backend code for authentication)
 - [Spatie](https://github.com/spatie/laravel-permission) Roll and Permission
 - Laravel [Pulse](https://laravel.com/docs/10.x/pulse) (Application's performance Monitoring)
-- Laravel [Telescope](https://laravel.com/docs/10.x/telescope) (Request Monitoring)
+- Laravel [Clockwork](https://github.com/itsgoingd/clockwork) (Request Monitoring)
 - Laravel [Horizon](https://laravel.com/docs/10.x/horizon) (Job And Queue manage)
-- Laravel [Debugbar](https://github.com/barryvdh/laravel-debugbar) (Monitoring every request)
 - Laravel [Settings](https://github.com/anisAronno/laravel-settings) (Personal Package for application settings)
 - Laravel [Media Gallery](https://github.com/anisAronno/laravel-media-gallery) (Personal Package for file management)
 - Laravel [Activity Log](https://github.com/spatie/laravel-activitylog) (Track User Activity)
 - Beautiful [Log Viewer](https://github.com/opcodesio/log-viewer) for local and production
-- [Flowbite](https://flowbite.com/) For Tailwind Component
 - Laravel [Sweet Alert](https://github.com/realrashid/sweet-alert)
 - Laravel [Pint](https://laravel.com/docs/10.x/pint) For code style fixing
 
