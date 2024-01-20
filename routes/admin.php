@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])
     ->name('admin.')
-    ->group(function () {
+    ->group(function ()
+    {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/markNotification', [NotificationController::class, 'markNotification'])->name('notification');
         Route::resource('/notification', NotificationController::class);
@@ -34,7 +35,8 @@ Route::middleware(['auth', 'verified'])
 
         Route::prefix('common')
             ->name('common.')
-            ->group(function () {
+            ->group(function ()
+            {
                 Route::view('accordion', 'dashboard.common.accordion')->name('accordion');
                 Route::view('alert', 'dashboard.common.alert')->name('alert');
                 Route::view('avatar', 'dashboard.common.avatar')->name('avatar');
@@ -57,7 +59,8 @@ Route::middleware(['auth', 'verified'])
 
         Route::prefix('form')
             ->name('form.')
-            ->group(function () {
+            ->group(function ()
+            {
                 Route::view('input', 'dashboard.form.input')->name('input');
                 Route::view('input-group', 'dashboard.form.input-group')->name('input.group');
                 Route::view('textarea', 'dashboard.form.textarea')->name('textarea');
@@ -74,14 +77,16 @@ Route::middleware(['auth', 'verified'])
 
         Route::prefix('table')
             ->name('table.')
-            ->group(function () {
+            ->group(function ()
+            {
                 Route::view('basic', 'dashboard.table.basic')->name('basic');
                 Route::view('data', 'dashboard.table.data')->name('data');
             });
 
         Route::prefix('authentication')
             ->name('authentication.')
-            ->group(function () {
+            ->group(function ()
+            {
                 Route::view('login', 'dashboard.authentication.login')->name('login');
                 Route::view('register', 'dashboard.authentication.register')->name('register');
                 Route::view('recover-password', 'dashboard.authentication.recover-password')->name('recover.password');
@@ -90,7 +95,8 @@ Route::middleware(['auth', 'verified'])
 
         Route::prefix('miscellaneous')
             ->name('miscellaneous.')
-            ->group(function () {
+            ->group(function ()
+            {
                 Route::view('starter', 'dashboard.miscellaneous.starter')->name('starter');
                 Route::view('comming-soon', 'dashboard.miscellaneous.comming-soon')->name('comming.soon');
                 Route::view('maintenance', 'dashboard.miscellaneous.maintenance')->name('maintenance');
