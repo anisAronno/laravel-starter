@@ -79,10 +79,10 @@
                                             <a href="{{ route('admin.notification', ['id' => $notification->id]) }}"
                                                 class="flex cursor-pointer gap-2 px-2 py-2 transition-colors duration-150 hover:bg-gray-400 dark:hover:bg-gray-700 max-w-min {{ $notification->read_at == null ? 'bg-gray-300 dark:bg-gray-900' : '' }}">
                                                 <i data-feather="check-circle" height="1rem" width="1rem"></i>
-                                                <span>Mark as Read</span>
+                                                <span class="text-blue-600">Mark as Read</span>
                                             </a>
                                         @else
-                                            <span class="text-blue-600">Read at
+                                            <span class="">Read at
                                                 {{ $notification->read_at?->diffForHumans() }}</span>
                                         @endif
 
