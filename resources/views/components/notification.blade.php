@@ -23,27 +23,32 @@
         </div>
 
         <div class="h-80 w-full" data-simplebar>
-
             <ul>
-                @foreach (auth()->user()->unreadNotifications as $notification)
+                @forelse (auth()->user()->unreadNotifications as $notification)
                     <li class="my-2">
-                        <a href="{{ route('admin.notification', ['id' => $notification->id]) }}"
-                            class="flex cursor-pointer gap-2 px-2 py-2 transition-colors duration-150 hover:bg-gray-200 dark:hover:bg-gray-700  {{ $notification->read_at == null ? 'bg-gray-100 dark:bg-gray-900' : '' }}">
-                            <div
-                                class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-500">
-                                <i data-feather="alert-circle" width="20" height="20"></i>
+                        <div
+                            class="flex  gap-2 px-2 py-2 transition-colors duration-150 hover:bg-gray-200 dark:hover:bg-gray-700  {{ $notification->read_at == null ? 'bg-gray-100 dark:bg-gray-900' : '' }}">
+                            <div onclick="redirectNotification('{{ route('admin.notification', ['id' => $notification->id]) }}')"
+                                class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-500 cursor-pointer">
+                                <i data-feather="check-circle" width="20" height="20"></i>
                             </div>
                             <div>
-                                <p class="text-xs text-slate-400">{{ $notification->data['message'] }}</p>
+                                <p class="text-xs text-slate-400 flex justify-center items-center">
+                                    {!! $notification->data['message'] !!}
+                                </p>
                                 <p class="mt-1 flex items-center gap-1 text-xs text-slate-400">
                                     <i data-feather="clock" width="1em" height="1em"></i>
                                     <span>{{ $notification->created_at->diffForHumans() }}</span>
                                 </p>
                             </div>
-                        </a>
-                    </li>
-                @endforeach
+                        </div>
 
+                    </li>
+                @empty
+                    <li class=" text-center my-5 text-red-500">
+                        <p>There have no notifications</p>
+                    </li>
+                @endforelse
             </ul>
         </div>
 
@@ -56,3 +61,8 @@
         </div>
     </div>
 </div>
+<script>
+    function redirectNotification(url) {
+        window.location.href = url;
+    }
+</script>

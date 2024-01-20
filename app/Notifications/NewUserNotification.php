@@ -40,7 +40,7 @@ class NewUserNotification extends Notification
     {
         return [
             'user_id' => $this->user->id,
-            'message' => 'Registered new user ( '.$this->user->name.' ).',
+            'message' => 'Registered new user &nbsp; <a target="_blank" class="text-blue-600 font-medium" href="'.route('admin.user.show', $this->user->id).'">'.$this->user->name.'</a>',
         ];
     }
 }

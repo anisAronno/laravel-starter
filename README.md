@@ -91,6 +91,12 @@ Utilizing the [admintoolkit-html](https://github.com/mostafizurhimself/admintool
 6. Run Jobs:
 
    ```
+   php artisan horizon
+   ```
+
+   or
+
+   ```
    php artisan queue:work
    ```
 
