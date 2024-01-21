@@ -222,7 +222,7 @@
         @can('user.view')
             <li>
                 <a href="javascript:void(0);"
-                    class="sidebar-menu {{ request()->routeIs(['admin.user.index', 'admin.roles.index']) ? 'active' : '' }}">
+                    class="sidebar-menu {{ request()->routeIs(['admin.user.index', 'admin.user.create', 'admin.user.show', 'admin.user.edit', 'admin.roles.index', 'admin.roles.create', 'admin.roles.show', 'admin.roles.edit']) ? 'active' : '' }}">
 
                     <span class="sidebar-menu-icon">
                         <i data-feather="users"></i>
@@ -237,7 +237,7 @@
                         <li>
                             <a href="{{ route('admin.user.index') }}"
                                 class="sidebar-submenu-item {{ request()->routeIs('admin.user.index') ? 'active' : '' }}">
-                                User</a>
+                                Users</a>
                         </li>
                     @endcan
                     @can('role.view')
