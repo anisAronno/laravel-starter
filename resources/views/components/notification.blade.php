@@ -16,10 +16,13 @@
     <div class="dropdown-content mt-3 w-[17.5rem] divide-y dark:divide-slate-700 sm:w-80">
         <div class="flex items-center justify-between px-4 py-4">
             <h6 class="text-slate-800 dark:text-slate-300">Notifications</h6>
-            <a href="{{ route('admin.notification') }}"
-                class="text-xs font-medium text-slate-600 hover:text-primary-500 dark:text-slate-300">
-                Clear All
-            </a>
+            @if (auth()->user()->unreadNotifications->count() > 0)
+                <a href="{{ route('admin.notification') }}"
+                    class="text-xs font-medium text-slate-600 hover:text-primary-500 dark:text-slate-300">
+                    Clear All
+                </a>
+            @endif
+
         </div>
 
         <div class="h-80 w-full" data-simplebar>

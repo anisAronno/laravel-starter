@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\RolesController;
+use App\Http\Controllers\Admin\SettingsControler;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +17,7 @@ Route::middleware(['auth', 'verified'])
         Route::resource('roles', RolesController::class);
         Route::resource('user', UserController::class);
         Route::view('media', 'dashboard.media.index')->name('media.index');
-        Route::view('settings', 'dashboard.settings.index')->name('settings.index');
+        Route::resource('settings', SettingsControler::class, ['only'=>['index', 'update', 'destroy']]);
 
         Route::view('email', 'dashboard.email.index')->name('email');
         Route::view('chat', 'dashboard.chat.index')->name('chat');
