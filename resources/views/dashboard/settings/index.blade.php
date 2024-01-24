@@ -7,9 +7,6 @@
         <!-- Page Title Ends -->
 
         <div class="space-y-4">
-            @php
-                $allSettings = getAllSettings();
-            @endphp
             <!-- Settings Table Starts -->
             <div class="table-responsive whitespace-nowrap rounded-primary">
                 <table class="table custom-data-table">
@@ -25,17 +22,23 @@
                             <tr>
                                 <td>
                                     <span class="font-normal text-md text-gray-700 dark:text-gray-100 capitalize">
-                                        {{ $key }}
+                                         {{ str_replace('_', ' ', $key) }}
                                     </span>
                                 </td>
                                 <td>
                                     <span class="font-normal text-md text-gray-700 dark:text-gray-100 capitalize">
-                                        <input class="input" type="text" value="{{ $settings }}">
+                                        <form action="{{ route('admin.settings.update', $key) }}"
+                                            id="settings_form_{{ $key }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <input class="input" type="text" name="settings_value" value="{{ $settings }}">
+                                        </form>
                                     </span>
                                 </td>
                                 <td>
                                     <div class="flex justify-end">
-                                        <button class="btn btn-primary" role="button" >
+                                        <button class="btn btn-primary" role="button"
+                                            onclick="document.getElementById('settings_form_{{ $key }}').submit()">
                                             <i class="w-4" data-feather="upload"></i>
                                             Update
                                         </button>
