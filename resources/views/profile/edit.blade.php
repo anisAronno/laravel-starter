@@ -10,7 +10,7 @@
         <section class="col-span-1 flex h-min w-full flex-col gap-6 lg:sticky lg:top-20">
             <!-- User Avatar & Status  -->
             <div class="card">
-                <div class="card-body flex flex-col items-center   w-full">
+                <div class="card-body flex flex-col items-center w-full">
                     <div class="relative my-2 h-24 w-24 rounded-full">
                         <img src="{{ $user?->avatar }}" alt="="{{ $user?->name }}" id="user-image"
                             class="h-full w-full rounded-full" />
@@ -28,7 +28,7 @@
                         @foreach ($user->roles as $role)
                             <span class="flex gap-1 items-center">
                                 <x-icons.sheild class="text-blue-400" />
-                                <span class="text-gray-700 dark:text-gray-100 ">
+                                <span class="text-gray-700 dark:text-gray-100">
                                     {{ $role->name }}
                                 </span>
                             </span>

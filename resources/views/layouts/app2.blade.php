@@ -21,11 +21,11 @@
 
     @include('sweetalert::alert')
 
-    <div class="antialiased ">
+    <div class="antialiased">
         <x-admin-header />
         <x-sidebar />
 
-        <main class="p-4 md:ml-64 min-h-screen pt-20 ">
+        <main class="p-4 md:ml-64 min-h-screen pt-20">
             {{ $slot }}
         </main>
     </div>

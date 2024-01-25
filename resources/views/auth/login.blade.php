@@ -5,7 +5,7 @@
         <div class="card mx-auto w-full max-w-md">
             <div class="card-body px-10 py-12">
                 <div class="flex flex-col items-center justify-center">
-                    <x-application-logo class=" fill-current text-gray-500" />
+                    <x-application-logo class="fill-current text-gray-500" />
                     <h5 class="mt-4">Welcome Back</h5>
                     <p class="text-sm text-slate-500 dark:text-slate-400">Please enter your details</p>
                     <x-auth-session-status class="my-4" :status="session('status')" />

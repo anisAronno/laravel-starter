@@ -122,11 +122,11 @@
                                                     {{ $user?->name }}
                                                 </h6>
                                                 <div
-                                                    class="truncate text-xs text-slate-500 dark:text-slate-400 flex gap-1  flex-wrap">
+                                                    class="truncate text-xs text-slate-500 dark:text-slate-400 flex gap-1 flex-wrap">
                                                     @foreach ($user->roles as $role)
                                                         <span class="flex gap-1 items-center mt-1">
-                                                            <x-icons.sheild class="text-blue-400 " />
-                                                            <span class="text-gray-700 dark:text-gray-100 ">
+                                                            <x-icons.sheild class="text-blue-400" />
+                                                            <span class="text-gray-700 dark:text-gray-100">
                                                                 {{ $role->name }}
                                                             </span>
                                                         </span>
@@ -174,7 +174,7 @@
                                                                     <a href="#"
                                                                         onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user?')) { document.getElementById('delete-user-{{ $user->id }}').submit();}"
                                                                         class="dropdown-link">
-                                                                        <i class="h-5  text-red-500 hover:text-red-700 dark:hover:text-red-400"
+                                                                        <i class="h-5 text-red-500 hover:text-red-700 dark:hover:text-red-400"
                                                                             data-feather="trash"></i>
                                                                         <span>Delete</span>
                                                                     </a>
@@ -201,7 +201,7 @@
                     <div class="sm:hidden">
                         @foreach ($users as $user)
                             <div class="card my-3 overflow-x-auto shadow-md shadow-gray-300 dark:shadow-gray-700">
-                                <div class="card-header flex justify-between items-center ">
+                                <div class="card-header flex justify-between items-center">
                                     <div class="avatar avatar-circle">
                                         <img class="avatar-img" src="{{ $user?->avatar }}" alt="Avatar 1" />
                                     </div>
@@ -241,7 +241,7 @@
                                                             <a href="#"
                                                                 onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user?')) { document.getElementById('delete-user-{{ $user->id }}').submit();}"
                                                                 class="dropdown-link">
-                                                                <i class="h-5  text-red-500 hover:text-red-700 dark:hover:text-red-400"
+                                                                <i class="h-5 text-red-500 hover:text-red-700 dark:hover:text-red-400"
                                                                     data-feather="trash"></i>
                                                                 <span>Delete</span>
                                                             </a>
@@ -260,19 +260,19 @@
                                     </div>
                                 </div>
                                 <div class="card-body space-y-1">
-                                    <p class="card-title flex gap-2 ">
+                                    <p class="card-title flex gap-2">
                                         <span>Email: </span> {{ $user->email }}
                                     </p>
                                     <div class="card-content space-y-1">
-                                        <p class="card-title flex gap-2 ">
+                                        <p class="card-title flex gap-2">
                                             <span>Phone: </span> {{ $user->phone }}
                                         </p>
-                                        <p class="card-title flex gap-2 ">
+                                        <p class="card-title flex gap-2">
                                             <span>Role: </span>
                                             @foreach ($user->roles as $role)
                                                 <span class="flex gap-1 items-center">
                                                     <x-icons.sheild class="text-blue-400" />
-                                                    <span class="text-gray-700 dark:text-gray-100 ">
+                                                    <span class="text-gray-700 dark:text-gray-100">
                                                         {{ $role->name }}
                                                     </span>
                                                 </span>
@@ -282,7 +282,7 @@
                                             <span>Status: </span>
                                             <span class="badge {{ $user->status->color() }}">{{ $user->status }}</span>
                                         </p>
-                                        <p class="card-title flex gap-2 ">
+                                        <p class="card-title flex gap-2">
                                             <span>Created: </span> {{ $user->created_at->diffForHumans() }}
                                         </p>
                                     </div>

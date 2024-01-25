@@ -117,7 +117,7 @@
                                     </td>
 
                                     <td
-                                        class=" text-md xl:text-lg text-gray-500 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ">
+                                        class="text-md xl:text-lg text-gray-500 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
                                         @foreach ($role->permissions as $perm)
                                             <span class="flex gap-1 items-center">
                                                 <x-icons.sheild class="text-blue-400" />
@@ -161,7 +161,7 @@
                                                                     <a href="#"
                                                                         onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this role?')) { document.getElementById('delete-role-{{ $role->id }}').submit();}"
                                                                         class="dropdown-link">
-                                                                        <i class="h-5  text-red-500 hover:text-red-700 dark:hover:text-red-400"
+                                                                        <i class="h-5 text-red-500 hover:text-red-700 dark:hover:text-red-400"
                                                                             data-feather="trash"></i>
                                                                         <span>Delete</span>
                                                                     </a>
@@ -191,7 +191,7 @@
                                 <div class="card-header flex justify-between items-center">
                                     <div class="card-title capitalize">
                                         <p>{{ $role->name }}</p>
-                                        <p class=" text-xs font-light"> <span>Created: </span>
+                                        <p class="text-xs font-light"> <span>Created: </span>
                                             {{ $role->created_at->diffForHumans() }} </p>
 
                                     </div>
@@ -208,7 +208,7 @@
                                                 @can('role.view')
                                                     <li>
                                                         <a href="{{ route('admin.roles.show', $role->id) }}"
-                                                            class=" py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center">
+                                                            class="py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center">
                                                             <x-icons.eye />
                                                             Show
                                                         </a>
@@ -252,12 +252,12 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="card-content">
-                                        <p class="card-title flex gap-2 ">
+                                        <p class="card-title flex gap-2">
                                             @foreach ($role->permissions as $permission)
                                                 <div class="flex flex-wrap grow my-1">
                                                     <span class="flex gap-2 items-center">
                                                         <x-icons.sheild class="text-blue-400" />
-                                                        <span class="text-gray-700 dark:text-gray-100 ">
+                                                        <span class="text-gray-700 dark:text-gray-100">
                                                             {{ $permission->name }}
                                                         </span>
                                                     </span>

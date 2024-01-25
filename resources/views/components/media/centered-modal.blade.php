@@ -4,7 +4,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <div class=" float-right">
+                <div class="float-right">
                     <button type="submit"
                         class="btn btn-plain-secondary dark:text-slate-300 dark:hover:bg-slate-700 dark:focus:bg-slate-700"
                         data-dismiss="modal">
@@ -12,14 +12,14 @@
                     </button>
                 </div>
             </div>
-            <div class="modal-body ">
+            <div class="modal-body">
                 <div class="w-full grid grid-cols-1 md:grid-cols-12 justify-between gap-2 md:gap-4 md:min-h-48">
                     <div class="col-span-7 p-2">
                         <img src="{{ Media::getURL($media->url) }}" alt="{{ $media->title }}"
                             class="w-full h-auto image-item object-cover">
                     </div>
                     <div class="col-span-5 truncate">
-                        <div class="border-b border-gray-500 pb-3 leading-normal ">
+                        <div class="border-b border-gray-500 pb-3 leading-normal">
                             <div class="flex flex-wrap gap-3 md:gap-5 justify-start">
                                 <span class="font-medium">File name :</span>
                                 <span id="badge_title_{{ $media->id }}">{{ $media?->title }}</span>

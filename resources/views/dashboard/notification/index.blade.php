@@ -104,20 +104,20 @@
                         @foreach ($notifications as $notification)
                             <div
                                 class="card my-3 overflow-x-auto shadow-md shadow-gray-300 dark:shadow-gray-700 cursor-pointer gap-2 px-2 py-2 transition-colors duration-150 hover:bg-gray-400 dark:hover:bg-gray-700  {{ $notification->read_at == null ? 'bg-gray-300 dark:bg-gray-600' : '' }}">
-                                <div class="card-header flex justify-between items-center ">
+                                <div class="card-header flex justify-between items-center">
                                     <span
                                         class="text-sm">{{ preg_replace('/(?<!\s)([A-Z])/', ' $1', class_basename($notification->type) ?? '') }}</span>
                                 </div>
                                 <div class="card-body space-y-1 flex justify-between">
                                     <div>
-                                        <p class="card-title  text-wrap text-sm ">
+                                        <p class="card-title text-wrap text-sm">
                                             {!! $notification->data['message'] !!}
                                         </p>
                                         <div class="card-content space-y-1 text-xs">
                                             <span>Created: </span> {{ $notification->created_at->diffForHumans() }}
                                         </div>
                                     </div>
-                                    <div class="  flex justify-between items-center text-xs">
+                                    <div class="flex justify-between items-center text-xs">
                                         <a href="{{ route('admin.notification.show', $notification->id) }}"
                                             class="!text-right flex justify-end gap-2 items-center ">
                                             <i data-feather="eye" height="1rem" width="1rem"></i>

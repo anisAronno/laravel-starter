@@ -8,7 +8,7 @@
         <div class="card mx-auto w-full max-w-md">
             <div class="card-body px-10 py-12">
                 <div class="flex flex-col items-center justify-center">
-                    <x-application-logo class=" fill-current text-gray-500" />
+                    <x-application-logo class="fill-current text-gray-500" />
                     <h5 class="mt-4">Reset Your Password</h5>
                 </div>
 
