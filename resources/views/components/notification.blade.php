@@ -5,7 +5,7 @@
             <i width="24" height="24" data-feather="bell"></i>
             @if (auth()->user()->unreadNotifications->count() > 0)
                 <span
-                    class="absolute -right-1 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-danger-500 text-[11px] text-slate-200">
+                    class="absolute -right-1 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-danger-500 text-[11px] text-slate-200">
                     {{ auth()->user()->unreadNotifications->count() }}
                 </span>
             @endif
