@@ -15,11 +15,12 @@ class UserObserver
     public function created(User $user): void
     {
         $admins = User::with('roles')
-        ->whereHas('roles', function ($query) {
+        ->whereHas('roles', function ($query)
+        {
             $query->whereIn('name', ['superadmin', 'admin']);
         })
         ->get();
-        
+
         foreach ($admins as $admin) {
             Notification::send($admin, new NewUserNotification($user));
         }
