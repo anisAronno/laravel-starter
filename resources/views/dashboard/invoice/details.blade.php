@@ -16,7 +16,7 @@
                             <!-- Logo Starts -->
                             <div class="flex h-16 w-full items-center gap-4 pr-4">
                                 <span class="inline-block flex-shrink-0">
-                                    <x-application-logo class=" fill-current text-gray-500" />
+                                    <x-application-logo class="fill-current text-gray-500" />
                                 </span>
 
                                 <div class="flex flex-col">

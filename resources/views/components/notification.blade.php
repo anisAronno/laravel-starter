@@ -48,7 +48,7 @@
 
                     </li>
                 @empty
-                    <li class=" text-center my-5 text-red-500">
+                    <li class="text-center my-5 text-red-500">
                         <p>There have no notifications</p>
                     </li>
                 @endforelse

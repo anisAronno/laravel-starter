@@ -133,7 +133,7 @@
                         <span class="sidebar-menu-icon">
                             <i data-feather="file-text"></i>
                         </span>
-                        <span class="sidebar-menu-text ">Invoice</span>
+                        <span class="sidebar-menu-text">Invoice</span>
                         <span class="sidebar-menu-arrow">
                             <i data-feather="chevron-right"></i>
                         </span>
@@ -232,7 +232,7 @@
                         <i data-feather="chevron-right"></i>
                     </span>
                 </a>
-                <ul class="sidebar-submenu ">
+                <ul class="sidebar-submenu">
                     @can('user.view')
                         <li>
                             <a href="{{ route('admin.user.index') }}"

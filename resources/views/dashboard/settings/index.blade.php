@@ -53,12 +53,12 @@
                     @foreach ($allSettings as $key => $settings)
                         <div class="card my-4 overflow-x-auto shadow-sm shadow-gray-300 dark:shadow-gray-700">
                             <div class="card-header flex justify-center">
-                                <div class="card-title capitalize ">
+                                <div class="card-title capitalize">
                                     <p>{{ $key }}</p>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="card-content ">
+                                <div class="card-content">
                                     <div class="px-4 py-4">
                                         <input class="input" type="text" value="{{ $settings }}">
                                     </div>

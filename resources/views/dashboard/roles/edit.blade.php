@@ -2,13 +2,13 @@
 @can('role.edit')
     <x-app-layout>
         <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
-            <div class="mx-auto   px-4 lg:px-6">
+            <div class="mx-auto px-4 lg:px-6">
                 <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                     <div
                         class="w-full flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                         <div
                             class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                            <h2 class="font-medium text-md xl:text-lg ">Edit Permission for <span
+                            <h2 class="font-medium text-md xl:text-lg">Edit Permission for <span
                                     class="text-blue-600 capitalize">{{ $role->name }}</span> Role </h2>
                         </div>
                         <div
@@ -80,7 +80,7 @@
                                 </div>
                             </div>
 
-                            <div class="mt-8 grid gap-5 grid-cols-1  lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+                            <div class="mt-8 grid gap-5 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
 
                                 @php $i = 1; @endphp
                                 @foreach ($permission_groups as $group)
@@ -90,7 +90,7 @@
                                             $permissions = User::getpermissionsByGroupName($group->name);
                                         @endphp
                                         <div
-                                            class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700   min-w-32 min-h-60 truncate">
+                                            class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-w-32 min-h-60 truncate">
                                             <div
                                                 class="my-3 md:my-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white capitalize underline underline-offset-8">
                                                 <input type="checkbox" id="{{ $i }}Management"

@@ -7,7 +7,7 @@
         <div class="card mx-auto w-full max-w-md">
             <div class="card-body px-10 py-12">
                 <div class="flex flex-col items-center justify-center">
-                    <x-application-logo class=" fill-current text-gray-500" />
+                    <x-application-logo class="fill-current text-gray-500" />
                     <h5 class="m-4">Recover Your Password</h5>
                     <x-auth-session-status class="my-4" :status="session('status')" />
                 </div>
