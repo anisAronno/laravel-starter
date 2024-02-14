@@ -7,6 +7,7 @@ use App\Enums\Status;
 use App\Helpers\UniqueSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -67,5 +68,18 @@ class Product extends Model
     public function categories()
     {
         return $this->morphToMany(Category::class, 'categoryable')->withTimestamps();
+    }
+
+    public function variations() : HasMany
+    {
+        return $this->hasMany(Variation::class);
+    }
+
+    public function defaultVariation()
+    {
+        return $this->variations()
+        ->where('title', 'default')
+        ->latest()
+        ->limit(1);
     }
 }

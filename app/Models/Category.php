@@ -87,4 +87,5 @@ class Category extends Model
     {
         return $this->morphedByMany(Product::class, 'categoryable');
     }
+    
 }

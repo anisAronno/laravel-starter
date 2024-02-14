@@ -18,6 +18,8 @@ return new class () extends Migration {
             $table->unsignedBigInteger('categoryable_id');
             $table->string('categoryable_type');
             $table->timestamps();
+            
+            $table->index(['categoryable_id', 'categoryable_type']);
         });
     }
 
