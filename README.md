@@ -23,6 +23,7 @@ Welcome to the Laravel Starter Project! This repository provides a kickstart set
 
 - Laravel [Breeze](https://laravel.com/docs/10.x/starter-kits#laravel-breeze) (Used only backend code for authentication)
 - [Spatie](https://github.com/spatie/laravel-permission) Roll and Permission
+- Laravel [Telescope](https://laravel.com/docs/10.x/telescope) (Elegant debug assistant for local development)
 - Laravel [Pulse](https://laravel.com/docs/10.x/pulse) (Application's performance Monitoring)
 - Laravel [Clockwork](https://github.com/itsgoingd/clockwork) (Request Monitoring)
 - Laravel [Horizon](https://laravel.com/docs/10.x/horizon) (Job And Queue manage)

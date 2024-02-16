@@ -39,6 +39,7 @@
     "laravel/breeze": "^1.27",
     "laravel/pint": "^1.13",
     "laravel/sail": "^1.18",
+    "laravel/telescope": "^4.17",
     "mockery/mockery": "^1.4.4",
     "nunomaduro/collision": "^7.0",
     "phpunit/phpunit": "^10.1",
@@ -76,7 +77,9 @@
   },
   "extra": {
     "laravel": {
-      "dont-discover": []
+      "dont-discover": [
+        "laravel/telescope"
+      ]
     }
   },
   "config": {
