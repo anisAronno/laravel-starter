@@ -14,18 +14,16 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         User::factory(20)
-        ->hasAttached(
-            MediaFactory::new()->count(5)
-        )
-        ->afterCreating(function (User $user)
-        {
-            $featuredMedia                     = $user->media()->first();
-            $featuredMedia->pivot->is_featured = true;
-            $featuredMedia->pivot->save();
-        })
-        ->create()->each(function ($user)
-        {
-            $user->assignRole('user');
-        });
+            ->hasAttached(
+                MediaFactory::new()->count(5)
+            )
+            ->afterCreating(function (User $user) {
+                $featuredMedia                     = $user->media()->first();
+                $featuredMedia->pivot->is_featured = true;
+                $featuredMedia->pivot->save();
+            })
+            ->create()->each(function ($user) {
+                $user->assignRole('user');
+            });
     }
 }

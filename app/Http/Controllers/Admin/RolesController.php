@@ -32,8 +32,7 @@ class RolesController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = Role::with('permissions')->orderBy('id', 'desc')->when(! empty($request->search), function ($query) use ($request)
-        {
+        $roles = Role::with('permissions')->orderBy('id', 'desc')->when(! empty($request->search), function ($query) use ($request) {
             return $query->where('name', 'LIKE', '%'.$request->search.'%');
         })->paginate(5)->withQueryString();
 

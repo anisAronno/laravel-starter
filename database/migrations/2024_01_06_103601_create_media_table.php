@@ -13,8 +13,7 @@ return new class() extends Migration
      */
     public function up()
     {
-        Schema::create('media', function (Blueprint $table)
-        {
+        Schema::create('media', function (Blueprint $table) {
             $table->id();
             $table->string('title', 255)->nullable();
             $table->string('caption', 255)->nullable();

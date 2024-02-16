@@ -14,8 +14,7 @@ return new class() extends Migration
      */
     public function up()
     {
-        Schema::create('mediables', function (Blueprint $table)
-        {
+        Schema::create('mediables', function (Blueprint $table) {
             $table->foreignIdFor(Media::class)->constrained()->cascadeOnDelete();
             $table->morphs('mediable');
             $table->tinyInteger('is_featured')->default(0);
