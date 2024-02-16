@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         $schedule->command('activitylog:clean')->daily();
+
         $schedule->command('cache:prune-stale-tags')->hourly();
 
         $schedule->command('queue:flush')->weekly();
@@ -22,6 +23,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('clear-cache')->weekly();
 
         $schedule->command('logs:clean')->dailyAt('1:00');
+
+        $schedule->command('telescope:prune')->daily();
 
         $schedule->command('queue:work --daemon --sleep=3 --tries=3')
             ->everyMinute()
