@@ -30,23 +30,18 @@ class Media extends Component
         $medias               = Cache::remember(
             $key,
             now()->addMinutes($cacheTTL),
-            function ()
-            {
+            function () {
                 return MediaGallery::query()->with(['owner'])
-                    ->when($this->request->has('search'), function ($query)
-                    {
+                    ->when($this->request->has('search'), function ($query) {
                         $query->where('title', 'LIKE', '%'.$this->request->input('search').'%');
                     })
-                    ->when($this->request->has('directory'), function ($query)
-                    {
+                    ->when($this->request->has('directory'), function ($query) {
                         $query->where('directory', $this->request->input('directory'));
                     })
-                    ->when($this->request->has('owner_id') || ! config('media.view_all_media_anyone'), function ($query)
-                    {
+                    ->when($this->request->has('owner_id') || ! config('media.view_all_media_anyone'), function ($query) {
                         $query->where('owner_id', auth()->id());
                     })
-                    ->when($this->request->has('startDate') && $this->request->has('endDate'), function ($query)
-                    {
+                    ->when($this->request->has('startDate') && $this->request->has('endDate'), function ($query) {
                         $query->whereBetween('created_at', [
                             new \DateTime($this->request->input('startDate')),
                             new \DateTime($this->request->input('endDate')),

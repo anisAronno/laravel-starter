@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Variation;
 use Database\Factories\MediaFactory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -20,7 +19,7 @@ class CategorySeeder extends Seeder
             ->count(10)
             ->hasAttached(MediaFactory::new()->count(5))
             ->afterCreating(function (Category $category) {
-                $featuredMedia = $category->media()->first();
+                $featuredMedia                     = $category->media()->first();
                 $featuredMedia->pivot->is_featured = true;
                 $featuredMedia->pivot->save();
             })
@@ -30,7 +29,7 @@ class CategorySeeder extends Seeder
                     ->has(Variation::factory()->count(3), 'variations')
                     ->hasAttached(MediaFactory::new()->count(5))
                     ->afterCreating(function (Product $product) {
-                        $featuredMedia = $product->media()->first();
+                        $featuredMedia                     = $product->media()->first();
                         $featuredMedia->pivot->is_featured = true;
                         $featuredMedia->pivot->save();
                     }),

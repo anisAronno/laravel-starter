@@ -13,8 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('settings', function (Blueprint $table)
-        {
+        Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->string('settings_key', 255)->unique();
             $table->longText('settings_value')->nullable();

@@ -18,7 +18,7 @@ class VariationFactory extends Factory
     {
         return [
             'title' => $this->faker->name(3),
-            'price' => $this->faker->numberBetween(10, 200), 
+            'price' => $this->faker->numberBetween(10, 200),
         ];
     }
 }

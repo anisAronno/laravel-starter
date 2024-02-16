@@ -8,6 +8,7 @@ use App\Helpers\UniqueSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -15,31 +16,23 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class Product extends Model
 {
     use HasFactory;
-    use SoftDeletes;
     use HasMedia;
     use LogsActivity;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'title',
-        'long_description',
-        'short_description',
-        'slug',
-        'status',
-        'is_featured',
-    ];
+    protected $fillable = ['title', 'long_description', 'short_description', 'slug', 'status', 'is_featured', 'has_variation'];
 
     /**
      * Override the default boot method to register some extra stuff for every child model.
      */
     protected static function boot()
     {
-        static::creating(function ($model)
-        {
+        static::creating(function ($model) {
             $model->slug = UniqueSlug::generate($model, 'slug', $model->title);
         });
 
@@ -51,9 +44,9 @@ class Product extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->logOnly(['title', 'short_description', 'long_description', 'status'])
-        ->logOnlyDirty()
-        ->dontSubmitEmptyLogs();
+            ->logOnly(['title', 'short_description', 'long_description', 'status'])
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs();
     }
 
     /**
@@ -70,16 +63,21 @@ class Product extends Model
         return $this->morphToMany(Category::class, 'categoryable')->withTimestamps();
     }
 
-    public function variations() : HasMany
+    public function variations(): HasMany
     {
-        return $this->hasMany(Variation::class);
+        return $this->hasMany(Variation::class, 'product_id', 'id');
     }
 
-    public function defaultVariation()
+    public function variation(): HasOne
     {
-        return $this->variations()
-        ->where('title', 'default')
-        ->latest()
-        ->limit(1);
+        return $this->hasOne(Variation::class, 'product_id', 'id')->latest('id');
+    }
+
+    /**
+     * If product has variations.
+     */
+    public function scopeHasVariations($query)
+    {
+        return $query->where('has_variation', 1);
     }
 }

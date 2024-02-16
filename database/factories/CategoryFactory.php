@@ -21,11 +21,11 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(3),
+            'title'       => $this->faker->sentence(3),
             'description' => $this->faker->paragraph(2),
             'is_featured' => $this->faker->numberBetween(0, 1),
-            'status' => Status::PUBLISHED,
-            'parent_id' => $this->faker->randomElement(Category::pluck('id')->toArray()),
+            'status'      => Status::PUBLISHED,
+            'parent_id'   => $this->faker->randomElement(Category::pluck('id')->toArray()),
         ];
     }
 }

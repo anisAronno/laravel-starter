@@ -24,8 +24,7 @@ class UserController extends Controller
     {
         $users = User::with('roles')
             ->orderBy('id', 'desc')
-            ->when(! empty($request->search), function ($query) use ($request)
-            {
+            ->when(! empty($request->search), function ($query) use ($request) {
                 return $query
                     ->where('name', 'LIKE', '%'.$request->search.'%')
                     ->orWhere('email', 'LIKE', '%'.$request->search.'%')

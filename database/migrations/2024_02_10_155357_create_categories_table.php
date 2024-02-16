@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 255);
             $table->string('slug', 255)->unique();
-            $table->text('description')->nullable(); 
+            $table->text('description')->nullable();
             $table->tinyInteger('is_featured')->default(0);
             $table->string('status')->default(Status::DRAFT->value);
             $table->unsignedInteger('parent_id')->nullable()->nullOnDelete();

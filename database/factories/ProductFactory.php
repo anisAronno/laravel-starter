@@ -18,11 +18,12 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(3),
+            'title'             => $this->faker->sentence(3),
             'short_description' => $this->faker->paragraph(2),
-            'long_description' => $this->faker->paragraph(5),
-            'is_featured' => $this->faker->numberBetween(0, 1), 
-            'status' => Status::PUBLISHED,
+            'long_description'  => $this->faker->paragraph(5),
+            'is_featured'       => $this->faker->numberBetween(0, 1),
+            'has_variation'     => $this->faker->numberBetween(0, 1),
+            'status'            => Status::PUBLISHED,
         ];
     }
 }

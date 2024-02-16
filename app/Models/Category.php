@@ -14,9 +14,9 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class Category extends Model
 {
     use HasFactory;
-    use SoftDeletes;
     use HasMedia;
     use LogsActivity;
+    use SoftDeletes;
 
     protected $fillable = [
         'title',
@@ -32,8 +32,7 @@ class Category extends Model
      */
     protected static function boot()
     {
-        static::creating(function ($model)
-        {
+        static::creating(function ($model) {
             $model->slug = UniqueSlug::generate($model, 'slug', $model->title);
         });
 
@@ -45,9 +44,9 @@ class Category extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->logOnly(['title', 'description', 'status'])
-        ->logOnlyDirty()
-        ->dontSubmitEmptyLogs();
+            ->logOnly(['title', 'description', 'status'])
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs();
     }
 
     /**
@@ -83,9 +82,9 @@ class Category extends Model
             }
         }
     }
+
     public function products()
     {
         return $this->morphedByMany(Product::class, 'categoryable');
     }
-    
 }
