@@ -25,7 +25,8 @@ return new class extends Migration
             throw new Exception('Error: team_foreign_key on config/permission.php not loaded. Run [php artisan config:clear] and try again.');
         }
 
-        Schema::create($tableNames['permissions'], function (Blueprint $table) {
+        Schema::create($tableNames['permissions'], function (Blueprint $table)
+        {
             $table->bigIncrements('id'); // permission id
             $table->string('name');       // For MySQL 8.0 use string('name', 125);
             $table->string('group_name')->nullable(); // custom column for frontend convenient
@@ -35,7 +36,8 @@ return new class extends Migration
             $table->unique(['name', 'guard_name']);
         });
 
-        Schema::create($tableNames['roles'], function (Blueprint $table) use ($teams, $columnNames) {
+        Schema::create($tableNames['roles'], function (Blueprint $table) use ($teams, $columnNames)
+        {
             $table->bigIncrements('id'); // role id
 
             if ($teams || config('permission.testing')) { // permission.testing is a fix for sqlite testing
@@ -53,7 +55,8 @@ return new class extends Migration
             }
         });
 
-        Schema::create($tableNames['model_has_permissions'], function (Blueprint $table) use ($tableNames, $columnNames, $pivotPermission, $teams) {
+        Schema::create($tableNames['model_has_permissions'], function (Blueprint $table) use ($tableNames, $columnNames, $pivotPermission, $teams)
+        {
             $table->unsignedBigInteger($pivotPermission);
 
             $table->string('model_type');
@@ -81,7 +84,8 @@ return new class extends Migration
             }
         });
 
-        Schema::create($tableNames['model_has_roles'], function (Blueprint $table) use ($tableNames, $columnNames, $pivotRole, $teams) {
+        Schema::create($tableNames['model_has_roles'], function (Blueprint $table) use ($tableNames, $columnNames, $pivotRole, $teams)
+        {
             $table->unsignedBigInteger($pivotRole);
 
             $table->string('model_type');
@@ -109,7 +113,8 @@ return new class extends Migration
             }
         });
 
-        Schema::create($tableNames['role_has_permissions'], function (Blueprint $table) use ($tableNames, $pivotRole, $pivotPermission) {
+        Schema::create($tableNames['role_has_permissions'], function (Blueprint $table) use ($tableNames, $pivotRole, $pivotPermission)
+        {
             $table->unsignedBigInteger($pivotPermission);
             $table->unsignedBigInteger($pivotRole);
 

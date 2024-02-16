@@ -17,12 +17,14 @@ class UsersTableSeeder extends Seeder
             ->hasAttached(
                 MediaFactory::new()->count(5)
             )
-            ->afterCreating(function (User $user) {
+            ->afterCreating(function (User $user)
+            {
                 $featuredMedia                     = $user->media()->first();
                 $featuredMedia->pivot->is_featured = true;
                 $featuredMedia->pivot->save();
             })
-            ->create()->each(function ($user) {
+            ->create()->each(function ($user)
+            {
                 $user->assignRole('user');
             });
     }

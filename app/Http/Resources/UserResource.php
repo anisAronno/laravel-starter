@@ -32,10 +32,12 @@ class UserResource extends JsonResource
             'is_deletable'        => $this->is_deletable,
             'is_editable'         => $this->is_editable,
             'unreadNotifications' => $this->whenLoaded('unreadNotifications'),
-            'roles'               => $this->whenLoaded('roles', function () {
+            'roles'               => $this->whenLoaded('roles', function ()
+            {
                 return RoleResource::collection($this->roles)->pluck('name');
             }),
-            'permissions' => $this->whenLoaded('permissions', function () {
+            'permissions' => $this->whenLoaded('permissions', function ()
+            {
                 return PermissionResource::collection($this->getAllPermissions())->pluck('name');
             }),
             'addresses'  => AddressResource::collection($this->whenLoaded('addresses')),
