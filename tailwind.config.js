@@ -4,7 +4,7 @@ import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 import colors from 'tailwindcss/colors';
 import defaultTheme from 'tailwindcss/defaultTheme';
-
+ 
 export const themeColors = {
     primary: colors.violet,
     secondary: colors.gray,
