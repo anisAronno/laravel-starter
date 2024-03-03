@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac9ae7e84f8993b8a9d3473a619d9f5b",
+    "content-hash": "9efae856f9218348534fb69c77ba1ee2",
     "packages": [
         {
             "name": "anisaronno/laravel-media-gallery",

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\ProfileController as UserProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::post('/add-to-cart', [CartController::class, 'store'])->name('addToCart');
 
 Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('/profile', [UserProfileController::class, 'edit'])->name('profile.edit');

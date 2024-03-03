@@ -5,8 +5,7 @@ namespace App\Models;
 use AnisAronno\MediaGallery\Traits\HasMedia;
 use App\Enums\Status;
 use App\Helpers\UniqueSlug;
-use App\Models\Variation;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -27,7 +26,7 @@ class Product extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['title', 'long_description', 'short_description', 'slug', 'status', 'is_featured', 'has_variation', 'brand_id'];
+    protected $fillable = ['title', 'long_description', 'short_description', 'slug', 'status', 'is_featured',  'brand_id', 'original_price', 'price'];
 
     /**
      * Override the default boot method to register some extra stuff for every child model.
@@ -65,26 +64,10 @@ class Product extends Model
         return $this->morphToMany(Category::class, 'categoryable')->withTimestamps();
     }
 
-    public function variations(): HasMany
-    {
-        return $this->hasMany(Variation::class, 'product_id', 'id');
-    }
-
-    public function variation(): HasOne
-    {
-        return $this->hasOne(Variation::class, 'product_id', 'id')->latest('id');
-    }
-
+    
     public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class,  'brand_id', 'id');
     }
-
-    /**
-     * If product has variations.
-     */
-    public function scopeHasVariations($query)
-    {
-        return $query->where('has_variation', 1);
-    }
+ 
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
-use App\Http\Requests\StoreVariationRequest;
-use App\Http\Requests\UpdateVariationRequest;
-use App\Models\Variation;
+use App\Http\Controllers\Controller;
+use App\Models\Product;
+use Illuminate\Http\Request;
 
-class VariationController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,15 +27,20 @@ class VariationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreVariationRequest $request)
+    public function store(Request $request)
     {
-        //
+        $product = Product::findOrFail($request->product_id);
+        $cart = session()->has('cart') ? session()->get('cart') : [];
+        $cart[$product->id] = $product->toArray();
+        session()->put('cart', $cart);
+
+        return back();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Variation $variation)
+    public function show(string $id)
     {
         //
     }
@@ -43,7 +48,7 @@ class VariationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Variation $variation)
+    public function edit(string $id)
     {
         //
     }
@@ -51,7 +56,7 @@ class VariationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateVariationRequest $request, Variation $variation)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -59,7 +64,7 @@ class VariationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Variation $variation)
+    public function destroy(string $id)
     {
         //
     }
