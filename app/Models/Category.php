@@ -85,6 +85,6 @@ class Category extends Model
 
     public function products()
     {
-        return $this->morphedByMany(Product::class, 'categoryable');
+        return $this->hasMany(Product::class);
     }
 }

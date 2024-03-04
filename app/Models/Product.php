@@ -5,11 +5,9 @@ namespace App\Models;
 use AnisAronno\MediaGallery\Traits\HasMedia;
 use App\Enums\Status;
 use App\Helpers\UniqueSlug;
- use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -26,7 +24,7 @@ class Product extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['title', 'long_description', 'short_description', 'slug', 'status', 'is_featured',  'brand_id', 'original_price', 'price'];
+    protected $fillable = ['title', 'long_description', 'short_description', 'slug', 'status', 'is_featured', 'brand_id', 'original_price', 'price'];
 
     /**
      * Override the default boot method to register some extra stuff for every child model.
@@ -59,15 +57,13 @@ class Product extends Model
         'status' => Status::class,
     ];
 
-    public function categories()
+    public function category(): BelongsTo
     {
-        return $this->morphToMany(Category::class, 'categoryable')->withTimestamps();
+        return $this->belongsTo(Category::class);
     }
 
-    
     public function brand(): BelongsTo
     {
-        return $this->belongsTo(Brand::class,  'brand_id', 'id');
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
- 
 }

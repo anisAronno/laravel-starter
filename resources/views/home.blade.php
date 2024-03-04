@@ -40,13 +40,16 @@
 
 <body class="antialiased text-black bg-white dark:text-white dark:bg-gray-900">
     <div class="comtainer p-5">
-        <div>
-            <h3>{{count($cart)}}</h3>
-        </div>
+        @if (!empty($cart))
+            <div>
+                <h3>{{ count($cart) }}</h3>
+            </div>
+        @endif
         <div class="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             @foreach ($products as $product)
                 <div>
-                    <img src="{{ $product->media[0]->url }}" alt="">
+                   
+                    <img src="{{ $product->featuredMedia->url }}" alt="">
                     <h2 class="text-lg">{{ $product->title }}</h2>
                     <h2 class="text-xl text-black">Price: <del>${{ $product->original_price }}</del>
                         ${{ $product->price }}

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use AnisAronno\MediaGallery\Traits\HasMedia;
 use App\Helpers\UniqueSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,6 +14,7 @@ class Brand extends Model
 {
     use HasFactory;
     use LogsActivity;
+    use HasMedia;
 
     protected $fillable = ['name', 'slug'];
 

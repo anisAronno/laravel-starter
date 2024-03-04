@@ -2,6 +2,7 @@
 
 use App\Enums\Status;
 use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->tinyInteger('is_featured')->default(0);
             $table->decimal('original_price');
             $table->decimal('price');
+            $table->foreignIdFor(Category::class)->nullable()->constrained()->nullOnDelete();
             $table->foreignIdFor(Brand::class)->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
             $table->softDeletes();

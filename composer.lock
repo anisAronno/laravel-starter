@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9efae856f9218348534fb69c77ba1ee2",
+    "content-hash": "a5244ece2b8143ebc7ea5a04d745c5da",
     "packages": [
         {
             "name": "anisaronno/laravel-media-gallery",
-            "version": "0.4.1",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/anisAronno/laravel-media-gallery.git",
-                "reference": "359c5fd905e7f16f2a35b4a4bbd7c26d73337d4a"
+                "reference": "97a730ba178e9135c9ea59ceede302589b94f484"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anisAronno/laravel-media-gallery/zipball/359c5fd905e7f16f2a35b4a4bbd7c26d73337d4a",
-                "reference": "359c5fd905e7f16f2a35b4a4bbd7c26d73337d4a",
+                "url": "https://api.github.com/repos/anisAronno/laravel-media-gallery/zipball/97a730ba178e9135c9ea59ceede302589b94f484",
+                "reference": "97a730ba178e9135c9ea59ceede302589b94f484",
                 "shasum": ""
             },
             "require": {
@@ -65,9 +65,9 @@
             ],
             "support": {
                 "issues": "https://github.com/anisAronno/laravel-media-gallery/issues",
-                "source": "https://github.com/anisAronno/laravel-media-gallery/tree/v0.4.1"
+                "source": "https://github.com/anisAronno/laravel-media-gallery/tree/v0.5.0"
             },
-            "time": "2024-01-11T15:38:08+00:00"
+            "time": "2024-03-04T07:05:32+00:00"
         },
         {
             "name": "anisaronno/laravel-media-helper",

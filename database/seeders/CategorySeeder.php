@@ -16,7 +16,7 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::factory()
-            ->count(5)
+            ->count(10)
             ->hasAttached(MediaFactory::new()->count(5))
             ->afterCreating(function (Category $category) {
                 $featuredMedia = $category->media()->first();
@@ -25,16 +25,16 @@ class CategorySeeder extends Seeder
             })
             ->has(
                 Product::factory()
-                    ->count(5)
+                    ->count(10)
                     ->hasAttached(MediaFactory::new()->count(5))
                     ->afterCreating(function (Product $product) {
-                        $brand = Brand::factory()->create();
-                        $product->brand_id = $brand->id;
-                        $product->save();
-
                         $featuredMedia = $product->media()->first();
                         $featuredMedia->pivot->is_featured = true;
                         $featuredMedia->pivot->save();
+
+                        $brand = Brand::factory()->create();
+                        $product->brand_id = $brand->id;
+                        $product->save();
                     }),
                 'products',
             )
