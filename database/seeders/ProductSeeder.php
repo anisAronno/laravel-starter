@@ -16,21 +16,18 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         Product::factory()
-            ->count(20)
+            ->count(100)
             ->hasAttached(MediaFactory::new()->count(5))
             ->afterCreating(function (Product $product) {
                 $featuredMedia = $product->media()->first();
                 $featuredMedia->pivot->is_featured = true;
                 $featuredMedia->pivot->save();
 
-                $brand = Brand::factory()->create();
-                $product->brand_id = $brand->id;
+                $product->brand_id = Brand::inRandomOrder()->first()->id;
                 $product->save();
 
-                $category = Category::factory()->create();
-                $product->category_id = $category->id;
+                $product->category_id = Category::inRandomOrder()->first()->id;
                 $product->save();
-
             })
             ->create();
     }
