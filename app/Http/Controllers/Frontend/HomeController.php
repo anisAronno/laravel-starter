@@ -13,17 +13,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $cart = session()->get('cart');
-
         $products = Product::with(['media'])
-        ->when(request()->filled('search'), function ($query)
-        {
-            return $query->where('title', 'LIKE', '%'.request()->search.'%');
-        })
-        ->paginate(15)
-        ->withQueryString();
+            ->when(request()->filled('search'), function ($query) {
+                return $query->where('title', 'LIKE', '%' . request()->search . '%');
+            })
+            ->paginate(15)
+            ->withQueryString();
 
-        return view('home', ['products' => $products, 'cart' => $cart]);
+        return view('home', ['products' => $products]);
     }
 
     /**

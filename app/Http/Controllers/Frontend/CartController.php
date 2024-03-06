@@ -13,7 +13,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $cartCollection = \Cart::session(auth()->id())->getContent(); 
+        return view('cart', ['cart' => $cartCollection->sortByDesc('id'), 'total' => \Cart::session(auth()->id())->getTotal()]);
     }
 
     /**
@@ -30,9 +31,18 @@ class CartController extends Controller
     public function store(Request $request)
     {
         $product = Product::findOrFail($request->product_id);
-        $cart = session()->has('cart') ? session()->get('cart') : [];
-        $cart[$product->id] = $product->toArray();
-        session()->put('cart', $cart);
+
+        \Cart::session(auth()->id())->add([
+            'id'         => $product->id,
+            'name'       => $product->title,
+            'price'      => $product->price,
+            'image'      => $product->featuredMedia->url,
+            'quantity'   => 1,
+            'attributes' => [
+                'image' => $product->featuredMedia->url,
+            ],
+            'associatedModel' => $product,
+        ]);
 
         return back();
     }
@@ -58,7 +68,19 @@ class CartController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $action = $request->action;
+
+        if ($action == 'add') {
+            \Cart::session(auth()->id())->update($id, [
+                'quantity' => 1,
+            ]);
+        } elseif ($action == 'subtraction') {
+            \Cart::session(auth()->id())->update($id, [
+                'quantity' => -1,
+            ]);
+        }
+
+        return back();
     }
 
     /**
@@ -66,6 +88,8 @@ class CartController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        \Cart::session(auth()->id())->remove($id);
+
+        return back();
     }
 }
