@@ -9,14 +9,10 @@ use App\Models\Product;
 use App\Models\Sku;
 use Database\Factories\MediaFactory;
 use Illuminate\Database\Seeder;
+use App\Models\PricingTier;
 
 class ProductSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         Product::factory()
@@ -25,10 +21,25 @@ class ProductSeeder extends Seeder
                 Sku::factory()
                     ->count(3)
                     ->afterCreating(function (Sku $sku) {
-                        $sku->attributeOptions()->attach(AttributeOption::inRandomOrder()->first()->id);
+                        $attributeOptions = AttributeOption::inRandomOrder()->take(2)->get();
+                        $sku->attributeOptions()->attach($attributeOptions->pluck('id')->toArray());
+
+                        PricingTier::create([
+                            'sku_id' => $sku->id,
+                            'attribute_options_combination' => json_encode($attributeOptions->pluck('id')->toArray()),
+                            'price' => rand(1000, 5000),
+                        ]);
+
+                        $attributeOptions2 = AttributeOption::inRandomOrder()->take(2)->get();
+
+                        PricingTier::create([
+                            'sku_id' => $sku->id,
+                            'attribute_options_combination' => json_encode($attributeOptions2->pluck('id')->toArray()),
+                            'price' => rand(1000, 5000),
+                        ]);
                     }),
             )
-            ->hasAttached(MediaFactory::new()->count(5))
+            ->has(MediaFactory::new()->count(5))
             ->afterCreating(function (Product $product) {
                 $featuredMedia = $product->media()->first();
                 $featuredMedia->pivot->is_featured = true;

@@ -8,6 +8,7 @@ use App\Helpers\UniqueSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -33,8 +34,7 @@ class Product extends Model
      */
     protected static function boot()
     {
-        static::creating(function ($model)
-        {
+        static::creating(function ($model) {
             $model->slug = UniqueSlug::generate($model, 'slug', $model->title);
         });
 
@@ -73,11 +73,35 @@ class Product extends Model
     public function skus(): HasMany
     {
         return $this->hasMany(Sku::class);
+    } 
+
+    public function attributeOptions(): BelongsToMany
+    {
+        return $this->belongsToMany(AttributeOption::class, 'attribute_option_sku', 'attribute_option_id', 'sku_id');
     }
 
-    public function attributes(): HasManyThrough
+    protected $appends = ['attributes_with_options'];
+
+    public function getAttributesWithOptionsAttribute()
     {
-        return $this->hasManyThrough(AttributeOption::class, Sku::class, 'product_id', 'attribute_id', 'id', 'id')
-        ->distinct();
+        $skus = $this->skus->load('attributeOptions.attribute');
+
+        $attributesWithOptions = [];
+
+        foreach ($skus as $sku) {
+            foreach ($sku->attributeOptions as $option) {
+                $attrId = $option->attribute->id;
+
+                if (!isset($attributesWithOptions[$attrId])) {
+                    $attributesWithOptions[$attrId] = [
+                        'attribute' => $option->attribute->name,
+                        'options' => [],
+                    ];
+                }
+                $attributesWithOptions[$attrId]['options'][] = $option->value;
+            }
+        }
+
+        return $attributesWithOptions;
     }
 }

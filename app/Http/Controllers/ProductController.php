@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
+use App\Models\Sku;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -37,7 +39,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return Product::with('attributeOptions')->find($product->id);
     }
 
     /**
@@ -62,5 +64,32 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    /**
+     * Get Price by attribute.
+     */
+    public function getPrice(Request $request, Sku $sku)
+    {
+        $request->validate([
+            'variations' => 'required|array',
+            'variations.*' => 'required|integer',
+        ]);
+
+        $sku = $sku->load('pricingTiers');
+        return $this->price($sku, $request->variations);
+    }
+
+    protected function price(Sku $sku, array $selectedAttribute)
+    {
+        sort($selectedAttribute);
+
+        $matchingTier = $sku->pricingTiers->first(function ($tier) use ($selectedAttribute) {
+            $tierOptions = json_decode($tier->attribute_options_combination, true);
+            sort($tierOptions);
+            return $tierOptions == $selectedAttribute;
+        });
+
+        return $matchingTier ? $matchingTier->price : $sku->price;
     }
 }
