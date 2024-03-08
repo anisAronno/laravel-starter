@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::with(['media'])
+        $products = Product::with(['media', 'category'])
             ->when(request()->filled('search'), function ($query) {
                 return $query->where('title', 'LIKE', '%' . request()->search . '%');
             })
