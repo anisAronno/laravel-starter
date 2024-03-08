@@ -8,6 +8,8 @@ use App\Helpers\UniqueSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -31,7 +33,8 @@ class Product extends Model
      */
     protected static function boot()
     {
-        static::creating(function ($model) {
+        static::creating(function ($model)
+        {
             $model->slug = UniqueSlug::generate($model, 'slug', $model->title);
         });
 
@@ -65,5 +68,16 @@ class Product extends Model
     public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class, 'brand_id', 'id');
+    }
+
+    public function skus(): HasMany
+    {
+        return $this->hasMany(Sku::class);
+    }
+
+    public function attributes(): HasManyThrough
+    {
+        return $this->hasManyThrough(AttributeOption::class, Sku::class, 'product_id', 'attribute_id', 'id', 'id')
+        ->distinct();
     }
 }
