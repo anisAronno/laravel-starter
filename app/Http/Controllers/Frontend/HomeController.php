@@ -14,13 +14,19 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::with(['media', 'category'])
-            ->when(request()->filled('search'), function ($query) {
-                return $query->where('title', 'LIKE', '%' . request()->search . '%');
-            })
-            ->paginate(15)
-            ->withQueryString();
+            ->orderByDesc('id')
+            ->published()
+            ->limit(12)
+            ->get();
 
-        return view('home', ['products' => $products]);
+        $featuredProducts = Product::with(['media', 'category'])
+            ->isFeatured()
+            ->published()
+            ->orderByDesc('id')
+            ->limit(4)
+            ->get();
+
+        return view('home', ['products' => $products, 'featuredProducts' => $featuredProducts]);
     }
 
     /**

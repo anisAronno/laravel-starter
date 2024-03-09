@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Address;
 use App\Models\User;
 use Database\Factories\MediaFactory;
 use Illuminate\Database\Seeder;
@@ -14,6 +15,7 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         User::factory(10)
+            ->has(Address::factory()->count(2))
             ->hasAttached(
                 MediaFactory::new()->count(5)
             )

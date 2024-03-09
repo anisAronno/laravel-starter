@@ -11,6 +11,7 @@ use App\Notifications\ResetPasswordNotification;
 use App\Notifications\VerifyEmailQueued;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -53,9 +54,9 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password'          => 'hashed',
-        'status'            => UserStatus::class,
-        'gender'            => UserGender::class,
+        'password' => 'hashed',
+        'status' => UserStatus::class,
+        'gender' => UserGender::class,
     ];
 
     protected static $recordEvents = ['deleted', 'created', 'updated'];
@@ -74,7 +75,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
         static::creating(function ($model) {
             $model->api_token = Uuid::uuid4()->toString();
-            $model->username  = UniqueSlug::generate($model, 'username', $model->name);
+            $model->username = UniqueSlug::generate($model, 'username', $model->name);
         });
     }
 
@@ -90,20 +91,14 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public static function getpermissionGroups()
     {
-        $permission_groups = DB::table('permissions')
-            ->select('group_name as name')
-            ->groupBy('group_name')
-            ->get();
+        $permission_groups = DB::table('permissions')->select('group_name as name')->groupBy('group_name')->get();
 
         return $permission_groups;
     }
 
     public static function getpermissionsByGroupName($group_name)
     {
-        $permissions = DB::table('permissions')
-            ->select('name', 'id')
-            ->where('group_name', $group_name)
-            ->get();
+        $permissions = DB::table('permissions')->select('name', 'id')->where('group_name', $group_name)->get();
 
         return $permissions;
     }
@@ -113,7 +108,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $hasPermission = true;
 
         foreach ($permissions as $permission) {
-            if (! $role->hasPermissionTo($permission->name)) {
+            if (!$role->hasPermissionTo($permission->name)) {
                 $hasPermission = false;
 
                 return $hasPermission;
@@ -132,6 +127,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getAvatarAttribute(): string
     {
-        return $this->image[0]?->url ?? 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
+        return $this->image[0]?->url ?? 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($this->email)));
+    }
+
+    public function addresses(): HasMany
+    {
+        return $this->hasMany(Address::class);
     }
 }

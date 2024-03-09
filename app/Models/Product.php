@@ -66,4 +66,13 @@ class Product extends Model
     {
         return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
+
+    public function scopeIsFeatured($query)
+    {
+        return $query->where('is_featured', true);
+    }
+    public function scopePublished($query)
+    {
+        return $query->where('status', Status::PUBLISHED);
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -13,7 +13,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::with(['media', 'category'])
+            ->when(request()->filled('search'), function ($query) {
+                return $query->where('title', 'LIKE', '%' . request()->search . '%');
+            })
+            ->paginate(15)
+            ->withQueryString();
+
+        return view('shop', ['products' => $products]);
     }
 
     /**
