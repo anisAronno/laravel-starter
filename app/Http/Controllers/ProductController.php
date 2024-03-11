@@ -66,30 +66,5 @@ class ProductController extends Controller
         //
     }
 
-    /**
-     * Get Price by attribute.
-     */
-    public function getPrice(Request $request, Sku $sku)
-    {
-        $request->validate([
-            'variations' => 'required|array',
-            'variations.*' => 'required|integer',
-        ]);
-
-        $sku = $sku->load('pricingTiers');
-        return $this->price($sku, $request->variations);
-    }
-
-    protected function price(Sku $sku, array $selectedAttribute)
-    {
-        sort($selectedAttribute);
-
-        $matchingTier = $sku->pricingTiers->first(function ($tier) use ($selectedAttribute) {
-            $tierOptions = json_decode($tier->attribute_options_combination, true);
-            sort($tierOptions);
-            return $tierOptions == $selectedAttribute;
-        });
-
-        return $matchingTier ? $matchingTier->price : $sku->price;
-    }
+    
 }
