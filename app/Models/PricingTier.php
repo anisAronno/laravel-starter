@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class PricingTier extends Model
 {
     use HasFactory;
-    protected $fillable = ['sku_id', 'attribute_options_combination', 'price'];
+    protected $fillable = ['sku_id', 'attribute_options_combination', 'quantity', 'dimensions', 'weight', 'regular_price', 'selling_price'];
 
     protected $casts = [
         'attribute_options_combination' => 'array', // Ensure Laravel casts this to/from JSON automatically
+        'dimensions' => 'array', // Ensure Laravel casts this to/from JSON automatically
     ];
 
     public function sku()

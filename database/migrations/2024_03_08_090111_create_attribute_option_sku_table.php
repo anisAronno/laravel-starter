@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('attribute_option_sku', function (Blueprint $table) {
             $table->foreignId('sku_id')->constrained();
             $table->foreignId('attribute_option_id')->constrained();
-            $table->decimal('price')->nullable(); 
         });
     }
 

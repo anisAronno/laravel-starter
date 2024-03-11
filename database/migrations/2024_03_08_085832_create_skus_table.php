@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained();
             $table->string('code');
-            $table->decimal('price');        
+            $table->decimal('regular_price')->nullable();
+            $table->decimal('selling_price')->nullable();
+            $table->integer('quantity')->nullable();
             $table->timestamps();
         });
     }

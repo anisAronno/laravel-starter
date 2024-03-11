@@ -18,7 +18,8 @@ class SkuFactory extends Factory
     {
         return [
             'code' => fake()->regexify('[A-Z]{5}[0-4]{3}'),
-            'price' => fake()->randomFloat('2', 0, 9),
+            'regular_price' => fake()->randomFloat('2', 0, 9),
+            'selling_price' => fake()->randomFloat('2', 0, 9),
         ];
     }
 }

@@ -27,7 +27,7 @@ class Product extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['title', 'long_description', 'short_description', 'slug', 'status', 'is_featured', 'brand_id', 'original_price', 'price'];
+    protected $fillable = ['title', 'long_description', 'short_description', 'slug', 'status', 'is_featured', 'brand_id'];
 
     /**
      * Override the default boot method to register some extra stuff for every child model.

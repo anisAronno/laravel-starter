@@ -21,9 +21,7 @@ class ProductFactory extends Factory
             'title' => $this->faker->sentence(3),
             'short_description' => $this->faker->paragraph(2),
             'long_description' => $this->faker->paragraph(5),
-            'is_featured' => $this->faker->numberBetween(0, 1),
-            'price' => $this->faker->numberBetween(10, 1000),
-            'original_price' => $this->faker->numberBetween(8, 900),
+            'is_featured' => $this->faker->numberBetween(0, 1), 
             'status' => Status::PUBLISHED,
         ];
     }

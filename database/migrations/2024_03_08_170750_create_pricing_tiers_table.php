@@ -1,11 +1,11 @@
 <?php
 
+use App\Models\Sku;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('pricing_tiers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sku_id')->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Sku::class)->constrained()->cascadeOnDelete();
             $table->json('attribute_options_combination');
-            $table->decimal('price');
+            $table->string('weight')->nullable()->comment('kg');
+            $table->json('dimensions')->nullable()->comment('Length, Width, Height');
+            $table->decimal('regular_price')->nullable();
+            $table->decimal('selling_price')->nullable();
+            $table->integer('quantity')->nullable();
             $table->timestamps();
         });
     }

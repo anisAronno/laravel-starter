@@ -27,7 +27,7 @@ class ProductSeeder extends Seeder
                         PricingTier::create([
                             'sku_id' => $sku->id,
                             'attribute_options_combination' => json_encode($attributeOptions->pluck('id')->toArray()),
-                            'price' => rand(1000, 5000),
+                            'selling_price' => rand(1000, 5000),
                         ]);
 
                         $attributeOptions2 = AttributeOption::inRandomOrder()->take(2)->get();
@@ -35,7 +35,7 @@ class ProductSeeder extends Seeder
                         PricingTier::create([
                             'sku_id' => $sku->id,
                             'attribute_options_combination' => json_encode($attributeOptions2->pluck('id')->toArray()),
-                            'price' => rand(1000, 5000),
+                            'selling_price' => rand(1000, 5000),
                         ]);
                     }),
             )

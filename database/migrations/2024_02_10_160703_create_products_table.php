@@ -22,8 +22,6 @@ return new class extends Migration
             $table->longText('long_description')->nullable();
             $table->string('status')->default(Status::DRAFT->value);
             $table->tinyInteger('is_featured')->default(0);
-            $table->decimal('original_price');
-            $table->decimal('price');
             $table->foreignIdFor(Category::class)->nullable()->constrained()->nullOnDelete();
             $table->foreignIdFor(Brand::class)->nullable()->constrained()->nullOnDelete();
             $table->timestamps();

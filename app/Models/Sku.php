@@ -12,7 +12,7 @@ class Sku extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['product_id', 'code', 'price'];
+    protected $fillable = ['product_id', 'code', 'regular_price', 'selling_price', 'quantity'];
 
     protected function price(): Attribute
     {
@@ -26,7 +26,7 @@ class Sku extends Model
 
     public function attributeOptions(): BelongsToMany
     {
-        return $this->belongsToMany(AttributeOption::class)->withPivot('price');
+        return $this->belongsToMany(AttributeOption::class);
     }
     
     public function pricingTiers()
