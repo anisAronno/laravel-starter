@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use AnisAronno\LaravelSettings\Models\SettingsProperty;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
