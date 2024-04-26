@@ -1,10 +1,10 @@
-# Laravel Starter Project (Version 10)
+# # Laravel Starter Project (Version 11)
 
-Welcome to the Laravel Starter Project! This repository provides a kickstart setup for Laravel version 10, incorporating various essential packages and features. It's designed to streamline your Laravel application development process.
+Welcome to the Laravel Starter Project! This repository provides a kickstart setup for Laravel version 11, incorporating various essential packages and features. It's designed to streamline your Laravel application development process.
 
 ## Table of Contents
 
-- [Laravel Starter Project (Version 10)](#laravel-starter-project-version-10)
+- [# Laravel Starter Project (Version 11)](#-laravel-starter-project-version-11)
   - [Table of Contents](#table-of-contents)
   - [Uses Packages](#uses-packages)
   - [Dashboard Template](#dashboard-template)
@@ -21,18 +21,18 @@ Welcome to the Laravel Starter Project! This repository provides a kickstart set
 
 ## Uses Packages
 
-- Laravel [Breeze](https://laravel.com/docs/10.x/starter-kits#laravel-breeze) (Used only backend code for authentication)
+- Laravel [Breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze) (Used only backend code for authentication)
 - [Spatie](https://github.com/spatie/laravel-permission) Roll and Permission
-- Laravel [Telescope](https://laravel.com/docs/10.x/telescope) (Elegant debug assistant for local development)
-- Laravel [Pulse](https://laravel.com/docs/10.x/pulse) (Application's performance Monitoring)
+- Laravel [Telescope](https://laravel.com/docs/11.x/telescope) (Elegant debug assistant for local development)
+- Laravel [Pulse](https://laravel.com/docs/11.x/pulse) (Application's performance Monitoring)
 - Laravel [Clockwork](https://github.com/itsgoingd/clockwork) (Request Monitoring)
-- Laravel [Horizon](https://laravel.com/docs/10.x/horizon) (Job And Queue manage)
+- Laravel [Horizon](https://laravel.com/docs/11.x/horizon) (Job And Queue manage)
 - Laravel [Settings](https://github.com/anisAronno/laravel-settings) (Personal Package for application settings)
 - Laravel [Media Gallery](https://github.com/anisAronno/laravel-media-gallery) (Personal Package for file management)
 - Laravel [Activity Log](https://github.com/spatie/laravel-activitylog) (Track User Activity)
 - Beautiful [Log Viewer](https://github.com/opcodesio/log-viewer) for local and production
 - Laravel [Sweet Alert](https://github.com/realrashid/sweet-alert)
-- Laravel [Pint](https://laravel.com/docs/10.x/pint) For code style fixing
+- Laravel [Pint](https://laravel.com/docs/11.x/pint) For code style fixing
 
 ## Dashboard Template
 
@@ -42,9 +42,9 @@ Utilizing the [admintoolkit-html](https://github.com/mostafizurhimself/admintool
 
 ## Other Uses
 
-- Laravel [Database Notification](https://laravel.com/docs/10.x/notifications#database-notifications)
+- Laravel [Database Notification](https://laravel.com/docs/11.x/notifications#database-notifications)
 - Api authentication setup with [default token](https://laravel.com/docs/5.8/api-authentication)
-- Api authentication setup with [Sanctum](https://laravel.com/docs/10.x/sanctum)
+- Api authentication setup with [Sanctum](https://laravel.com/docs/11.x/sanctum)
 
 ## Features
 

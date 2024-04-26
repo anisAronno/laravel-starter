@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schedule;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +13,21 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Artisan::command('inspire', function ()
-{
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
+Schedule::command('activitylog:clean')->daily();
+
+Schedule::command('cache:prune-stale-tags')->hourly();
+
+Schedule::command('queue:flush')->weekly();
+
+Schedule::command('queue:restart')->hourly();
+
+Schedule::command('clear-cache')->weekly();
+
+Schedule::command('logs:clean')->dailyAt('1:00');
+
+Schedule::command('telescope:prune')->daily();
+
+Schedule::command('queue:work --daemon --sleep=3 --tries=3')
+    ->everyMinute()
+    ->withoutOverlapping()
+    ->sendOutputTo(storage_path('logs/queue-jobs.log'), true);
