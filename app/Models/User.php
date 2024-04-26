@@ -47,16 +47,19 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = ['password', 'remember_token', 'api_token'];
 
     /**
-     * The attributes that should be cast.
+     * The method that should be cast.
      *
-     * @var array<string, string>
+     * @return array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password'          => 'hashed',
-        'status'            => UserStatus::class,
-        'gender'            => UserGender::class,
-    ];
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password'          => 'hashed',
+            'status'            => UserStatus::class,
+            'gender'            => UserGender::class,
+        ];
+    }
 
     protected static $recordEvents = ['deleted', 'created', 'updated'];
 
