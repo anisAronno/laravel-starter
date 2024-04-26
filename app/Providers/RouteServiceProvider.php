@@ -30,7 +30,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         $this->routes(function ()
-        { 
+        {
             Route::middleware('web')
                 ->prefix('dashboard')
                 ->group(base_path('routes/admin.php'));
