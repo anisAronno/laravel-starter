@@ -1,4 +1,4 @@
-# # Laravel Starter Project (Version 11)
+# # Laravel-11 Starter Project
 
 Welcome to the Laravel Starter Project! This repository provides a kickstart setup for Laravel version 11, incorporating various essential packages and features. It's designed to streamline your Laravel application development process.
 
