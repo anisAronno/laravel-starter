@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\UpdaterController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
@@ -33,4 +34,8 @@ Route::prefix('v1')->group(function ()
         Route::post('logout', [AuthController::class, 'logout']);
         Route::get('profile', [AuthController::class, 'profile']);
     });
+
+    // Updater Route
+    Route::get('/check-update', [UpdaterController::class, 'checkForUpdates'])->name('updater.check');
+    Route::post('/update-initiate', [UpdaterController::class, 'updateProject'])->name('updater.update');
 });
