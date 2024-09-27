@@ -4,7 +4,7 @@ Welcome to the Laravel Starter Project! This repository provides a kickstart set
 
 ## Table of Contents
 
-- [# Laravel Starter Project (Version 11)](#-laravel-starter-project-version-11)
+- [# Laravel-11 Starter Project](#-laravel-11-starter-project)
   - [Table of Contents](#table-of-contents)
   - [Uses Packages](#uses-packages)
   - [Dashboard Template](#dashboard-template)
@@ -16,6 +16,11 @@ Welcome to the Laravel Starter Project! This repository provides a kickstart set
   - [Deploy via FTP with CI/CD](#deploy-via-ftp-with-cicd)
       - [GitFlow for Merge Requests](#gitflow-for-merge-requests)
       - [FTP Deployment Process](#ftp-deployment-process)
+  - [Update Project](#update-project)
+  - [Laravel Auto Updater](#laravel-auto-updater)
+    - [Features](#features-1)
+    - [Usage](#usage)
+    - [Error Handling](#error-handling)
   - [Contribution Guide](#contribution-guide)
   - [License](#license)
 
@@ -184,6 +189,40 @@ To deploy your project:
    - **PASSWORD**: Your FTP password.
 
 2. Upon merging into the `master` branch, GitHub Actions automates deployment to your specified FTP server.
+
+## Update Project
+Here's the section specifically for the Laravel Auto Updater, which you can add to your README:
+
+## Laravel Auto Updater
+
+The Laravel Auto Updater feature enables seamless updates to your Laravel application, allowing you to manage and deploy updates effortlessly. Here’s how to use it:
+
+### Features
+
+- Automatically checks for updates.
+- Initiates updates with simple Artisan commands.
+
+### Usage
+
+1. **Check for Updates:**
+   Run the following command to check for available updates.
+
+   ```bash
+   php artisan update:check
+   ```
+
+2. **Initiate Update:**
+   Use the following command to initiate the update process.
+
+   ```bash
+   php artisan update:initiate {version?}
+   ```
+
+   Replace `{version?}` with a specific version number if desired; otherwise, it will initiate the update for the latest version.
+
+### Error Handling
+
+Ensure to handle any potential errors during the update process gracefully. Implement logging to monitor any issues that arise during updates.
 
 ## Contribution Guide
 
