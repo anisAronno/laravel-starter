@@ -16,7 +16,6 @@ Welcome to the Laravel Starter Project! This repository provides a kickstart set
   - [Deploy via FTP with CI/CD](#deploy-via-ftp-with-cicd)
       - [GitFlow for Merge Requests](#gitflow-for-merge-requests)
       - [FTP Deployment Process](#ftp-deployment-process)
-  - [Update Project](#update-project)
   - [Laravel Auto Updater](#laravel-auto-updater)
     - [Features](#features-1)
     - [Usage](#usage)
@@ -190,12 +189,9 @@ To deploy your project:
 
 2. Upon merging into the `master` branch, GitHub Actions automates deployment to your specified FTP server.
 
-## Update Project
-Here's the section specifically for the Laravel Auto Updater, which you can add to your README:
-
 ## Laravel Auto Updater
 
-The Laravel Auto Updater feature enables seamless updates to your Laravel application, allowing you to manage and deploy updates effortlessly. Here’s how to use it:
+The Laravel Auto Updater feature streamlines the process of updating your Laravel Starter application, making it easy to manage and deploy updates with minimal effort. Here’s how to use it:
 
 ### Features
 
