@@ -4,8 +4,69 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1243159bee124ad5348c8a02a03733ba",
+    "content-hash": "64fb7ab20c43a1710a341664a7e74cc4",
     "packages": [
+        {
+            "name": "anisaronno/laravel-auto-updater",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/anisAronno/laravel-auto-updater.git",
+                "reference": "4f9620b9c76c45f3cc7e908166e73c648de6bf9b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/anisAronno/laravel-auto-updater/zipball/4f9620b9c76c45f3cc7e908166e73c648de6bf9b",
+                "reference": "4f9620b9c76c45f3cc7e908166e73c648de6bf9b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^8.13",
+                "phpunit/phpunit": "^10.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AnisAronno\\LaravelAutoUpdater\\LaravelAutoUpdaterServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AnisAronno\\LaravelAutoUpdater\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MD. Anichur Rahaman",
+                    "email": "contact@anichur.com",
+                    "homepage": "https://anichur.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Auto Updater is a package that helps you to update your Laravel application automatically.",
+            "homepage": "https://github.com/anisAronno/laravel-auto-updater",
+            "keywords": [
+                "auto",
+                "laravel",
+                "package",
+                "updater"
+            ],
+            "support": {
+                "issues": "https://github.com/anisAronno/laravel-auto-updater/issues",
+                "source": "https://github.com/anisAronno/laravel-auto-updater/tree/v1.0.1"
+            },
+            "time": "2024-09-27T05:30:35+00:00"
+        },
         {
             "name": "anisaronno/laravel-media-gallery",
             "version": "0.6.0",

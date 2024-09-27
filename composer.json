@@ -19,6 +19,7 @@
   ],
   "require": {
     "php": "^8.2",
+    "anisaronno/laravel-auto-updater": "^1.0",
     "anisaronno/laravel-media-gallery": "0.6.0",
     "anisaronno/laravel-settings": "^1.2.0",
     "guzzlehttp/guzzle": "^7.2",
