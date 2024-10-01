@@ -4,24 +4,26 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "64fb7ab20c43a1710a341664a7e74cc4",
+    "content-hash": "8969aada690c6eade6cdb00962db20bc",
     "packages": [
         {
             "name": "anisaronno/laravel-auto-updater",
-            "version": "1.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/anisAronno/laravel-auto-updater.git",
-                "reference": "4f9620b9c76c45f3cc7e908166e73c648de6bf9b"
+                "reference": "42613eac51dfa0747934ba572e438d8c896db0d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anisAronno/laravel-auto-updater/zipball/4f9620b9c76c45f3cc7e908166e73c648de6bf9b",
-                "reference": "4f9620b9c76c45f3cc7e908166e73c648de6bf9b",
+                "url": "https://api.github.com/repos/anisAronno/laravel-auto-updater/zipball/42613eac51dfa0747934ba572e438d8c896db0d0",
+                "reference": "42613eac51dfa0747934ba572e438d8c896db0d0",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+                "ext-json": "*",
+                "ext-zip": "*",
+                "illuminate/support": "^10.0|^11.0",
                 "php": "^7.4|^8.0"
             },
             "require-dev": {
@@ -63,9 +65,15 @@
             ],
             "support": {
                 "issues": "https://github.com/anisAronno/laravel-auto-updater/issues",
-                "source": "https://github.com/anisAronno/laravel-auto-updater/tree/v1.0.1"
+                "source": "https://github.com/anisAronno/laravel-auto-updater/tree/master"
             },
-            "time": "2024-09-27T05:30:35+00:00"
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/anisaronno",
+                    "type": "buy_me_a_coffee"
+                }
+            ],
+            "time": "2024-10-01T13:39:26+00:00"
         },
         {
             "name": "anisaronno/laravel-media-gallery",
@@ -9465,6 +9473,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "anisaronno/laravel-auto-updater": 20,
         "laravel/pulse": 10
     },
     "prefer-stable": true,
