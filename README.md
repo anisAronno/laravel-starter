@@ -16,7 +16,7 @@ Welcome to the Laravel Starter Project! This repository provides a kickstart set
   - [Deploy via FTP with CI/CD](#deploy-via-ftp-with-cicd)
       - [GitFlow for Merge Requests](#gitflow-for-merge-requests)
       - [FTP Deployment Process](#ftp-deployment-process)
-  - [Laravel Auto Updater](#laravel-auto-updater)
+  - [Laravel Self Updater](#laravel-self-updater)
     - [Features](#features-1)
     - [Usage](#usage)
     - [Error Handling](#error-handling)
@@ -31,8 +31,7 @@ Welcome to the Laravel Starter Project! This repository provides a kickstart set
 - Laravel [Pulse](https://laravel.com/docs/11.x/pulse) (Application's performance Monitoring)
 - Laravel [Clockwork](https://github.com/itsgoingd/clockwork) (Request Monitoring)
 - Laravel [Horizon](https://laravel.com/docs/11.x/horizon) (Job And Queue manage)
-- Laravel [Settings](https://github.com/anisAronno/laravel-auto-updater) (Personal Package for application settings)
-- Laravel [Auto Updater](https://github.com/anisAronno/laravel-settings) (Personal Package for self updates)
+- Laravel [Settings](https://github.com/anisAronno/laravel-settings) (Personal Package for application settings)
 - Laravel [Media Gallery](https://github.com/anisAronno/laravel-media-gallery) (Personal Package for file management)
 - Laravel [Activity Log](https://github.com/spatie/laravel-activitylog) (Track User Activity)
 - Beautiful [Log Viewer](https://github.com/opcodesio/log-viewer) for local and production
@@ -190,9 +189,9 @@ To deploy your project:
 
 2. Upon merging into the `master` branch, GitHub Actions automates deployment to your specified FTP server.
 
-## Laravel Auto Updater
+## Laravel Self Updater
 
-The Laravel Auto Updater feature streamlines the process of updating your Laravel Starter application, making it easy to manage and deploy updates with minimal effort. Here’s how to use it:
+The Laravel Self Updater feature streamlines the process of updating your Laravel Starter application, making it easy to manage and deploy updates with minimal effort. Here’s how to use it:
 
 ### Features
 

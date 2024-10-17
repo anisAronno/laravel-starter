@@ -1,7 +1,7 @@
 {
   "name": "anisaronno/laravel-starter",
   "type": "project",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A perfect laravel starter project for any kind of project.",
   "keywords": [
     "laravel",
@@ -19,8 +19,8 @@
   ],
   "require": {
     "php": "^8.2",
-    "anisaronno/laravel-auto-updater": "dev-master",
     "anisaronno/laravel-media-gallery": "0.6.0",
+    "anisaronno/laravel-self-updater": "^0.3.0",
     "anisaronno/laravel-settings": "^1.2.0",
     "guzzlehttp/guzzle": "^7.2",
     "itsgoingd/clockwork": "^5.1",
